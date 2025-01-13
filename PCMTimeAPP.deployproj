@@ -1,0 +1,1925 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <Import Condition="Exists('$(BDS)\bin\CodeGear.Deployment.targets')" Project="$(BDS)\bin\CodeGear.Deployment.targets"/>
+    <ProjectExtensions>
+        <ProjectFileVersion>12</ProjectFileVersion>
+    </ProjectExtensions>
+    <PropertyGroup>
+        <DeviceId Condition="'$(Platform)'=='Android'">520018e85bce1555</DeviceId>
+        <DeviceId Condition="'$(Platform)'=='Android64'">520018e85bce1555</DeviceId>
+        <DeviceId Condition="'$(Platform)'=='iOSDevice64'"/>
+        <DeviceId Condition="'$(Platform)'=='iOSSimARM64'"/>
+    </PropertyGroup>
+    <ItemGroup Condition="'$(Platform)'=='OSX64'">
+        <DeployFile Include="$(BDS)\Redist\osx64\libcgsqlite3.dylib" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP.app\Contents\MacOS\</RemoteDir>
+            <RemoteName>libcgsqlite3.dylib</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\Redist\osx64\libcgsqlite3.dylib" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>PCMTimeAPP.app\Contents\MacOS\</RemoteDir>
+            <RemoteName>libcgsqlite3.dylib</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+    </ItemGroup>
+    <ItemGroup Condition="'$(Platform)'=='Win32'">
+        <DeployFile Include="Grafiken\48x48\48.png" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>PCMTimeAPP\Assets\</RemoteDir>
+            <RemoteName>Logo44x44.png</RemoteName>
+            <DeployClass>UWP_DelphiLogo44</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Grafiken\144x144\144.png" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>PCMTimeAPP\Assets\</RemoteDir>
+            <RemoteName>Logo150x150.png</RemoteName>
+            <DeployClass>UWP_DelphiLogo150</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Win32\Debug\PCMTimeAPP.exe" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>PCMTimeAPP\</RemoteDir>
+            <RemoteName>PCMTimeAPP.exe</RemoteName>
+            <DeployClass>ProjectOutput</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+            <Required>True</Required>
+        </DeployFile>
+        <DeployFile Include="DB\PCMApp.s3db" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>PCMTimeAPP\</RemoteDir>
+            <RemoteName>PCMApp.s3db</RemoteName>
+            <DeployClass>ProjectFile</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+    </ItemGroup>
+    <ItemGroup Condition="'$(Platform)'=='Android64'">
+        <DeployFile Include="Android64\Release\strings.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values\</RemoteDir>
+            <RemoteName>strings.xml</RemoteName>
+            <DeployClass>Android_Strings</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Grafiken\72x72\72.png" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>PCMTimeAPP\res\drawable-xxhdpi\</RemoteDir>
+            <RemoteName>ic_notification.png</RemoteName>
+            <DeployClass>Android_NotificationIcon72</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Grafiken\426x320\426x320.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\drawable-small\</RemoteDir>
+            <RemoteName>splash_image.png</RemoteName>
+            <DeployClass>Android_SplashImage426</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Grafiken\24x24\24.png" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>PCMTimeAPP\res\drawable-mdpi\</RemoteDir>
+            <RemoteName>ic_notification.png</RemoteName>
+            <DeployClass>Android_NotificationIcon24</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\lib\android\debug\mips\libnative-activity.so" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>PCMTimeAPP\library\lib\mips\</RemoteDir>
+            <RemoteName>libPCMAppmanager.so</RemoteName>
+            <DeployClass>AndroidLibnativeMipsFile</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\lib\android\debug\armeabi-v7a\libnative-activity.so" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\library\lib\armeabi-v7a\</RemoteDir>
+            <RemoteName>libPCMManagerAPP.so</RemoteName>
+            <DeployClass>AndroidLibnativeArmeabiv7aFile</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Android64\Debug\styles.xml" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>PCMTimeAPP\res\values\</RemoteDir>
+            <RemoteName>styles.xml</RemoteName>
+            <DeployClass>AndroidSplashStyles</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="DB\PCMApp.s3db" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\assets\internal\</RemoteDir>
+            <RemoteName>PCMApp.s3db</RemoteName>
+            <DeployClass>ProjectFile</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Android64\Debug\AndroidManifest.xml" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>PCMTimeAPP\</RemoteDir>
+            <RemoteName>AndroidManifest.xml</RemoteName>
+            <DeployClass>ProjectAndroidManifest</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Grafiken\960x720\960x720.png" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>PCMTimeAPP\res\drawable-xlarge\</RemoteDir>
+            <RemoteName>splash_image.png</RemoteName>
+            <DeployClass>Android_SplashImage960</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Android64\Debug\colors-night-v21.xml" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>PCMTimeAPP\res\values-night-v21\</RemoteDir>
+            <RemoteName>colors.xml</RemoteName>
+            <DeployClass>Android_ColorsDark</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\lib\android\debug\armeabi\libnative-activity.so" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\library\lib\armeabi\</RemoteDir>
+            <RemoteName>libPCMManagerAPP.so</RemoteName>
+            <DeployClass>AndroidLibnativeArmeabiFile</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Grafiken\36x36\36.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\drawable-hdpi\</RemoteDir>
+            <RemoteName>ic_notification.png</RemoteName>
+            <DeployClass>Android_NotificationIcon36</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Android64\Release\libPCMTimeAPP.so" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\library\lib\arm64-v8a\</RemoteDir>
+            <RemoteName>libPCMTimeAPP.so</RemoteName>
+            <DeployClass>ProjectOutput</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+            <Required>True</Required>
+        </DeployFile>
+        <DeployFile Include="Res\provider_paths.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\xml\</RemoteDir>
+            <RemoteName>provider_paths.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Grafiken\48x48\48.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\drawable-xhdpi\</RemoteDir>
+            <RemoteName>ic_notification.png</RemoteName>
+            <DeployClass>Android_NotificationIcon48</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Grafiken\192x192\192.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\drawable-xxxhdpi\</RemoteDir>
+            <RemoteName>ic_launcher.png</RemoteName>
+            <DeployClass>Android_LauncherIcon192</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Res\splash_image.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\drawable\</RemoteDir>
+            <RemoteName>splash_image.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Android64\Debug\libPCMTimeAPP.so" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>PCMTimeAPP\library\lib\arm64-v8a\</RemoteDir>
+            <RemoteName>libPCMTimeAPP.so</RemoteName>
+            <DeployClass>ProjectOutput</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+            <Required>True</Required>
+        </DeployFile>
+        <DeployFile Include="Android64\Release\colors.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values\</RemoteDir>
+            <RemoteName>colors.xml</RemoteName>
+            <DeployClass>Android_Colors</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Grafiken\640x480\640.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\drawable-large\</RemoteDir>
+            <RemoteName>splash_image.png</RemoteName>
+            <DeployClass>Android_SplashImage640</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Res\Theme\styles.xml" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>PCMTimeAPP\res\values\</RemoteDir>
+            <RemoteName>styles.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Android64\Debug\PCMTimeAPP.classes" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>PCMTimeAPP\classes\</RemoteDir>
+            <RemoteName>PCMTimeAPP.classes</RemoteName>
+            <DeployClass>AndroidClasses</DeployClass>
+            <Operation>64</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="DB\PCMTime.s3db" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>PCMTimeAPP\assets\internal\</RemoteDir>
+            <RemoteName>PCMTime.s3db</RemoteName>
+            <DeployClass>ProjectFile</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Android64\Release\AndroidManifest.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\</RemoteDir>
+            <RemoteName>AndroidManifest.xml</RemoteName>
+            <DeployClass>ProjectAndroidManifest</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Grafiken\144x144\144.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\drawable-xxhdpi\</RemoteDir>
+            <RemoteName>ic_launcher.png</RemoteName>
+            <DeployClass>Android_LauncherIcon144</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Grafiken\96x96\96.png" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>PCMTimeAPP\res\drawable-xxxhdpi\</RemoteDir>
+            <RemoteName>ic_notification.png</RemoteName>
+            <DeployClass>Android_NotificationIcon96</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Grafiken\470x320\470x320.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\drawable-normal\</RemoteDir>
+            <RemoteName>splash_image.png</RemoteName>
+            <DeployClass>Android_SplashImage470</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Android64\Debug\styles-v21.xml" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>PCMTimeAPP\res\values-v21\</RemoteDir>
+            <RemoteName>styles.xml</RemoteName>
+            <DeployClass>AndroidSplashStylesV21</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Grafiken\72x72\72.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\drawable-xxhdpi\</RemoteDir>
+            <RemoteName>ic_notification.png</RemoteName>
+            <DeployClass>Android_NotificationIcon72</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Android64\Release\splash_image_def.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\drawable\</RemoteDir>
+            <RemoteName>splash_image_def.xml</RemoteName>
+            <DeployClass>AndroidSplashImageDef</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Grafiken\426x320\426x320.png" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>PCMTimeAPP\res\drawable-small\</RemoteDir>
+            <RemoteName>splash_image.png</RemoteName>
+            <DeployClass>Android_SplashImage426</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Grafiken\24x24\24.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\drawable-mdpi\</RemoteDir>
+            <RemoteName>ic_notification.png</RemoteName>
+            <DeployClass>Android_NotificationIcon24</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\lib\android\debug\mips\libnative-activity.so" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\library\lib\mips\</RemoteDir>
+            <RemoteName>libPCMManagerAPP.so</RemoteName>
+            <DeployClass>AndroidLibnativeMipsFile</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\lib\android\debug\armeabi-v7a\libnative-activity.so" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>PCMTimeAPP\library\lib\armeabi-v7a\</RemoteDir>
+            <RemoteName>libPCMAppmanager.so</RemoteName>
+            <DeployClass>AndroidLibnativeArmeabiv7aFile</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Android64\Release\styles-v21.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values-v21\</RemoteDir>
+            <RemoteName>styles.xml</RemoteName>
+            <DeployClass>AndroidSplashStylesV21</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Android64\Release\PCMManagerAPP.classes" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\classes\</RemoteDir>
+            <RemoteName>PCMManagerAPP.classes</RemoteName>
+            <DeployClass>AndroidClasses</DeployClass>
+            <Operation>64</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Grafiken\960x720\960x720.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\drawable-xlarge\</RemoteDir>
+            <RemoteName>splash_image.png</RemoteName>
+            <DeployClass>Android_SplashImage960</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\lib\android\debug\armeabi\libnative-activity.so" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>PCMTimeAPP\library\lib\armeabi\</RemoteDir>
+            <RemoteName>libPCMAppmanager.so</RemoteName>
+            <DeployClass>AndroidLibnativeArmeabiFile</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Grafiken\36x36\36.png" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>PCMTimeAPP\res\drawable-hdpi\</RemoteDir>
+            <RemoteName>ic_notification.png</RemoteName>
+            <DeployClass>Android_NotificationIcon36</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Android64\Debug\colors.xml" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>PCMTimeAPP\res\values\</RemoteDir>
+            <RemoteName>colors.xml</RemoteName>
+            <DeployClass>Android_Colors</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Res\provider_paths.xml" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>PCMTimeAPP\res\xml\</RemoteDir>
+            <RemoteName>provider_paths.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Grafiken\48x48\48.png" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>PCMTimeAPP\res\drawable-xhdpi\</RemoteDir>
+            <RemoteName>ic_notification.png</RemoteName>
+            <DeployClass>Android_NotificationIcon48</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Android64\Debug\strings.xml" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>PCMTimeAPP\res\values\</RemoteDir>
+            <RemoteName>strings.xml</RemoteName>
+            <DeployClass>Android_Strings</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Grafiken\192x192\192.png" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>PCMTimeAPP\res\drawable-xxxhdpi\</RemoteDir>
+            <RemoteName>ic_launcher.png</RemoteName>
+            <DeployClass>Android_LauncherIcon192</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Res\splash_image.png" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>PCMTimeAPP\res\drawable\</RemoteDir>
+            <RemoteName>splash_image.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Grafiken\640x480\640.png" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>PCMTimeAPP\res\drawable-large\</RemoteDir>
+            <RemoteName>splash_image.png</RemoteName>
+            <DeployClass>Android_SplashImage640</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Res\Theme\styles.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values\</RemoteDir>
+            <RemoteName>styles.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Android64\Debug\splash_image_def.xml" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>PCMTimeAPP\res\drawable\</RemoteDir>
+            <RemoteName>splash_image_def.xml</RemoteName>
+            <DeployClass>AndroidSplashImageDef</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Android64\Release\styles.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values\</RemoteDir>
+            <RemoteName>styles.xml</RemoteName>
+            <DeployClass>AndroidSplashStyles</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Grafiken\144x144\144.png" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>PCMTimeAPP\res\drawable-xxhdpi\</RemoteDir>
+            <RemoteName>ic_launcher.png</RemoteName>
+            <DeployClass>Android_LauncherIcon144</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Grafiken\96x96\96.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\drawable-xxxhdpi\</RemoteDir>
+            <RemoteName>ic_notification.png</RemoteName>
+            <DeployClass>Android_NotificationIcon96</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Grafiken\470x320\470x320.png" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>PCMTimeAPP\res\drawable-normal\</RemoteDir>
+            <RemoteName>splash_image.png</RemoteName>
+            <DeployClass>Android_SplashImage470</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+    </ItemGroup>
+    <ItemGroup Condition="'$(Platform)'=='Android'">
+        <DeployFile Include="Res\provider_paths.xml" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>PCMTimeAPP\res\xml\</RemoteDir>
+            <RemoteName>provider_paths.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\values-as\values-as.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values-as\</RemoteDir>
+            <RemoteName>values-as.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\values-es\values-es.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values-es\</RemoteDir>
+            <RemoteName>values-es.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\values-pt-rPT\values-pt-rPT.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values-pt-rPT\</RemoteDir>
+            <RemoteName>values-pt-rPT.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Android\Release\strings.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values\</RemoteDir>
+            <RemoteName>strings.xml</RemoteName>
+            <DeployClass>Android_Strings</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\values-b+sr+Latn\values-b+sr+Latn.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values-b+sr+Latn\</RemoteDir>
+            <RemoteName>values-b+sr+Latn.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Grafiken\72x72\72.png" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>PCMTimeAPP\res\drawable-xxhdpi\</RemoteDir>
+            <RemoteName>ic_notification.png</RemoteName>
+            <DeployClass>Android_NotificationIcon72</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\values-bn\values-bn.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values-bn\</RemoteDir>
+            <RemoteName>values-bn.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\values-cs\values-cs.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values-cs\</RemoteDir>
+            <RemoteName>values-cs.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\values-fi\values-fi.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values-fi\</RemoteDir>
+            <RemoteName>values-fi.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Grafiken\96x96\96.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\drawable-xxxhdpi\</RemoteDir>
+            <RemoteName>ic_notification.png</RemoteName>
+            <DeployClass>Android_NotificationIcon96</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Android\Release\splash_image_def.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\drawable\</RemoteDir>
+            <RemoteName>splash_image_def.xml</RemoteName>
+            <DeployClass>AndroidSplashImageDef</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\drawable-ldpi-v23\fingerprint_dialog_error.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\drawable-ldpi-v23\</RemoteDir>
+            <RemoteName>fingerprint_dialog_error.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\values-gl\values-gl.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values-gl\</RemoteDir>
+            <RemoteName>values-gl.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\values-pa\values-pa.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values-pa\</RemoteDir>
+            <RemoteName>values-pa.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\values-sw\values-sw.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values-sw\</RemoteDir>
+            <RemoteName>values-sw.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\values-th\values-th.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values-th\</RemoteDir>
+            <RemoteName>values-th.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\values-tl\values-tl.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values-tl\</RemoteDir>
+            <RemoteName>values-tl.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\values-uk\values-uk.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values-uk\</RemoteDir>
+            <RemoteName>values-uk.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Grafiken\24x24\24.png" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>PCMTimeAPP\res\drawable-mdpi\</RemoteDir>
+            <RemoteName>ic_notification.png</RemoteName>
+            <DeployClass>Android_NotificationIcon24</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Grafiken\640x480\640.png" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>PCMTimeAPP\res\drawable-large\</RemoteDir>
+            <RemoteName>splash_image.png</RemoteName>
+            <DeployClass>Android_SplashImage640</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\values-hu\values-hu.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values-hu\</RemoteDir>
+            <RemoteName>values-hu.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\values-lv\values-lv.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values-lv\</RemoteDir>
+            <RemoteName>values-lv.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Grafiken\144x144\144.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\drawable-xxhdpi\</RemoteDir>
+            <RemoteName>ic_launcher.png</RemoteName>
+            <DeployClass>Android_LauncherIcon144</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\values-en-rIN\values-en-rIN.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values-en-rIN\</RemoteDir>
+            <RemoteName>values-en-rIN.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\values-in\values-in.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values-in\</RemoteDir>
+            <RemoteName>values-in.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\values-ru\values-ru.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values-ru\</RemoteDir>
+            <RemoteName>values-ru.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\values-uz\values-uz.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values-uz\</RemoteDir>
+            <RemoteName>values-uz.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Android\Debug\styles.xml" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>PCMTimeAPP\res\values\</RemoteDir>
+            <RemoteName>styles.xml</RemoteName>
+            <DeployClass>AndroidSplashStyles</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Android\Release\PCMManagerAPP.classes" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\classes\</RemoteDir>
+            <RemoteName>PCMManagerAPP.classes</RemoteName>
+            <DeployClass>AndroidClasses</DeployClass>
+            <Operation>64</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\values-zu\values-zu.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values-zu\</RemoteDir>
+            <RemoteName>values-zu.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\lib\android\debug\mips\libnative-activity.so" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>PCMTimeAPP\library\lib\mips\</RemoteDir>
+            <RemoteName>libBiometricDemoD11.so</RemoteName>
+            <DeployClass>AndroidLibnativeMipsFile</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\values-mn\values-mn.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values-mn\</RemoteDir>
+            <RemoteName>values-mn.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\values-nl\values-nl.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values-nl\</RemoteDir>
+            <RemoteName>values-nl.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\values-is\values-is.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values-is\</RemoteDir>
+            <RemoteName>values-is.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\values-kk\values-kk.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values-kk\</RemoteDir>
+            <RemoteName>values-kk.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\values-lt\values-lt.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values-lt\</RemoteDir>
+            <RemoteName>values-lt.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\values-nb\values-nb.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values-nb\</RemoteDir>
+            <RemoteName>values-nb.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Android\Debug\strings.xml" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>PCMTimeAPP\res\values\</RemoteDir>
+            <RemoteName>strings.xml</RemoteName>
+            <DeployClass>Android_Strings</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\drawable-xxxhdpi-v23\fingerprint_dialog_error.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\drawable-xxxhdpi-v23\</RemoteDir>
+            <RemoteName>fingerprint_dialog_error.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\values-en-rCA\values-en-rCA.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values-en-rCA\</RemoteDir>
+            <RemoteName>values-en-rCA.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\values-ja\values-ja.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values-ja\</RemoteDir>
+            <RemoteName>values-ja.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\values-my\values-my.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values-my\</RemoteDir>
+            <RemoteName>values-my.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\values-et\values-et.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values-et\</RemoteDir>
+            <RemoteName>values-et.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Grafiken\960x720\960x720.png" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>PCMTimeAPP\res\drawable-xlarge\</RemoteDir>
+            <RemoteName>splash_image.png</RemoteName>
+            <DeployClass>Android_SplashImage960</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\values-ko\values-ko.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values-ko\</RemoteDir>
+            <RemoteName>values-ko.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\values-hy\values-hy.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values-hy\</RemoteDir>
+            <RemoteName>values-hy.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\values-or\values-or.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values-or\</RemoteDir>
+            <RemoteName>values-or.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\values-pl\values-pl.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values-pl\</RemoteDir>
+            <RemoteName>values-pl.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\values-pt-rBR\values-pt-rBR.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values-pt-rBR\</RemoteDir>
+            <RemoteName>values-pt-rBR.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Grafiken\36x36\36.png" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>PCMTimeAPP\res\drawable-hdpi\</RemoteDir>
+            <RemoteName>ic_notification.png</RemoteName>
+            <DeployClass>Android_NotificationIcon36</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\values-zh-rHK\values-zh-rHK.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values-zh-rHK\</RemoteDir>
+            <RemoteName>values-zh-rHK.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\lib\android\debug\armeabi\libnative-activity.so" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\library\lib\armeabi\</RemoteDir>
+            <RemoteName>libPCMManagerAPP.so</RemoteName>
+            <DeployClass>AndroidLibnativeArmeabiFile</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\values-da\values-da.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values-da\</RemoteDir>
+            <RemoteName>values-da.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\values-el\values-el.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values-el\</RemoteDir>
+            <RemoteName>values-el.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\values-kn\values-kn.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values-kn\</RemoteDir>
+            <RemoteName>values-kn.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\values-sq\values-sq.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values-sq\</RemoteDir>
+            <RemoteName>values-sq.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\values-en-rXC\values-en-rXC.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values-en-rXC\</RemoteDir>
+            <RemoteName>values-en-rXC.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\values-fr-rCA\values-fr-rCA.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values-fr-rCA\</RemoteDir>
+            <RemoteName>values-fr-rCA.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Android\Debug\colors-night-v21.xml" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>PCMTimeAPP\res\values-night-v21\</RemoteDir>
+            <RemoteName>colors.xml</RemoteName>
+            <DeployClass>Android_ColorsDark</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\values-ml\values-ml.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values-ml\</RemoteDir>
+            <RemoteName>values-ml.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\drawable-xhdpi-v23\fingerprint_dialog_error.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\drawable-xhdpi-v23\</RemoteDir>
+            <RemoteName>fingerprint_dialog_error.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\drawable-mdpi-v23\fingerprint_dialog_error.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\drawable-mdpi-v23\</RemoteDir>
+            <RemoteName>fingerprint_dialog_error.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\values-tr\values-tr.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values-tr\</RemoteDir>
+            <RemoteName>values-tr.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="DB\PCMTime.s3db" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>PCMTimeAPP\assets\internal\</RemoteDir>
+            <RemoteName>PCMTime.s3db</RemoteName>
+            <DeployClass>ProjectFile</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Grafiken\48x48\48.png" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>PCMTimeAPP\res\drawable-xhdpi\</RemoteDir>
+            <RemoteName>ic_notification.png</RemoteName>
+            <DeployClass>Android_NotificationIcon48</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\color-v26\biometric_error_color.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\color-v26\</RemoteDir>
+            <RemoteName>biometric_error_color.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Android\Debug\libPCMTimeAPP.so" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>PCMTimeAPP\library\lib\armeabi-v7a\</RemoteDir>
+            <RemoteName>libPCMTimeAPP.so</RemoteName>
+            <DeployClass>ProjectOutput</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+            <Required>True</Required>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\values-iw\values-iw.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values-iw\</RemoteDir>
+            <RemoteName>values-iw.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\values-mk\values-mk.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values-mk\</RemoteDir>
+            <RemoteName>values-mk.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Grafiken\470x320\470x320.png" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>PCMTimeAPP\res\drawable-normal\</RemoteDir>
+            <RemoteName>splash_image.png</RemoteName>
+            <DeployClass>Android_SplashImage470</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\drawable-anydpi-v24\fingerprint_dialog_error.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\drawable-anydpi-v24\</RemoteDir>
+            <RemoteName>fingerprint_dialog_error.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\values-bg\values-bg.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values-bg\</RemoteDir>
+            <RemoteName>values-bg.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Android\Release\AndroidManifest.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\</RemoteDir>
+            <RemoteName>AndroidManifest.xml</RemoteName>
+            <DeployClass>ProjectAndroidManifest</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\drawable-xxhdpi-v23\fingerprint_dialog_error.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\drawable-xxhdpi-v23\</RemoteDir>
+            <RemoteName>fingerprint_dialog_error.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Grafiken\192x192\192.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\drawable-xxxhdpi\</RemoteDir>
+            <RemoteName>ic_launcher.png</RemoteName>
+            <DeployClass>Android_LauncherIcon192</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\values-si\values-si.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values-si\</RemoteDir>
+            <RemoteName>values-si.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Grafiken\426x320\426x320.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\drawable-small\</RemoteDir>
+            <RemoteName>splash_image.png</RemoteName>
+            <DeployClass>Android_SplashImage426</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Res\Theme\styles.xml" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>PCMTimeAPP\res\values\</RemoteDir>
+            <RemoteName>styles.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Android\Debug\colors.xml" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>PCMTimeAPP\res\values\</RemoteDir>
+            <RemoteName>colors.xml</RemoteName>
+            <DeployClass>Android_Colors</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\values-af\values-af.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values-af\</RemoteDir>
+            <RemoteName>values-af.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Android\Release\styles-v21.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values-v21\</RemoteDir>
+            <RemoteName>styles.xml</RemoteName>
+            <DeployClass>AndroidSplashStylesV21</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Grafiken\72x72\72.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\drawable-xxhdpi\</RemoteDir>
+            <RemoteName>ic_notification.png</RemoteName>
+            <DeployClass>Android_NotificationIcon72</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\values-ar\values-ar.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values-ar\</RemoteDir>
+            <RemoteName>values-ar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\drawable-anydpi-v23\fingerprint_dialog_fp_icon.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\drawable-anydpi-v23\</RemoteDir>
+            <RemoteName>fingerprint_dialog_fp_icon.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\drawable-hdpi-v23\fingerprint_dialog_error.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\drawable-hdpi-v23\</RemoteDir>
+            <RemoteName>fingerprint_dialog_error.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Grafiken\96x96\96.png" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>PCMTimeAPP\res\drawable-xxxhdpi\</RemoteDir>
+            <RemoteName>ic_notification.png</RemoteName>
+            <DeployClass>Android_NotificationIcon96</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="DB\PCMApp.s3db" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\assets\internal\</RemoteDir>
+            <RemoteName>PCMApp.s3db</RemoteName>
+            <DeployClass>ProjectFile</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\values-km\values-km.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values-km\</RemoteDir>
+            <RemoteName>values-km.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\values-vi\values-vi.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values-vi\</RemoteDir>
+            <RemoteName>values-vi.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\values-am\values-am.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values-am\</RemoteDir>
+            <RemoteName>values-am.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\values-te\values-te.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values-te\</RemoteDir>
+            <RemoteName>values-te.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\values-zh-rTW\values-zh-rTW.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values-zh-rTW\</RemoteDir>
+            <RemoteName>values-zh-rTW.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Grafiken\24x24\24.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\drawable-mdpi\</RemoteDir>
+            <RemoteName>ic_notification.png</RemoteName>
+            <DeployClass>Android_NotificationIcon24</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Grafiken\640x480\640.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\drawable-large\</RemoteDir>
+            <RemoteName>splash_image.png</RemoteName>
+            <DeployClass>Android_SplashImage640</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\values-hr\values-hr.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values-hr\</RemoteDir>
+            <RemoteName>values-hr.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\values\values.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values\</RemoteDir>
+            <RemoteName>values.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Grafiken\144x144\144.png" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>PCMTimeAPP\res\drawable-xxhdpi\</RemoteDir>
+            <RemoteName>ic_launcher.png</RemoteName>
+            <DeployClass>Android_LauncherIcon144</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\values-mr\values-mr.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values-mr\</RemoteDir>
+            <RemoteName>values-mr.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Android\Debug\AndroidManifest.xml" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>PCMTimeAPP\</RemoteDir>
+            <RemoteName>AndroidManifest.xml</RemoteName>
+            <DeployClass>ProjectAndroidManifest</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\values-bs\values-bs.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values-bs\</RemoteDir>
+            <RemoteName>values-bs.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Android\Release\libPCMTimeAPP.so" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\library\lib\armeabi-v7a\</RemoteDir>
+            <RemoteName>libPCMTimeAPP.so</RemoteName>
+            <DeployClass>ProjectOutput</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+            <Required>True</Required>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\lib\android\debug\mips\libnative-activity.so" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\library\lib\mips\</RemoteDir>
+            <RemoteName>libPCMManagerAPP.so</RemoteName>
+            <DeployClass>AndroidLibnativeMipsFile</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\layout\fingerprint_dialog_layout.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\layout\</RemoteDir>
+            <RemoteName>fingerprint_dialog_layout.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\values-es-rUS\values-es-rUS.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values-es-rUS\</RemoteDir>
+            <RemoteName>values-es-rUS.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\values-sv\values-sv.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values-sv\</RemoteDir>
+            <RemoteName>values-sv.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\values-ms\values-ms.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values-ms\</RemoteDir>
+            <RemoteName>values-ms.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\values-ca\values-ca.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values-ca\</RemoteDir>
+            <RemoteName>values-ca.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\values-ta\values-ta.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values-ta\</RemoteDir>
+            <RemoteName>values-ta.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\values-ky\values-ky.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values-ky\</RemoteDir>
+            <RemoteName>values-ky.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\values-ne\values-ne.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values-ne\</RemoteDir>
+            <RemoteName>values-ne.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\values-zh-rCN\values-zh-rCN.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values-zh-rCN\</RemoteDir>
+            <RemoteName>values-zh-rCN.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Android\Debug\splash_image_def.xml" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>PCMTimeAPP\res\drawable\</RemoteDir>
+            <RemoteName>splash_image_def.xml</RemoteName>
+            <DeployClass>AndroidSplashImageDef</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Android\Release\styles.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values\</RemoteDir>
+            <RemoteName>styles.xml</RemoteName>
+            <DeployClass>AndroidSplashStyles</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\values-az\values-az.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values-az\</RemoteDir>
+            <RemoteName>values-az.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\values-lo\values-lo.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values-lo\</RemoteDir>
+            <RemoteName>values-lo.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\values-sr\values-sr.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values-sr\</RemoteDir>
+            <RemoteName>values-sr.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Grafiken\960x720\960x720.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\drawable-xlarge\</RemoteDir>
+            <RemoteName>splash_image.png</RemoteName>
+            <DeployClass>Android_SplashImage960</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Res\splash_image.png" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>PCMTimeAPP\res\drawable\</RemoteDir>
+            <RemoteName>splash_image.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\values-be\values-be.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values-be\</RemoteDir>
+            <RemoteName>values-be.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\values-eu\values-eu.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values-eu\</RemoteDir>
+            <RemoteName>values-eu.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\values-gu\values-gu.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values-gu\</RemoteDir>
+            <RemoteName>values-gu.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Android\Debug\styles-v21.xml" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>PCMTimeAPP\res\values-v21\</RemoteDir>
+            <RemoteName>styles.xml</RemoteName>
+            <DeployClass>AndroidSplashStylesV21</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Grafiken\36x36\36.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\drawable-hdpi\</RemoteDir>
+            <RemoteName>ic_notification.png</RemoteName>
+            <DeployClass>Android_NotificationIcon36</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\lib\android\debug\armeabi\libnative-activity.so" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>PCMTimeAPP\library\lib\armeabi\</RemoteDir>
+            <RemoteName>libBiometricDemoD11.so</RemoteName>
+            <DeployClass>AndroidLibnativeArmeabiFile</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Android\Debug\PCMTimeAPP.classes" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>PCMTimeAPP\classes\</RemoteDir>
+            <RemoteName>PCMTimeAPP.classes</RemoteName>
+            <DeployClass>AndroidClasses</DeployClass>
+            <Operation>64</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\values-sl\values-sl.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values-sl\</RemoteDir>
+            <RemoteName>values-sl.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Android\Release\colors.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values\</RemoteDir>
+            <RemoteName>colors.xml</RemoteName>
+            <DeployClass>Android_Colors</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\values-en-rGB\values-en-rGB.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values-en-rGB\</RemoteDir>
+            <RemoteName>values-en-rGB.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\values-hi\values-hi.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values-hi\</RemoteDir>
+            <RemoteName>values-hi.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\values-pt\values-pt.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values-pt\</RemoteDir>
+            <RemoteName>values-pt.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Grafiken\48x48\48.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\drawable-xhdpi\</RemoteDir>
+            <RemoteName>ic_notification.png</RemoteName>
+            <DeployClass>Android_NotificationIcon48</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\values-en-rAU\values-en-rAU.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values-en-rAU\</RemoteDir>
+            <RemoteName>values-en-rAU.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\values-ka\values-ka.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values-ka\</RemoteDir>
+            <RemoteName>values-ka.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Grafiken\470x320\470x320.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\drawable-normal\</RemoteDir>
+            <RemoteName>splash_image.png</RemoteName>
+            <DeployClass>Android_SplashImage470</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\values-it\values-it.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values-it\</RemoteDir>
+            <RemoteName>values-it.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\values-sk\values-sk.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values-sk\</RemoteDir>
+            <RemoteName>values-sk.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\values-ur\values-ur.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values-ur\</RemoteDir>
+            <RemoteName>values-ur.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\values-fr\values-fr.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values-fr\</RemoteDir>
+            <RemoteName>values-fr.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\values-ro\values-ro.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values-ro\</RemoteDir>
+            <RemoteName>values-ro.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Grafiken\192x192\192.png" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>PCMTimeAPP\res\drawable-xxxhdpi\</RemoteDir>
+            <RemoteName>ic_launcher.png</RemoteName>
+            <DeployClass>Android_LauncherIcon192</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\values-de\values-de.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values-de\</RemoteDir>
+            <RemoteName>values-de.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Grafiken\426x320\426x320.png" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>PCMTimeAPP\res\drawable-small\</RemoteDir>
+            <RemoteName>splash_image.png</RemoteName>
+            <DeployClass>Android_SplashImage426</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\ThirdParty\Android\androidx-biometric-1.1.0\res\values-fa\values-fa.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP\res\values-fa\</RemoteDir>
+            <RemoteName>values-fa.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+    </ItemGroup>
+    <ItemGroup Condition="'$(Platform)'=='OSXARM64'">
+        <DeployFile Include="$(BDS)\Redist\osx64\libcgsqlite3.dylib" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP.app\Contents\MacOS\</RemoteDir>
+            <RemoteName>libcgsqlite3.dylib</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\Redist\osx64\libcgsqlite3.dylib" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>PCMTimeAPP.app\Contents\MacOS\</RemoteDir>
+            <RemoteName>libcgsqlite3.dylib</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+    </ItemGroup>
+    <ItemGroup Condition="'$(Platform)'=='Win64'">
+        <DeployFile Include="Grafiken\144x144\144.png" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>PCMTimeAPP\Assets\</RemoteDir>
+            <RemoteName>Logo150x150.png</RemoteName>
+            <DeployClass>UWP_DelphiLogo150</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Grafiken\48x48\48.png" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>PCMTimeAPP\Assets\</RemoteDir>
+            <RemoteName>Logo44x44.png</RemoteName>
+            <DeployClass>UWP_DelphiLogo44</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="DB\PCMTime.s3db" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>PCMTimeAPP\</RemoteDir>
+            <RemoteName>PCMTime.s3db</RemoteName>
+            <DeployClass>ProjectFile</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Win64\Debug\PCMTimeAPP.exe" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>PCMTimeAPP\</RemoteDir>
+            <RemoteName>PCMTimeAPP.exe</RemoteName>
+            <DeployClass>ProjectOutput</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+            <Required>True</Required>
+        </DeployFile>
+    </ItemGroup>
+    <ItemGroup Condition="'$(Platform)'=='iOSDevice64'">
+        <DeployFile Include="iOSDevice64\Debug\PCMTimeAPP" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>PCMTimeAPP.app\</RemoteDir>
+            <RemoteName>PCMTimeAPP</RemoteName>
+            <DeployClass>ProjectOutput</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+            <Required>True</Required>
+        </DeployFile>
+    </ItemGroup>
+    <ItemGroup Condition="'$(Platform)'=='iOSSimARM64'"/>
+    <ItemGroup Condition="'$(Platform)'=='Linux64'"/>
+</Project>

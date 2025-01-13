@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "420806477650",
+    "project_id": "pcm-time",
+    "storage_bucket": "pcm-time.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:420806477650:android:000c23d9feaf81f1305c8b",
+        "android_client_info": {
+          "package_name": "com.embarcadero.PCMTimeAPP"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBT8dJudowraEtGghjYgxacmX8s3k1FUa0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

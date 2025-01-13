@@ -1,0 +1,749 @@
+object frm_PCMAPP_Server: Tfrm_PCMAPP_Server
+  Left = 0
+  Top = 0
+  Caption = 'Scrollable Form Demo'
+  ClientHeight = 560
+  ClientWidth = 441
+  SystemStatusBar.Visibility = VisibleAndOverlap
+  WindowState = wsMaximized
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  OnClose = FormClose
+  OnKeyUp = FormKeyUp
+  OnShow = FormShow
+  OnFocusChanged = FormFocusChanged
+  OnVirtualKeyboardShown = FormVirtualKeyboardShown
+  OnVirtualKeyboardHidden = FormVirtualKeyboardHidden
+  DesignerMasterStyle = 3
+  object tb_Server: TRectangle
+    Align = Top
+    Fill.Kind = None
+    Margins.Top = 40.000000000000000000
+    Position.Y = 40.000000000000000000
+    Sides = [Bottom]
+    Size.Width = 441.000000000000000000
+    Size.Height = 48.000000000000000000
+    Size.PlatformDefault = False
+    Stroke.Color = claDarkgray
+    object lbl_ModulName: TLabel
+      Align = Client
+      StyledSettings = [Family, Size, FontColor]
+      Size.Width = 441.000000000000000000
+      Size.Height = 48.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.StyleExt = {00070000000000000004000000}
+      TextSettings.FontColor = claWhite
+      TextSettings.HorzAlign = Center
+      TextSettings.Trimming = None
+      Text = 'Benutzer / Server'
+      TabOrder = 0
+      object lo_Links: TLayout
+        Align = Left
+        Size.Width = 50.000000000000000000
+        Size.Height = 48.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        object btn_Zurueck: TButton
+          Tag = 3
+          Align = Left
+          IconTintColor = claDarkgray
+          Images = frm_PCM_Main.imglst_main
+          ImageIndex = 2
+          Size.Width = 48.000000000000000000
+          Size.Height = 48.000000000000000000
+          Size.PlatformDefault = False
+          StyleLookup = 'priortoolbutton'
+          TabOrder = 0
+          TextSettings.Trimming = None
+          OnClick = btn_ZurueckClick
+        end
+      end
+      object lo_Rechts: TLayout
+        Align = Right
+        Position.X = 391.000000000000000000
+        Size.Width = 50.000000000000000000
+        Size.Height = 48.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 1
+        object btn_ErstelleServer: TButton
+          Tag = 3
+          Align = Right
+          IconTintColor = claDarkgray
+          Images = frm_PCM_Main.imglst_main
+          ImageIndex = 6
+          Position.X = 2.000000000000000000
+          Size.Width = 48.000000000000000000
+          Size.Height = 48.000000000000000000
+          Size.PlatformDefault = False
+          StyleLookup = 'addtoolbutton'
+          TabOrder = 1
+          TextSettings.Trimming = None
+          OnClick = btn_ErstelleServerClick
+        end
+      end
+    end
+  end
+  object lo_Server: TLayout
+    Align = Client
+    Size.Width = 441.000000000000000000
+    Size.Height = 472.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    object vsbx_Server: TVertScrollBox
+      Align = Client
+      Size.Width = 441.000000000000000000
+      Size.Height = 472.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      ShowScrollBars = False
+      Viewport.Width = 441.000000000000000000
+      Viewport.Height = 472.000000000000000000
+      object lo_ServerMain: TLayout
+        Align = Client
+        Size.Width = 441.000000000000000000
+        Size.Height = 472.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        object tc_Server: TTabControl
+          Align = Client
+          Size.Width = 441.000000000000000000
+          Size.Height = 472.000000000000000000
+          Size.PlatformDefault = False
+          TabHeight = 49.000000000000000000
+          TabIndex = 2
+          TabOrder = 5
+          TabPosition = None
+          OnChange = tc_ServerChange
+          Sizes = (
+            441s
+            472s
+            441s
+            472s
+            441s
+            472s
+            441s
+            472s)
+          object ti_3Einstellungen: TTabItem
+            CustomIcon = <
+              item
+              end>
+            TextSettings.Trimming = None
+            IsSelected = False
+            Size.Width = 8.000000000000000000
+            Size.Height = 8.000000000000000000
+            Size.PlatformDefault = False
+            StyleLookup = ''
+            TabOrder = 0
+            Text = 'Einstellungen'
+            ExplicitSize.cx = 8.000000000000000000
+            ExplicitSize.cy = 8.000000000000000000
+            object lstbx_Server: TListBox
+              Align = Client
+              Margins.Left = 20.000000000000000000
+              Margins.Top = 20.000000000000000000
+              Margins.Right = 20.000000000000000000
+              Margins.Bottom = 20.000000000000000000
+              Size.Width = 401.000000000000000000
+              Size.Height = 432.000000000000000000
+              Size.PlatformDefault = False
+              StyleLookup = 'transparentlistboxstyle'
+              TabOrder = 0
+              DisableFocusEffect = True
+              ItemHeight = 50.000000000000000000
+              DefaultItemStyles.ItemStyle = ''
+              DefaultItemStyles.GroupHeaderStyle = ''
+              DefaultItemStyles.GroupFooterStyle = ''
+              OnItemClick = lstbx_ServerItemClick
+              Viewport.Width = 401.000000000000000000
+              Viewport.Height = 432.000000000000000000
+            end
+          end
+          object ti_4ServerKonfiguration: TTabItem
+            CustomIcon = <
+              item
+              end>
+            TextSettings.Trimming = None
+            IsSelected = False
+            Size.Width = 8.000000000000000000
+            Size.Height = 8.000000000000000000
+            Size.PlatformDefault = False
+            StyleLookup = ''
+            TabOrder = 0
+            Text = 'Server Konfiguration'
+            ExplicitSize.cx = 8.000000000000000000
+            ExplicitSize.cy = 8.000000000000000000
+            object lo_ServerKonfiguration: TLayout
+              Align = Client
+              Margins.Left = 20.000000000000000000
+              Margins.Top = 20.000000000000000000
+              Margins.Right = 20.000000000000000000
+              Margins.Bottom = 20.000000000000000000
+              Size.Width = 401.000000000000000000
+              Size.Height = 432.000000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 5
+              object edt_Bezeichnung: TEdit
+                Touch.InteractiveGestures = [LongTap, DoubleTap]
+                Align = Top
+                TabOrder = 0
+                ReturnKeyType = Next
+                Size.Width = 401.000000000000000000
+                Size.Height = 32.000000000000000000
+                Size.PlatformDefault = False
+                TextPrompt = 'Bezeichnung'
+                StyledSettings = [Family, Size, FontColor]
+                object btn_BezeichnungImg: TButton
+                  Align = Right
+                  Images = frm_PCM_Main.imglst_main
+                  ImageIndex = 24
+                  Opacity = 0.500000000000000000
+                  Position.X = 366.000000000000000000
+                  Size.Width = 35.000000000000000000
+                  Size.Height = 32.000000000000000000
+                  Size.PlatformDefault = False
+                  TabOrder = 0
+                  TextSettings.Trimming = None
+                  OnClick = btn_LokalPasswortWiederholenLockClick
+                end
+              end
+              object edt_Server: TEdit
+                Touch.InteractiveGestures = [LongTap, DoubleTap]
+                Align = Top
+                TabOrder = 1
+                ReturnKeyType = Next
+                Position.Y = 32.000000000000000000
+                Size.Width = 401.000000000000000000
+                Size.Height = 32.000000000000000000
+                Size.PlatformDefault = False
+                TextPrompt = 'Server'
+                StyledSettings = [Family, Size, FontColor]
+                object btn_ServerImg: TButton
+                  Align = Right
+                  Images = frm_PCM_Main.imglst_main
+                  ImageIndex = 28
+                  Opacity = 0.500000000000000000
+                  Position.X = 366.000000000000000000
+                  Size.Width = 35.000000000000000000
+                  Size.Height = 32.000000000000000000
+                  Size.PlatformDefault = False
+                  TabOrder = 0
+                  TextSettings.Trimming = None
+                  OnClick = btn_LokalPasswortWiederholenLockClick
+                end
+              end
+              object edt_Port: TEdit
+                Touch.InteractiveGestures = [LongTap, DoubleTap]
+                Align = Top
+                TabOrder = 2
+                ReturnKeyType = Next
+                Position.Y = 64.000000000000000000
+                Size.Width = 401.000000000000000000
+                Size.Height = 32.000000000000000000
+                Size.PlatformDefault = False
+                TextPrompt = 'Port'
+                StyledSettings = [Family, Size, FontColor]
+                object btn_PortImg: TButton
+                  Align = Right
+                  Images = frm_PCM_Main.imglst_main
+                  ImageIndex = 26
+                  Opacity = 0.500000000000000000
+                  Position.X = 366.000000000000000000
+                  Size.Width = 35.000000000000000000
+                  Size.Height = 32.000000000000000000
+                  Size.PlatformDefault = False
+                  TabOrder = 0
+                  TextSettings.Trimming = None
+                  OnClick = btn_LokalPasswortWiederholenLockClick
+                end
+              end
+              object btn_SpeichereServer: TRectangle
+                Align = Top
+                Fill.Color = x50E0E0E0
+                Margins.Top = 10.000000000000000000
+                Position.Y = 106.000000000000000000
+                Size.Width = 401.000000000000000000
+                Size.Height = 40.000000000000000000
+                Size.PlatformDefault = False
+                Stroke.Kind = None
+                XRadius = 5.000000000000000000
+                YRadius = 5.000000000000000000
+                OnClick = btn_SpeichereServerClick
+                object lbl_SpeichereServer: TLabel
+                  Align = Client
+                  StyledSettings = [Family, Size, FontColor]
+                  Margins.Left = 5.000000000000000000
+                  Margins.Top = 5.000000000000000000
+                  Margins.Right = 5.000000000000000000
+                  Margins.Bottom = 5.000000000000000000
+                  Size.Width = 391.000000000000000000
+                  Size.Height = 30.000000000000000000
+                  Size.PlatformDefault = False
+                  TextSettings.Font.Size = 16.000000000000000000
+                  TextSettings.FontColor = claWhite
+                  TextSettings.HorzAlign = Center
+                  TextSettings.Trimming = None
+                  Text = 'Speichern'
+                  TabOrder = 0
+                end
+              end
+              object btn_LoescheServer: TRectangle
+                Align = Top
+                Fill.Color = x50E0E0E0
+                Margins.Top = 10.000000000000000000
+                Position.Y = 156.000000000000000000
+                Size.Width = 401.000000000000000000
+                Size.Height = 40.000000000000000000
+                Size.PlatformDefault = False
+                Stroke.Kind = None
+                XRadius = 5.000000000000000000
+                YRadius = 5.000000000000000000
+                OnClick = btn_LoescheServerClick
+                object lbl_LoescheServer: TLabel
+                  Align = Client
+                  StyledSettings = [Family, Size, FontColor]
+                  Margins.Left = 5.000000000000000000
+                  Margins.Top = 5.000000000000000000
+                  Margins.Right = 5.000000000000000000
+                  Margins.Bottom = 5.000000000000000000
+                  Size.Width = 391.000000000000000000
+                  Size.Height = 30.000000000000000000
+                  Size.PlatformDefault = False
+                  TextSettings.Font.Size = 16.000000000000000000
+                  TextSettings.FontColor = claWhite
+                  TextSettings.HorzAlign = Center
+                  TextSettings.Trimming = None
+                  Text = 'L'#246'schen'
+                  TabOrder = 0
+                end
+              end
+            end
+          end
+          object ti_1Benutzerkonto: TTabItem
+            CustomIcon = <
+              item
+              end>
+            TextSettings.Trimming = None
+            IsSelected = True
+            Size.Width = 8.000000000000000000
+            Size.Height = 8.000000000000000000
+            Size.PlatformDefault = False
+            StyleLookup = ''
+            TabOrder = 0
+            Text = 'ti_1Benutzerkonto'
+            ExplicitSize.cx = 8.000000000000000000
+            ExplicitSize.cy = 8.000000000000000000
+            object lo_LokalesBenutzerkonto: TLayout
+              Align = Client
+              Margins.Left = 20.000000000000000000
+              Margins.Top = 20.000000000000000000
+              Margins.Right = 20.000000000000000000
+              Margins.Bottom = 20.000000000000000000
+              Size.Width = 401.000000000000000000
+              Size.Height = 432.000000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 5
+              object edt_LokalBenutzer: TEdit
+                Touch.InteractiveGestures = [LongTap, DoubleTap]
+                Align = Top
+                TabOrder = 0
+                Size.Width = 401.000000000000000000
+                Size.Height = 32.000000000000000000
+                Size.PlatformDefault = False
+                TextPrompt = 'Benutzer'
+                StyledSettings = [Family, Size, FontColor]
+                object btn_BenutzerImg: TButton
+                  Align = Right
+                  Images = frm_PCM_Main.imglst_main
+                  ImageIndex = 12
+                  Opacity = 0.500000000000000000
+                  Position.X = 366.000000000000000000
+                  Size.Width = 35.000000000000000000
+                  Size.Height = 32.000000000000000000
+                  Size.PlatformDefault = False
+                  TabOrder = 0
+                  TextSettings.Trimming = None
+                end
+              end
+              object edt_LokalPasswort: TEdit
+                Touch.InteractiveGestures = [LongTap, DoubleTap]
+                Align = Top
+                TabOrder = 2
+                Password = True
+                Position.Y = 32.000000000000000000
+                Size.Width = 401.000000000000000000
+                Size.Height = 32.000000000000000000
+                Size.PlatformDefault = False
+                TextPrompt = 'Passwort'
+                StyledSettings = [Family, Size, FontColor]
+                object btn_LokalPasswortLock: TButton
+                  Align = Right
+                  Images = frm_PCM_Main.imglst_main
+                  ImageIndex = 14
+                  Opacity = 0.500000000000000000
+                  Position.X = 366.000000000000000000
+                  Size.Width = 35.000000000000000000
+                  Size.Height = 32.000000000000000000
+                  Size.PlatformDefault = False
+                  TabOrder = 0
+                  TextSettings.Trimming = None
+                  OnClick = btn_LokalPasswortLockClick
+                end
+                object btn_LokalPasswortUnlock: TButton
+                  Align = Right
+                  Images = frm_PCM_Main.imglst_main
+                  ImageIndex = 16
+                  Opacity = 0.500000000000000000
+                  Position.X = 366.000000000000000000
+                  Size.Width = 35.000000000000000000
+                  Size.Height = 32.000000000000000000
+                  Size.PlatformDefault = False
+                  TabOrder = 1
+                  TextSettings.Trimming = None
+                  Visible = False
+                  OnClick = btn_LokalPasswortUnlockClick
+                end
+              end
+              object btn_SpeichereBenutzer: TRectangle
+                Align = Top
+                Fill.Color = x50E0E0E0
+                Margins.Top = 10.000000000000000000
+                Position.Y = 106.000000000000000000
+                Size.Width = 401.000000000000000000
+                Size.Height = 40.000000000000000000
+                Size.PlatformDefault = False
+                Stroke.Kind = None
+                XRadius = 5.000000000000000000
+                YRadius = 5.000000000000000000
+                OnClick = btn_SpeichereBenutzerClick
+                object lbl_SpeichereBenutzer: TLabel
+                  Align = Client
+                  StyledSettings = [Family, Size, FontColor]
+                  Margins.Left = 5.000000000000000000
+                  Margins.Top = 5.000000000000000000
+                  Margins.Right = 5.000000000000000000
+                  Margins.Bottom = 5.000000000000000000
+                  Size.Width = 391.000000000000000000
+                  Size.Height = 30.000000000000000000
+                  Size.PlatformDefault = False
+                  TextSettings.Font.Size = 16.000000000000000000
+                  TextSettings.FontColor = claWhite
+                  TextSettings.HorzAlign = Center
+                  TextSettings.Trimming = None
+                  Text = 'Speichern'
+                  TabOrder = 0
+                end
+              end
+              object btn_LoescheBenutzer: TRectangle
+                Align = Top
+                Fill.Color = x50E0E0E0
+                Margins.Top = 10.000000000000000000
+                Position.Y = 156.000000000000000000
+                Size.Width = 401.000000000000000000
+                Size.Height = 40.000000000000000000
+                Size.PlatformDefault = False
+                Stroke.Kind = None
+                XRadius = 5.000000000000000000
+                YRadius = 5.000000000000000000
+                OnClick = btn_LoescheServerClick
+                object lbl_LoescheBenutzer: TLabel
+                  Align = Client
+                  StyledSettings = [Family, Size, FontColor]
+                  Margins.Left = 5.000000000000000000
+                  Margins.Top = 5.000000000000000000
+                  Margins.Right = 5.000000000000000000
+                  Margins.Bottom = 5.000000000000000000
+                  Size.Width = 391.000000000000000000
+                  Size.Height = 30.000000000000000000
+                  Size.PlatformDefault = False
+                  TextSettings.Font.Size = 16.000000000000000000
+                  TextSettings.FontColor = claWhite
+                  TextSettings.HorzAlign = Center
+                  TextSettings.Trimming = None
+                  Text = 'L'#246'schen'
+                  TabOrder = 0
+                end
+              end
+              object edt_LokalPasswortWiederholen: TEdit
+                Touch.InteractiveGestures = [LongTap, DoubleTap]
+                Align = Top
+                TabOrder = 1
+                Password = True
+                Position.Y = 64.000000000000000000
+                Size.Width = 401.000000000000000000
+                Size.Height = 32.000000000000000000
+                Size.PlatformDefault = False
+                TextPrompt = 'Passwort wiederholen'
+                StyledSettings = [Family, Size, FontColor]
+                object btn_LokalPasswortWiederholenLock: TButton
+                  Align = Right
+                  Images = frm_PCM_Main.imglst_main
+                  ImageIndex = 14
+                  Opacity = 0.500000000000000000
+                  Position.X = 366.000000000000000000
+                  Size.Width = 35.000000000000000000
+                  Size.Height = 32.000000000000000000
+                  Size.PlatformDefault = False
+                  TabOrder = 0
+                  TextSettings.Trimming = None
+                  OnClick = btn_LokalPasswortWiederholenLockClick
+                end
+                object btn_LokalPasswortWiederholenUnlock: TButton
+                  Align = Right
+                  Images = frm_PCM_Main.imglst_main
+                  ImageIndex = 16
+                  Opacity = 0.500000000000000000
+                  Position.X = 366.000000000000000000
+                  Size.Width = 35.000000000000000000
+                  Size.Height = 32.000000000000000000
+                  Size.PlatformDefault = False
+                  TabOrder = 1
+                  TextSettings.Trimming = None
+                  Visible = False
+                  OnClick = btn_LokalPasswortWiederholenUnlockClick
+                end
+              end
+            end
+          end
+          object ti_2Auswahl: TTabItem
+            CustomIcon = <
+              item
+              end>
+            TextSettings.Trimming = None
+            IsSelected = False
+            Size.Width = 8.000000000000000000
+            Size.Height = 8.000000000000000000
+            Size.PlatformDefault = False
+            StyleLookup = ''
+            TabOrder = 0
+            Text = 'ti_2Auswahl'
+            ExplicitSize.cx = 8.000000000000000000
+            ExplicitSize.cy = 8.000000000000000000
+            object lstbx_SystemInformation: TListBox
+              Align = Client
+              Size.Width = 441.000000000000000000
+              Size.Height = 472.000000000000000000
+              Size.PlatformDefault = False
+              StyleLookup = 'transparentlistboxstyle'
+              TabOrder = 0
+              DisableFocusEffect = True
+              DefaultItemStyles.ItemStyle = ''
+              DefaultItemStyles.GroupHeaderStyle = ''
+              DefaultItemStyles.GroupFooterStyle = ''
+              Viewport.Width = 441.000000000000000000
+              Viewport.Height = 472.000000000000000000
+              object lstbxitm_1LokalBenutzerkonto: TListBoxItem
+                Tag = 4
+                EnableDragHighlight = False
+                StyledSettings = [Family, Size, Style, FontColor]
+                HitTest = True
+                ItemData.Accessory = aMore
+                Size.Width = 441.000000000000000000
+                Size.Height = 72.000000000000000000
+                Size.PlatformDefault = False
+                TabOrder = 4
+                OnClick = lstbxitm_1LokalBenutzerkontoClick
+                object lo_LokalBenutzerkontoImg: TLayout
+                  Align = Left
+                  Margins.Left = 5.000000000000000000
+                  Position.X = 5.000000000000000000
+                  Size.Width = 24.000000000000000000
+                  Size.Height = 72.000000000000000000
+                  Size.PlatformDefault = False
+                  TabOrder = 1
+                  object img_Localaccount: TImage
+                    MultiResBitmap.Height = 48
+                    MultiResBitmap.Width = 48
+                    MultiResBitmap = <
+                      item
+                        Width = 48
+                        Height = 48
+                        PNG = {
+                          89504E470D0A1A0A0000000D49484452000000300000003008060000005702F9
+                          870000000473424954080808087C086488000003DF494441546881ED594D685C
+                          5514FECE796F34819911EA0F0966610AB1423022D882EE0285C9984EB4509B2C
+                          82EE6A03AECB409B389D6CB2E852107565C822D620929F668606025DAA0B7F28
+                          542BAD8B090956BB789DD068DF3BC7C5E8421C32F767261BF36DE77CE77CDF3B
+                          F79EB9F73DE01087F002B533D96869E328733CA1C0300906C13B4F0300A4E79E
+                          326E12B029122EAE954EDE6957CDB61828CC56FB25D1B93AE34C16E0FD622340
+                          D282250EA8B8329DBBEB5BDBDBC058797D3241F221234CDBF004713D4030B53C
+                          935FF0A9BFEFD36A85B172E582CAD6BCADF846E130ADB2353F56AE5CF0D1E0DC
+                          81B1F2FAA4CAD63CB8CFAF8B5253E267DF76ED8453F1C26CB55FF4D1F72E4FBE
+                          1904719D2935E4B2279C9690243AD72EF10D11615A129D73E15A7760B4B471B4
+                          CEF1ED56D3C6168DE9140ED88E586B11CCF144BBC503401660E678C25A8F2D41
+                          81615B4E27735B1B20C1A02DA793B9ED97C23FC7834EC02177DBD7F241C3DE80
+                          F4DCEB800EE7DCF69B9871D396D3C9DCF69B18D8B4E57432B7B50191703102C4
+                          96D70A112022E1A22DCFDAC05AE9E49DB460C996D70A69C192CB45C7690A7140
+                          45415C77E1368320AE734045272D2EA495E9DCDD00C114A4A62EFC7F416A1A20
+                          9872BD9D39FF0F2CCFE41788FB8A5E26A4A6C47D459F5BD9FFFB4A09343AC194
+                          1A12C15593E9D49836B8CA941AF2150FB4C140A15C394B8964D64A23E3690907
+                          005C546003826D602706766208B615D80070B171E61F19A744328572E5AC6F7D
+                          E725F4566933BD17EC7D00A57722409E807EA1147CD2FBCC91CD8FDF7DE55133
+                          CEB98FBE496DFF7A7F181A9F8BC0A7B30083F4D3AEA4EBBDCF4BC34E53CDED4E
+                          5CAE0C02C91210BCD0E4E74881AF08F41301F7014081230A7D9E801300B2FFA5
+                          24B780E0CCCACC88F551C2DA40E17235FF50F5B36E46C696BB1F1E0A1E74138D
+                          AFBC9F5BB7E15919285CAEE623D22FB3C06376F2CC10017F66484FAF4EE7AF99
+                          728C0D1466ABFD50FD164D97405B1189842F9B1E2BCCA790EA15745E3C006403
+                          4EAE98061B75A0305BED8F547FEEC4DB8866B079C5622AE8CD83120FFCFD8A25
+                          48DE30893515F5AA871E2790CA6B267146063441B379DF5188F03193382303C4
+                          DAEB27C71EA6358D0C4407337D9C6A1A19C84A2DE527C71EA635CD36B1F6DDF2
+                          52E302C39A667B2045E791ECEEFA29B240B2BB4B293A6F126A6460F952EE0653
+                          F709815CF753D61A02B92E61F6F8F2A5DC0D9378EBD3E8A972E525824E02720A
+                          B27DAC1DDFC8C0BD3F02BCAAA085D59991EF6CE85EC55F2FADF53085C789F445
+                          110C30E33920E981044F82F73290DF1E0700F0537F40BA1E8093DF81604704BF
+                          30E3B62AFD201A7F7DAD34BAE3A3E31087F0C05F53A6797B145CA4D600000000
+                          49454E44AE426082}
+                        FileName = 'E:\Projekte\PCMManagerApp\Grafiken\48x48\COLOR_user.png'
+                      end>
+                    Align = Left
+                    HitTest = False
+                    Size.Width = 24.000000000000000000
+                    Size.Height = 72.000000000000000000
+                    Size.PlatformDefault = False
+                  end
+                end
+                object lo_LokalBenutzerkontoLabel: TLayout
+                  Align = Client
+                  Margins.Left = 5.000000000000000000
+                  Margins.Right = 20.000000000000000000
+                  Size.Width = 387.000000000000000000
+                  Size.Height = 72.000000000000000000
+                  Size.PlatformDefault = False
+                  TabOrder = 0
+                  object lbl_LocalaccountHeader: TLabel
+                    Align = Top
+                    StyledSettings = [Family, FontColor]
+                    Margins.Top = 10.000000000000000000
+                    Position.Y = 10.000000000000000000
+                    Size.Width = 387.000000000000000000
+                    Size.Height = 17.000000000000000000
+                    Size.PlatformDefault = False
+                    TextSettings.Font.StyleExt = {00070000000000000004000000}
+                    TextSettings.FontColor = claWhite
+                    TextSettings.Trimming = None
+                    Text = 'Lokaler Benutzeraccount'
+                    TabOrder = 2
+                  end
+                  object lbl_LocalaccountBody: TLabel
+                    Align = Top
+                    StyledSettings = [Family, Style, FontColor]
+                    Position.Y = 27.000000000000000000
+                    Size.Width = 387.000000000000000000
+                    Size.Height = 45.000000000000000000
+                    Size.PlatformDefault = False
+                    TextSettings.FontColor = claWhite
+                    TextSettings.VertAlign = Leading
+                    TextSettings.Trimming = None
+                    Text = 'Erstellt einen lokalen Benutzeraccount auf dem Smartphone'
+                    TabOrder = 1
+                  end
+                end
+              end
+              object lstbxitm_2ServerBenutzerkonto: TListBoxItem
+                Tag = 4
+                EnableDragHighlight = False
+                StyledSettings = [Family, Size, Style, FontColor]
+                HitTest = True
+                ItemData.Accessory = aMore
+                Position.Y = 72.000000000000000000
+                Size.Width = 441.000000000000000000
+                Size.Height = 72.000000000000000000
+                Size.PlatformDefault = False
+                TabOrder = 5
+                OnClick = lstbxitm_2ServerBenutzerkontoClick
+                object lo_ServerBenutzerkontoImg: TLayout
+                  Align = Left
+                  Margins.Left = 5.000000000000000000
+                  Position.X = 5.000000000000000000
+                  Size.Width = 24.000000000000000000
+                  Size.Height = 72.000000000000000000
+                  Size.PlatformDefault = False
+                  TabOrder = 1
+                  object img_ServerBenutzerkonto: TImage
+                    MultiResBitmap.Height = 48
+                    MultiResBitmap.Width = 48
+                    MultiResBitmap = <
+                      item
+                        Width = 48
+                        Height = 48
+                        PNG = {
+                          89504E470D0A1A0A0000000D49484452000000300000003008060000005702F9
+                          870000000473424954080808087C086488000002A3494441546881ED99BF4F14
+                          4114C73FB37B1C07575050D898E01F40892DD099A08D561013133B0839D1C4BD
+                          68611C3AC39AF8038458191323546A6148E84E5B496CB0B381684941B1B01C7B
+                          3B166C0C865F37337B8EC4FB24976C2EFBBEF3BE99B9F7F6ED419B365688666E
+                          925286C06DA0D0DA747E93004FA594C169377A4D0AB62AF90DE049F6D938F07D
+                          215BF3549A4DAA15C97F2E97CB234110440061183E88A2681918D459F36F1D89
+                          A3988AE3F8BC947205208EE34BC014F05547A4D923D40AD69224B90AF4017DD9
+                          F59AAE884B03FD8542E13DB00EAC67D7FDBA222E8FD0B352A9341204C1058030
+                          0CCBD96F400B970606A328FA26A57C071045D135F68F93162E0DC07EC2776C04
+                          B40D48299B6A7EA6482995CEFD463B706F716138856193D8E3F0A0F6686CA2A6
+                          1B6764204BFEA149EC099A0035DD3867655420829D9EBD92409CFABC7312CE0C
+                          6CF7D46767476EED6EF7D4676D749C19E8DE2A562ACBCF3BBBB78A151B1D6765
+                          54A1C2AEAD8E50A155740E6164C0835A6AB5ECD19A26714606B27267B460DE98
+                          3432BB3DCF19931D98CE3D8B3FD1EA2F263B20756334F55B6B00A0BAB820C9B9
+                          1303D33363135237C8591F48E17B4A3A2754F2D346C789811F907A24438FC726
+                          2B781D976DB49C18E8D825DDF3BBE2FD04BC1D1B2D279DF85C27051ABB2BD5A5
+                          850F7B49E3BAE79B6B399CC8BC01140336C983A181AC5A48BBA5F3E19FEB03BA
+                          98EC40DEF5DF8AFF73A80FDECE0FA1B862127B2CBEF8148E4E7CD40D339B0784
+                          77510975D724F620D166A35EEEF58B00AAA100B40D381DEA5F4C4E96801B363A
+                          CE0C78F5E41542A899D1F137D166A36EAAE3AC91259D7EF5FEEBB99974E9E54D
+                          D5EB17556A362739332014D546D1AFE262A85750B37D21754853A82F2671868F
+                          12E3ABC0AA496CDE9CF9A1DEE55F4CB970E60DB46963C92F49E4C8DC0BB5BB44
+                          0000000049454E44AE426082}
+                        FileName = 'E:\Projekte\PCMManagerApp\Grafiken\48x48\COLOR_server.png'
+                      end>
+                    Align = Left
+                    HitTest = False
+                    Size.Width = 24.000000000000000000
+                    Size.Height = 72.000000000000000000
+                    Size.PlatformDefault = False
+                  end
+                end
+                object lo_ServerBenutzerkontoLabel: TLayout
+                  Align = Client
+                  Margins.Left = 5.000000000000000000
+                  Margins.Right = 20.000000000000000000
+                  Size.Width = 387.000000000000000000
+                  Size.Height = 72.000000000000000000
+                  Size.PlatformDefault = False
+                  TabOrder = 0
+                  object lbl_ServerBenutzerkontoHeader: TLabel
+                    Align = Top
+                    StyledSettings = [Family, FontColor]
+                    Margins.Top = 5.000000000000000000
+                    Position.Y = 5.000000000000000000
+                    Size.Width = 387.000000000000000000
+                    Size.Height = 17.000000000000000000
+                    Size.PlatformDefault = False
+                    TextSettings.Font.StyleExt = {00070000000000000004000000}
+                    TextSettings.FontColor = claWhite
+                    TextSettings.Trimming = None
+                    Text = 'Server Benutzeraccount'
+                    TabOrder = 2
+                  end
+                  object lbl_ServerBenutzerkontoBody: TLabel
+                    Align = Top
+                    StyledSettings = [Family, Style, FontColor]
+                    Position.Y = 22.000000000000000000
+                    Size.Width = 387.000000000000000000
+                    Size.Height = 54.000000000000000000
+                    Size.PlatformDefault = False
+                    TextSettings.FontColor = claWhite
+                    TextSettings.VertAlign = Leading
+                    TextSettings.Trimming = None
+                    Text = 
+                      'Erstellt einen serverseitigen Benutzeraccount. Der Rest-Server m' +
+                      'uss angegeben werden und erreichbar sein.'
+                    TabOrder = 1
+                  end
+                end
+              end
+            end
+          end
+        end
+      end
+    end
+  end
+end

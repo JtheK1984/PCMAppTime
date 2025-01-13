@@ -1,0 +1,1877 @@
+object frm_PCMAPP_System: Tfrm_PCMAPP_System
+  Size.Width = 340.000000000000000000
+  Size.Height = 588.000000000000000000
+  Size.PlatformDefault = False
+  object tc_Optionen: TTabControl
+    Align = Client
+    Size.Width = 340.000000000000000000
+    Size.Height = 588.000000000000000000
+    Size.PlatformDefault = False
+    StyleLookup = 'tabcontrolstyle'
+    TabIndex = 0
+    TabOrder = 2
+    TabPosition = None
+    Sizes = (
+      340s
+      588s
+      340s
+      588s)
+    object ti_1Optionen: TTabItem
+      CustomIcon = <
+        item
+        end>
+      TextSettings.Trimming = None
+      IsSelected = True
+      Size.Width = 8.000000000000000000
+      Size.Height = 8.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = ''
+      TabOrder = 0
+      Text = 'ti_1Optionen'
+      ExplicitSize.cx = 8.000000000000000000
+      ExplicitSize.cy = 8.000000000000000000
+      object lstbx_SystemInformation: TListBox
+        Align = Client
+        Size.Width = 340.000000000000000000
+        Size.Height = 588.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = 'transparentlistboxstyle'
+        TabOrder = 0
+        DisableFocusEffect = True
+        DefaultItemStyles.ItemStyle = ''
+        DefaultItemStyles.GroupHeaderStyle = ''
+        DefaultItemStyles.GroupFooterStyle = ''
+        Viewport.Width = 324.000000000000000000
+        Viewport.Height = 588.000000000000000000
+        object lstbxitm_101Design: TListBoxItem
+          HitTest = True
+          Size.Width = 324.000000000000000000
+          Size.Height = 60.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 12
+          object lo_DesignDetail: TLayout
+            Align = Client
+            Margins.Left = 5.000000000000000000
+            Margins.Right = 20.000000000000000000
+            Size.Width = 270.000000000000000000
+            Size.Height = 60.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 1
+            object lbl_DesignStyle: TLabel
+              Align = Top
+              StyledSettings = [Family, FontColor]
+              Margins.Top = 10.000000000000000000
+              Position.Y = 10.000000000000000000
+              Size.Width = 270.000000000000000000
+              Size.Height = 17.000000000000000000
+              Size.PlatformDefault = False
+              TextSettings.Font.StyleExt = {00070000000000000004000000}
+              TextSettings.Trimming = None
+              Text = 'Design'
+              TabOrder = 1
+            end
+            object cbx_DesignStyle: TComboBox
+              Align = Top
+              Items.Strings = (
+                'keine Animation'
+                'von allen Richtungen'
+                'von links alle'
+                'von links einzeln'
+                'von oben alle'
+                'von oben einzeln'
+                'von rechts alle'
+                'von rechts einzeln'
+                'von unten alle'
+                'von unten einzeln')
+              Position.Y = 27.000000000000000000
+              Size.Width = 270.000000000000000000
+              Size.Height = 22.000000000000000000
+              Size.PlatformDefault = False
+              StyleLookup = 'comboboxstyle'
+              TabOrder = 2
+              OnChange = cbx_DesignStyleChange
+            end
+          end
+          object lo_DesignImage: TLayout
+            Align = Left
+            Margins.Left = 5.000000000000000000
+            Position.X = 5.000000000000000000
+            Size.Width = 24.000000000000000000
+            Size.Height = 60.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 0
+            object img_Design: TImage
+              MultiResBitmap.Height = 64
+              MultiResBitmap.Width = 64
+              MultiResBitmap = <
+                item
+                  Width = 64
+                  Height = 64
+                  PNG = {
+                    89504E470D0A1A0A0000000D4948445200000040000000400806000000AA6971
+                    DE0000000473424954080808087C086488000001B549444154789CED9A414AC3
+                    401486DF244AC1766111C4237427DDE9BA7BE92D7A81823B19DC095E20B7A807
+                    701D5D49771EA1A48A2EB4504A1A3711A434294C5EF2C7F4FF568190977F3E26
+                    93F64D44082184EC2F061D60136BED5044021139552A1989C8C85A3BD976D253
+                    BA89269A8397B4569075B28E023407BFB3661D05540A05A003A0A10074003407
+                    AE17BE3DDBA1499681C8A1CAAA7D72710BF94DE23C0334078FA4C023F0FF072F
+                    C235800228001D000D05A003A0A10074003414800EF0CB6C3A6EA7875109E533
+                    6BD64680BFE80CD2C391E84A88D29A5B71FE07F6FE7493B85EBB9DE4D56BF997
+                    DDBEFDD4AD9B4F6D668088E9AD9771380FEDD59FC7A1FCBBBA5EA83F038AE1DA
+                    4FA8D10CC04001E800682AEBC3CDA6E3B6BFE80C3C13DF89989E767DD735A0F2
+                    46E4C78B3D5E2FE3505B82AB80CCAE7059BBB4DDBE9DCC437BED99F58352DD42
+                    E4AD01A5EDD2C6475F8F8A750B9127A0B45DDAB3F3FBEF126A3BB1F76F010A40
+                    07404301E8006828001D000D05A003A0698880957313B501025651625A995DDF
+                    5D387F235414D437419B346006148302D001D050003A009A3C0195EED2A2C813
+                    50E92E2D218410523D3F160D53712EBB81600000000049454E44AE426082}
+                  FileName = 'C:\Users\Entwicklung\Desktop\606462.png'
+                end>
+              Align = Left
+              Size.Width = 24.000000000000000000
+              Size.Height = 60.000000000000000000
+              Size.PlatformDefault = False
+            end
+          end
+        end
+        object lstbxitm_102Biometrie: TListBoxItem
+          Tag = 4
+          EnableDragHighlight = False
+          StyledSettings = [Family, Size, Style, FontColor]
+          HitTest = True
+          Position.Y = 60.000000000000000000
+          Size.Width = 324.000000000000000000
+          Size.Height = 72.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 11
+          object lo_BiometrieImage: TLayout
+            Align = Left
+            Margins.Left = 5.000000000000000000
+            Position.X = 5.000000000000000000
+            Size.Width = 24.000000000000000000
+            Size.Height = 72.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 2
+            object img_Biometrie: TImage
+              MultiResBitmap.Height = 24
+              MultiResBitmap = <
+                item
+                  Width = 24
+                  Height = 24
+                  PNG = {
+                    89504E470D0A1A0A0000000D4948445200000018000000180806000000E0773D
+                    F80000000473424954080808087C0864880000047E494441544889BD955B6C54
+                    651485D7DEFF994BA91D50895CA241D1D20789606D148309166967DACE546AC2
+                    8844E0A54A4C341A8CF7CE705A14891A4C2468F4418D10D1160CEDB44C87A020
+                    0610050211A54A68828104F0020CA587CE9CB3B70FC504C8B410125D8F27FB5F
+                    5FBEBD1F0EF01F87AE34106D4E3710E83968FE7EC0D707D2C344B45B8932673D
+                    7FF756BBF2FC35031EB4B75825E42C57703F110C444783B90C5E5F054C713190
+                    FB5BD5BFAAA824FB66DBE2B8734D068552F3DEC680EF14CF52426316A80F017B
+                    827E53D5F672D599CB67AD4205D1A59B4A49E571853EC0A0490ADCE008BC00BB
+                    2718D6019CD62D9685B6AF5E8B34445BBAA710B0D2C9799F0178F88A06F5CD99
+                    2A554D6519BE90783F01F433D8FC49AA0644E355B41C8C09907C9EE05B2B6A12
+                    15B4FDE86E9AB6B04F03ABB7DA95EEB006AA1A57A389624F56A7ECBAE3850CEB
+                    ECCC6462B30838DFA8B01ED983FB9EE94C463E29345BF006735A5B8D7370642D
+                    5467B341B97A18430C4F547F27C20E155ADB6947F6D6D99B27327B1F033A03D0
+                    E5A964CD2B57B522515D498C320059057E20D2630458A2740749BE1CECF301DA
+                    6D489F3EED151D29C1C007603482A8299508BF312420DA925E4CB2FF1DE1C987
+                    594D32A867D7B7D9F1DCC5330DCB36DFE8BAEE22002F0180A8C6BB92914DB1E6
+                    F49A2CF3DC12D5EACE25355F1704C45ABAFF20D28C7AEE9303C57E0A38B210A0
+                    28E0DDA662E5D5E801167C994A863B6637774FC8196A371ECAC8A26A7573BB15
+                    BEBD64702E9588DCF36F275FBA305A56EEED5A4096BF22E8680F40AB046E2960
+                    7A88F5282BAA40D8106BC96C732D371F30D64C621C5157BF90000594F459E8F1
+                    BB2EAEBC04904A84DFFD91A74D5771322AE228696557325A9A4A461A52C948ED
+                    B831A3C703B448C89D4AAEEF5B37E790081EEB056EE2BC79B56B494D063476FD
+                    903788D9A9111EB8C762E3A8E4A74B803CCE9B17019AA1508789D705CACE7CE4
+                    F494DC4B18F806146C4F252273EB97A6D7A8520C921F97B263FD431AC058F30D
+                    9B5BC0F484E52F521EE05DBD422FA8AA2A68ACAABEDFFF4BE8F3CE44E47BD5E0
+                    DBF0F6C56BEDAE4904FA144008C63F1397E55280D2187838D8D114DEE6BA6E13
+                    E0DD7ABB45333B97D44CEF4A46EE54688219F1D8EB9BEA60F21F82A7123347FD
+                    C5D9EDBD028F442A860528D02E16ED000078082BFBD21D4DE16DF5CD99B7A2CD
+                    9947FB24B81C401622D59D4DB1638AFC490695B62D8E3B138193AA18372CA033
+                    19D9DF9508370E5E874224380900AA9847AAB3B6DA952E015928150D3EF6E53C
+                    221F0010C32326197E451732A7B5D5003A1A84BF06D5FA4681E4CC05CB10187D
+                    0030005CC78A7317BE078969F55501FA7FBD7E12180140F7D7D81B6F86292E06
+                    51EF6C7BCB280021221C9DB3A2B5C82FFB46027A625018F3DB9BC23BAE0A30A2
+                    ECD46F04AC301A4CFBC83C040004DD293470370078A207CE65479581A712A91E
+                    02808E44A4BB505741405B3CEE752423CF6FB02B4F2BC93C881CEA48D4EC1342
+                    240BE4447527B34C7304675D95EF0A750C0BB83822BEA7606101889409D52191
+                    7569BB366BE06D2F323465E310FF8CFF2DFF00D8160EBE6B18E37A0000000049
+                    454E44AE426082}
+                  FileName = 
+                    'C:\Source\Delphi_NXT_28711_ReplaceQRCodeFunction\Images\ic_fp_40' +
+                    'px.png'
+                end>
+              Align = Left
+              Size.Width = 24.000000000000000000
+              Size.Height = 72.000000000000000000
+              Size.PlatformDefault = False
+            end
+          end
+          object lo_BiometrieDetail: TLayout
+            Align = Client
+            Margins.Left = 5.000000000000000000
+            Size.Width = 192.000000000000000000
+            Size.Height = 72.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 1
+            object lbl_BiometrieDetailHeader: TLabel
+              Align = Top
+              StyledSettings = [Family, FontColor]
+              Margins.Top = 10.000000000000000000
+              Position.Y = 10.000000000000000000
+              Size.Width = 192.000000000000000000
+              Size.Height = 17.000000000000000000
+              Size.PlatformDefault = False
+              TextSettings.Font.StyleExt = {00070000000000000004000000}
+              TextSettings.Trimming = None
+              Text = 'Biometrische Authentifizierung'
+              TabOrder = 2
+            end
+            object lbl_BiometrieDetailBody: TLabel
+              Align = Top
+              StyledSettings = [Family, FontColor]
+              Position.Y = 27.000000000000000000
+              Size.Width = 192.000000000000000000
+              Size.Height = 34.000000000000000000
+              Size.PlatformDefault = False
+              TextSettings.FontColor = claDimgray
+              TextSettings.Trimming = None
+              Text = 
+                'Erm'#246'glicht das Login mit Biometrie. Aktuell Biometrie nur mit Fi' +
+                'nger.'
+              TabOrder = 1
+            end
+          end
+          object lo_BiometrieSwitch: TLayout
+            Align = Right
+            Margins.Right = 20.000000000000000000
+            Position.X = 226.000000000000000000
+            Size.Width = 78.000000000000000000
+            Size.Height = 72.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 0
+            object sw_Biometrie: TSwitch
+              Align = Right
+              IsChecked = False
+              Margins.Top = 19.000000000000000000
+              Margins.Bottom = 19.000000000000000000
+              Position.Y = 19.000000000000000000
+              Size.Width = 78.000000000000000000
+              Size.Height = 34.000000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 1
+              OnClick = sw_BiometrieClick
+            end
+          end
+        end
+        object ListBoxItem1: TListBoxItem
+          Tag = 4
+          EnableDragHighlight = False
+          StyledSettings = [Family, Size, Style, FontColor]
+          HitTest = True
+          Position.Y = 132.000000000000000000
+          Size.Width = 324.000000000000000000
+          Size.Height = 72.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 10
+          object lo_AutologinImage: TLayout
+            Align = Left
+            Margins.Left = 5.000000000000000000
+            Position.X = 5.000000000000000000
+            Size.Width = 24.000000000000000000
+            Size.Height = 72.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 2
+            object Image1: TImage
+              MultiResBitmap.Height = 48
+              MultiResBitmap.Width = 48
+              MultiResBitmap = <
+                item
+                  Width = 48
+                  Height = 48
+                  PNG = {
+                    89504E470D0A1A0A0000000D49484452000000300000003008060000005702F9
+                    870000000473424954080808087C08648800000350494441546881ED994F6854
+                    571487BF738D86D4141D82A8102DEAA204856C12100B32A27411E8C22CB251DC
+                    B8A8D4A616EA1046D077671542D285C476D19D297491458B082E6A16831014EA
+                    46300669ABD80ADA459886264E62D2392E1CF14FDE9B79EFCDBB3E917CAB9973
+                    DE3DE7F77B73EF7D77666095551A42922A343E3EBE667A7A7ABFAA7E0A74013B
+                    814C355D02EE013745E4D78E8E8E6B7D7D7DFF27D1B76103C3C3C3EBE7E6E64E
+                    8AC897C0B690C3FE56D50BADADADDFE572B9F946FA3764A050287CA6AADF03ED
+                    314B3C14912F3CCFBB1C57432C03D65A030C01DFC4ADF10A0A7C0B0C586B2B51
+                    07AF893AA02AFE22708264D69000FB805DD96CF652B158D428834D8C8623C0D1
+                    18E3EA71B45A3B1291EE60A15038ACAA3FD7B96C12F8C91833D9D4D4F4106079
+                    79B95D55F7A9EA11E0939A82447A3DCFFB25ACA6D0068686863E2C97CB7781AD
+                    7E7955BD6F8CF9DCF3BCABB5EA586B0FA9EA0F22B223E092472D2D2D1F0F0C0C
+                    FC174657E829542E9737017703D23744A4AB9E78006BED8488740137022ED9BA
+                    B0B0F075585D9117A1B5360B7840B61AFAB3B9B9B93B9FCF97A2D4191C1CCC2C
+                    2E2EFE06ECF249FF036CB7D63EAD5727F222B6D616ADB507800340D118733CAA
+                    78807C3E5F32C61C0F486F060E85A993D851222ED6DA09E0A04F6AD45AFB55BD
+                    F171B6D14411911F0352DD61C6A76E40552703527E6B6305A91B00FE0A886702
+                    E2AF91BA811A3B4D5398F1A91B6894550369136A9EBD050A690B488DC027B15E
+                    E96F2EB565865539066C788B9A5E655684B1CC4C29273DA38B7E17044EA1AAF8
+                    7E77DA42B14195FE525B06C0F75811B888AB77FE9DA096965ABB505AD3C68F40
+                    2D2E77A10728CFBF7E0ABDC0472E9AB832706DA9E549CF96CE917980C7B74E9F
+                    5D5BFEE00AB03FE9464E1E64C698532FC4036CE91C9937C69C72D2CB45D18DF3
+                    DC0E134B022706FE5DCF9E30B1247062A052A99CD729BBEEC57B9DB2EB2A95CA
+                    7917BD5C1DE6F6868C358C2B03BFCBEE975F54AAAFFF70D1C895813B3EB12917
+                    8DDC18501F037EB1047063C0F8DC6DBF5822AD5CA066A558BF580238394A88EA
+                    9199EBE796DE88AD5507BF033A31A0A26756C488F4C74B686A4DA159271DE311
+                    A825D08008636EB444A7969640039999524E8451D2FD24664518CDCC9472296A
+                    58E5FDE619978FF8BAC68418710000000049454E44AE426082}
+                  FileName = 'E:\Projekte\Mobile\PCMTimeApp\Grafiken\48x48\COLOR_lock_open.png'
+                end>
+              Align = Left
+              Size.Width = 24.000000000000000000
+              Size.Height = 72.000000000000000000
+              Size.PlatformDefault = False
+            end
+          end
+          object Layout2: TLayout
+            Align = Client
+            Margins.Left = 5.000000000000000000
+            Size.Width = 192.000000000000000000
+            Size.Height = 72.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 1
+            object Label1: TLabel
+              Align = Top
+              StyledSettings = [Family, FontColor]
+              Margins.Top = 10.000000000000000000
+              Position.Y = 10.000000000000000000
+              Size.Width = 192.000000000000000000
+              Size.Height = 17.000000000000000000
+              Size.PlatformDefault = False
+              TextSettings.Font.StyleExt = {00070000000000000004000000}
+              TextSettings.Trimming = None
+              Text = 'Biometrische Authentifizierung'
+              TabOrder = 2
+            end
+            object Label2: TLabel
+              Align = Top
+              StyledSettings = [Family, FontColor]
+              Position.Y = 27.000000000000000000
+              Size.Width = 192.000000000000000000
+              Size.Height = 34.000000000000000000
+              Size.PlatformDefault = False
+              TextSettings.FontColor = claDimgray
+              TextSettings.Trimming = None
+              Text = 
+                'Erm'#246'glicht das Login mit Biometrie. Aktuell Biometrie nur mit Fi' +
+                'nger.'
+              TabOrder = 1
+            end
+          end
+          object Layout3: TLayout
+            Align = Right
+            Margins.Right = 20.000000000000000000
+            Position.X = 226.000000000000000000
+            Size.Width = 78.000000000000000000
+            Size.Height = 72.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 0
+            object sw_Autologin: TSwitch
+              Align = Right
+              IsChecked = False
+              Margins.Top = 19.000000000000000000
+              Margins.Bottom = 19.000000000000000000
+              Position.Y = 19.000000000000000000
+              Size.Width = 78.000000000000000000
+              Size.Height = 34.000000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 1
+              OnClick = sw_AutologinClick
+            end
+          end
+        end
+        object lstbxitm_103LocalAccount: TListBoxItem
+          HitTest = True
+          Position.Y = 204.000000000000000000
+          Size.Width = 324.000000000000000000
+          Size.Height = 97.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 13
+          object lo_LocalAccountImage: TLayout
+            Align = Left
+            Margins.Left = 5.000000000000000000
+            Position.X = 5.000000000000000000
+            Size.Width = 24.000000000000000000
+            Size.Height = 97.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 2
+            object img_LocalAccount: TImage
+              MultiResBitmap.Height = 24
+              MultiResBitmap = <
+                item
+                  Width = 24
+                  Height = 24
+                  PNG = {
+                    89504E470D0A1A0A0000000D4948445200000018000000180806000000E0773D
+                    F80000000473424954080808087C08648800000209494441544889B594316B53
+                    5114C77FE7DE680BCAC345A56B3A64541A28ED52080A52B45AA9E907A8BB1F40
+                    69B9D5A1503AE9E837A8148A51E250690741912A3A66683A38889B3E4B2131F7
+                    1E97A8D8BC97BC57F13F9E77FEFFDF395CCE83FF2C19D430EBB6CF78D3BAE385
+                    39EB2901784BC32A1B360C3DDC7495AFC7065CBB5F9F94201B1846121B029FD5
+                    E8DCB3A5E9D7B901D71FD44BAAF21688FA0D01C4223AFE7471BA91F4D1A4B9BC
+                    EAA30CE10051B73751891B5C755B45633A7B19C27F2B84C2E87377B979B49EB8
+                    81353FC6F384F7F324025439951790E6497E03633FE505A4799201BEF50A8873
+                    C4C75D4F3640CDCD1C8AB096355D84B59A9B39CC0C0088FDD00A50CF905FEFF6
+                    262A15B0E32A9DE110CF2AAC1268F534045A0AABC3219EDD71954E5A4EA1DF68
+                    6D1B4D11C48BF193015316B404A048C398F04ED556DB369A02B6D232120FCD39
+                    67DE9BC9E56FE8DD084C33E08B968F20DDE3D3D1A6E742D160630891B252D637
+                    4BCEB99069835D261E0BBAF0EB3F5134589431D031FED40088C020DCDBD58911
+                    E0F6C00D66965FDC40D84C5BB9AF446ED616AFFCE5ED7D64D19E29324BC3C2D1
+                    522F2098B19E5A4675D0F26000ED73C70514823F9B0170E2E0B8008C7E1F0CB0
+                    72CB7BBF9F37DB7BBF8F0C558FD613EFA0BABE6EDB8DA812542F0117093A8A31
+                    E763380D10C101217CC1C81EF0C188BC3C598AB79FCCCFFBBC83FDB37E024D7E
+                    BA385CC428750000000049454E44AE426082}
+                  FileName = 
+                    'E:\Komponenten\v_collections_png\objects_people_industries\24x24' +
+                    '\plain\users.png'
+                end>
+              Align = Left
+              HitTest = False
+              Size.Width = 24.000000000000000000
+              Size.Height = 97.000000000000000000
+              Size.PlatformDefault = False
+            end
+          end
+          object lo_LocalAccountDetail: TLayout
+            Align = Client
+            Margins.Left = 5.000000000000000000
+            Size.Width = 192.000000000000000000
+            Size.Height = 97.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 1
+            object lbl_LocalAccountDetailHeader: TLabel
+              Align = Top
+              StyledSettings = [Family, FontColor]
+              Margins.Top = 10.000000000000000000
+              Position.Y = 10.000000000000000000
+              Size.Width = 192.000000000000000000
+              Size.Height = 17.000000000000000000
+              Size.PlatformDefault = False
+              TextSettings.Font.StyleExt = {00070000000000000004000000}
+              TextSettings.Trimming = None
+              Text = 'Lokales Benutzerprofil'
+              TabOrder = 2
+            end
+            object lbl_LocalAccountDetailBody: TLabel
+              Align = Top
+              StyledSettings = [Family, FontColor]
+              Position.Y = 27.000000000000000000
+              Size.Width = 192.000000000000000000
+              Size.Height = 51.000000000000000000
+              Size.PlatformDefault = False
+              TextSettings.FontColor = claDimgray
+              TextSettings.Trimming = None
+              Text = 
+                'Erm'#246'glicht den Wechsel zwischen lokalen und serverseitigen Benut' +
+                'zerprofil.'
+              TabOrder = 1
+            end
+          end
+          object lo_LocalAccountSwitch: TLayout
+            Align = Right
+            Margins.Right = 20.000000000000000000
+            Position.X = 226.000000000000000000
+            Size.Width = 78.000000000000000000
+            Size.Height = 97.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 0
+            object sw_LocalAccount: TSwitch
+              Align = Right
+              IsChecked = False
+              Margins.Top = 19.000000000000000000
+              Margins.Bottom = 44.000000000000000000
+              Position.Y = 19.000000000000000000
+              Size.Width = 78.000000000000000000
+              Size.Height = 34.000000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 1
+              OnClick = sw_LocalAccountClick
+            end
+          end
+        end
+        object lstbxitm_104Log: TListBoxItem
+          Tag = 4
+          EnableDragHighlight = False
+          StyledSettings = [Family, Size, Style, FontColor]
+          HitTest = True
+          Position.Y = 301.000000000000000000
+          Size.Width = 324.000000000000000000
+          Size.Height = 72.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 9
+          object lo_LogImage: TLayout
+            Align = Left
+            Margins.Left = 5.000000000000000000
+            Position.X = 5.000000000000000000
+            Size.Width = 24.000000000000000000
+            Size.Height = 72.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 2
+            object img_log: TImage
+              MultiResBitmap.Height = 48
+              MultiResBitmap.Width = 48
+              MultiResBitmap = <
+                item
+                  Width = 24
+                  Height = 24
+                  PNG = {
+                    89504E470D0A1A0A0000000D4948445200000018000000180806000000E0773D
+                    F80000000473424954080808087C0864880000027A494441544889B5953B6814
+                    511486BF7B6777270FC518581F859DA004635C105D050541A20956221662215A
+                    5BD8C5C2F56CD20441118C60650A2D4C2F1A1B1BD9640B319288041F483485B8
+                    9A4A4DF631F75AEC6EBC59B3D949300766987FFE73CE7FEF39E7CEC03A9BAA47
+                    A4D3E94BD6DA0160FB1AF21681411149E97A1EC6989B6B4C0E1005FA00EA0A28
+                    A5FC352677458834709A779E634009300E2E02B6827DA0E0E0E88A994564AA06
+                    CFD6E04F22B2D3C12F45A4DDC1D3B04289FE97AD46E0570D6E0913B438A65F33
+                    B2C5F30B5EAC10CB03DC7FA17A7A0FD867DBFC72CD8733F49EDDCFE8F86C213A
+                    F53176173801BC071600ACB57B9452D394FB04D02522CD0AE07BF6FA03853D1F
+                    6241F30ADBDF9E1C18149149E0B4887C80720F806E1199ABE06911D9AD01DE2C
+                    BC3A87256B94DEE55E18FBB646A0D9A22E84294DD522009D4D098D5193F183F2
+                    CE2573D9D48C868E251181AD7BFA973305F02D93FAEC79EC0817625EDF198D5C
+                    B3D6DE504A1568D0030DA0B5BEC8C2CFDF8D525BC59855BA5F441E2BA54AC019
+                    11498A48B292BCBB8A8119A88EA932B768DAD070EC94E5B0325C0DB7D3B24500
+                    14741ACC081173C5257529F20838BA24C2D84D0E6A734EAFE779DE6611A972DE
+                    A2C0C404765F42B79942A475A9BE6959EE288AC8292000EE555E6D025A832018
+                    71DC5A2B8B87B9F1D473AB38D668BB1313D8AE049978B2FF4823DFAA6980007D
+                    3B4C93F726C86ACB50D8E450299151F9610D9428CEB964908B6EF4E37F3FBB1E
+                    1C42510446086991F22DDAAEFCD8D0D664FAB24BE6B2A927404F4D4CD3AA7790
+                    CF51F4E3E6F88F3139E99206D3F14F845DFCE18417F0E30CE673AACF8F9BA72E
+                    593B4041C017EDF1703502EB6E7F00E47FE129D4421D230000000049454E44AE
+                    426082}
+                  FileName = 
+                    'C:\Users\Entwicklung\Desktop\png-transparent-computer-icons-back' +
+                    'up-database-others-computer-network-logo-data-thumbnail.png'
+                end>
+              Align = Left
+              HitTest = False
+              Size.Width = 24.000000000000000000
+              Size.Height = 72.000000000000000000
+              Size.PlatformDefault = False
+            end
+          end
+          object lo_LogDetail: TLayout
+            Align = Client
+            Margins.Left = 5.000000000000000000
+            Size.Width = 192.000000000000000000
+            Size.Height = 72.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 1
+            object lbl_LogDetailHeader: TLabel
+              Align = Top
+              StyledSettings = [Family, FontColor]
+              Margins.Top = 10.000000000000000000
+              Position.Y = 10.000000000000000000
+              Size.Width = 192.000000000000000000
+              Size.Height = 17.000000000000000000
+              Size.PlatformDefault = False
+              TextSettings.Font.StyleExt = {00070000000000000004000000}
+              TextSettings.Trimming = None
+              Text = 'Log schreiben'
+              TabOrder = 2
+            end
+            object lbl_LogDetailBody: TLabel
+              Align = Top
+              StyledSettings = [Family, FontColor]
+              Position.Y = 27.000000000000000000
+              Size.Width = 192.000000000000000000
+              Size.Height = 34.000000000000000000
+              Size.PlatformDefault = False
+              TextSettings.FontColor = claDimgray
+              TextSettings.Trimming = None
+              Text = 
+                'Wenn diese Optioen aktiviert ist, wird eine Logdatei geschrieben' +
+                '.'
+              TabOrder = 1
+            end
+          end
+          object lo_LogSwitch: TLayout
+            Align = Right
+            Margins.Right = 20.000000000000000000
+            Position.X = 226.000000000000000000
+            Size.Width = 78.000000000000000000
+            Size.Height = 72.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 0
+            object sw_Log: TSwitch
+              Align = Right
+              IsChecked = False
+              Margins.Top = 19.000000000000000000
+              Margins.Bottom = 19.000000000000000000
+              Position.Y = 19.000000000000000000
+              Size.Width = 78.000000000000000000
+              Size.Height = 34.000000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 1
+              OnClick = sw_LogClick
+            end
+          end
+        end
+        object lstbxitm_105Userdata: TListBoxItem
+          Tag = 4
+          EnableDragHighlight = False
+          StyledSettings = [Family, Size, Style, FontColor]
+          HitTest = True
+          Position.Y = 373.000000000000000000
+          Size.Width = 324.000000000000000000
+          Size.Height = 140.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 4
+          object lo_UserdataImage: TLayout
+            Align = Left
+            Margins.Left = 5.000000000000000000
+            Position.X = 5.000000000000000000
+            Size.Width = 24.000000000000000000
+            Size.Height = 140.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 1
+            object img_Userdata: TImage
+              MultiResBitmap.Height = 48
+              MultiResBitmap.Width = 48
+              MultiResBitmap = <
+                item
+                  Width = 24
+                  Height = 24
+                  PNG = {
+                    89504E470D0A1A0A0000000D4948445200000018000000180806000000E0773D
+                    F80000000473424954080808087C086488000001A8494441544889CD94BF4B5B
+                    5114C73FE7242A8D834321B838148D93D08AD0D28C85B6433B38B9B87570F20F
+                    289D1EB838DA7FA09D447016840E4E4295A253A1A6D8294B94186809047FBC73
+                    3A58D19AF75EEE23087EC77BBFF7FBE1DC73EF813B96DC5E88A2E810180F0D70
+                    F71F4059441E02BFA2289AB8B95F4C38131C0E2CA9EA3777AF03EB40E5B64173
+                    8475C9DDBF98D967600ED849F22455102C11F9A0AAAFDDBD6C666B225D379E0A
+                    A803DF432066B6F40FF6071809056C762647375C7C2604222E7B0F7E36DE020B
+                    A1005C483CF07F301F6F7813D55F93A1EE97D799AAF40AF05D711BEEC198BEF4
+                    EA16F02C0FA03A5C3B3A055A3D00577A0254F3000E557535301C00331B03A642
+                    01C7ED4AF91D786693398F5B0C161567BD546B1C2759FA6BF280CE7ACC7C96A7
+                    BF9F6CB2E2051FC0E56B5EC050A1D95E66B0F829887476F11B789F07F062E8A4
+                    5D0E0ABF565783B3009B9DC9D18D58EC7948B2A2FBA55AE3257946452CF12B45
+                    1733934556CCAD23F81BE02C19DE8FDC5B05D1669625B50215DD31935EA3E211
+                    0E2AB20D3CCD03A8960E8E4E81760FC0951E9373544C91F22AEE9DFE02825683
+                    5E925656810000000049454E44AE426082}
+                  FileName = 'C:\Users\Entwicklung\Desktop\2760214.png'
+                end>
+              Align = Left
+              HitTest = False
+              Size.Width = 24.000000000000000000
+              Size.Height = 140.000000000000000000
+              Size.PlatformDefault = False
+            end
+          end
+          object lo_UserdataDetail: TLayout
+            Align = Client
+            Margins.Left = 5.000000000000000000
+            Margins.Right = 20.000000000000000000
+            Size.Width = 270.000000000000000000
+            Size.Height = 140.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 0
+            object lbl_UserdataDetailServerData: TLabel
+              Align = Top
+              StyledSettings = [Family, FontColor]
+              Margins.Top = 10.000000000000000000
+              Position.Y = 10.000000000000000000
+              Size.Width = 270.000000000000000000
+              Size.Height = 17.000000000000000000
+              Size.PlatformDefault = False
+              TextSettings.Font.StyleExt = {00070000000000000004000000}
+              TextSettings.Trimming = None
+              Text = 'Serverdaten'
+              TabOrder = 7
+            end
+            object lbl_UserdataDetailServerIP: TLabel
+              Align = Top
+              StyledSettings = [Family, FontColor]
+              Position.Y = 44.000000000000000000
+              Size.Width = 270.000000000000000000
+              Size.Height = 17.000000000000000000
+              Size.PlatformDefault = False
+              TextSettings.FontColor = claDimgray
+              TextSettings.Trimming = None
+              Text = 'Server-IP:'
+              TabOrder = 5
+            end
+            object lbl_UserdataDetailServerPort: TLabel
+              Align = Top
+              StyledSettings = [Family, FontColor]
+              Position.Y = 61.000000000000000000
+              Size.Width = 270.000000000000000000
+              Size.Height = 17.000000000000000000
+              Size.PlatformDefault = False
+              TextSettings.FontColor = claDimgray
+              TextSettings.Trimming = None
+              Text = 'Server-Port:'
+              TabOrder = 4
+            end
+            object lbl_UserdataDetailPasswort: TLabel
+              Align = Top
+              StyledSettings = [Family, FontColor]
+              Position.Y = 112.000000000000000000
+              Size.Width = 270.000000000000000000
+              Size.Height = 17.000000000000000000
+              Size.PlatformDefault = False
+              TextSettings.FontColor = claDimgray
+              TextSettings.Trimming = None
+              Text = 'Passwort:'
+              TabOrder = 3
+            end
+            object lbl_UserdataDetailUser: TLabel
+              Align = Top
+              StyledSettings = [Family, FontColor]
+              Position.Y = 95.000000000000000000
+              Size.Width = 270.000000000000000000
+              Size.Height = 17.000000000000000000
+              Size.PlatformDefault = False
+              TextSettings.FontColor = claDimgray
+              TextSettings.Trimming = None
+              Text = 'Benutzer:'
+              TabOrder = 1
+            end
+            object lbl_UserdataDetailServerBez: TLabel
+              Align = Top
+              StyledSettings = [Family, FontColor]
+              Position.Y = 27.000000000000000000
+              Size.Width = 270.000000000000000000
+              Size.Height = 17.000000000000000000
+              Size.PlatformDefault = False
+              TextSettings.FontColor = claDimgray
+              TextSettings.Trimming = None
+              Text = 'Server-Bezeichnung:'
+              TabOrder = 2
+            end
+            object lbl_UserdataDetailUserdata: TLabel
+              Align = Top
+              StyledSettings = [Family, FontColor]
+              Position.Y = 78.000000000000000000
+              Size.Width = 270.000000000000000000
+              Size.Height = 17.000000000000000000
+              Size.PlatformDefault = False
+              TextSettings.Font.StyleExt = {00070000000000000004000000}
+              TextSettings.Trimming = None
+              Text = 'Benutzerdaten'
+              TabOrder = 6
+            end
+          end
+        end
+        object lstbxitm_106Backup: TListBoxItem
+          Tag = 4
+          EnableDragHighlight = False
+          StyledSettings = [Family, Size, Style, FontColor]
+          HitTest = True
+          ItemData.Accessory = aMore
+          Position.Y = 513.000000000000000000
+          Size.Width = 324.000000000000000000
+          Size.Height = 72.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 5
+          OnClick = lstbxitm_106BackupClick
+          object lo_BackupImage: TLayout
+            Align = Left
+            Margins.Left = 5.000000000000000000
+            Position.X = 5.000000000000000000
+            Size.Width = 24.000000000000000000
+            Size.Height = 72.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 1
+            object img_Backup: TImage
+              MultiResBitmap.Height = 48
+              MultiResBitmap.Width = 48
+              MultiResBitmap = <
+                item
+                  Width = 24
+                  Height = 24
+                  PNG = {
+                    89504E470D0A1A0A0000000D4948445200000018000000180806000000E0773D
+                    F80000000473424954080808087C08648800000279494441544889B5953D6853
+                    5114C77FF7BE24AF1F8AB5103F06374129D666108D828220D51627110771109D
+                    1DDCEA603C6997222882159CECA083DD45EBE2226933088656A4F881543B88D1
+                    4E6A9B8F77AF43927A1B9BE6B5D803EFF1FEEF7FCEF9DF7BCEB9EFC1069B6A44
+                    A4D3E9CBD6DA2160E73AF29680611149E9461EC6985BEB4C0E100506001A0A28
+                    A5FC752677458834715A709E634019300E2E01B68A7DA0E8E0E8AA994564BA0E
+                    CFD5E14F22B2DBC1AF44A4D3C133B04A89FE97AD45E0571D6E0B13B434A65F33
+                    B2CDF38B5EAC182B003C78A9FAFA0FDAE73BFC4ACD4733F49F3BC0F8E45C313A
+                    FD31760F3809BC071601ACB5FB94523354FA04D02322AD0AE07BF6C64385BD10
+                    62410B0A3BD8991C1A169129E08C887C804A0F805E1199AFE21911D9AB01DE2C
+                    BE3E8F256B94DEE35E18FBB64EA0D5A22E86294DCD2200DD2D098D5153F143F2
+                    CE25F3D9D4AC86AE6511816D78FA573205F02D93FAEC79EC0A17627277C723D7
+                    ADB5379552459AF4400368AD2FB1F8F377B3D4563161951E1491274AA9327056
+                    44922292AC26EFAD6160166A63AACC6D5A36351D3B6539A20CD7C2EDB4621100
+                    05DD063346C45C75495D8E3C068E2D8B30768B833A9CD3EB799EB755446A9CB7
+                    2490CB617B12BAC31423EDCBF54DDB4A4751444E030170BFFA6A0BD01E04C198
+                    E3D65E5D3CCC4FA65E58C5F166DBCDE5B0FB1364E2C9C1A3CD7C6BA60102F49D
+                    304DEE4E90D59691B0C9A15A22A30AA31A28539A77C9201FDDECC7FF7E763D38
+                    8CA2048C11D222955BB453F9B191EDC9F41597CC67534F81BEBA989635EFA090
+                    A7E4C7CD891F1372CA250DA6EB9F08BBF4C3092FE0C7192EE4D5801F37CF5CB2
+                    7E8082802FDAE3D15A0436DCFE00E0BFE12740265E770000000049454E44AE42
+                    6082}
+                  FileName = 
+                    'C:\Users\Entwicklung\Desktop\png-transparent-computer-icons-back' +
+                    'up-database-others-computer-network-logo-data-thumbnail.png'
+                end>
+              Align = Left
+              HitTest = False
+              Size.Width = 24.000000000000000000
+              Size.Height = 72.000000000000000000
+              Size.PlatformDefault = False
+            end
+          end
+          object lo_BackupDetail: TLayout
+            Align = Client
+            Margins.Left = 5.000000000000000000
+            Margins.Right = 20.000000000000000000
+            Size.Width = 270.000000000000000000
+            Size.Height = 72.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 0
+            object lbl_BackupDetailHeader: TLabel
+              Align = Top
+              StyledSettings = [Family, FontColor]
+              Margins.Top = 10.000000000000000000
+              Position.Y = 10.000000000000000000
+              Size.Width = 270.000000000000000000
+              Size.Height = 17.000000000000000000
+              Size.PlatformDefault = False
+              TextSettings.Font.StyleExt = {00070000000000000004000000}
+              TextSettings.Trimming = None
+              Text = 'Datensicherung'
+              TabOrder = 2
+            end
+            object lbl_BackupDetailDescription: TLabel
+              Align = Top
+              StyledSettings = [Family, FontColor]
+              Position.Y = 27.000000000000000000
+              Size.Width = 270.000000000000000000
+              Size.Height = 34.000000000000000000
+              Size.PlatformDefault = False
+              TextSettings.FontColor = claDimgray
+              TextSettings.Trimming = None
+              Text = 
+                'Erstellt eine Datensicherung und legt diese auf den lokalen Spei' +
+                'cher des Telefons ab.'
+              TabOrder = 1
+            end
+          end
+        end
+        object lstbxitm_107Restore: TListBoxItem
+          StyledSettings = [Family, Size, Style, FontColor]
+          Position.Y = 585.000000000000000000
+          Size.Width = 324.000000000000000000
+          Size.Height = 72.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 14
+          OnClick = lstbxitm_107RestoreClick
+          object lo_RestoreDetail: TLayout
+            Align = Client
+            Margins.Left = 5.000000000000000000
+            Margins.Right = 20.000000000000000000
+            Size.Width = 270.000000000000000000
+            Size.Height = 72.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 0
+            object lbl_RestoreDetailHeader: TLabel
+              Align = Top
+              StyledSettings = [Family, FontColor]
+              Margins.Top = 10.000000000000000000
+              Position.Y = 10.000000000000000000
+              Size.Width = 270.000000000000000000
+              Size.Height = 17.000000000000000000
+              Size.PlatformDefault = False
+              TextSettings.Font.StyleExt = {00070000000000000004000000}
+              TextSettings.Trimming = None
+              Text = 'Datenwiederherstellung'
+              TabOrder = 2
+            end
+            object lbl_RestoreDetailDescription: TLabel
+              Align = Top
+              StyledSettings = [Family, FontColor]
+              Position.Y = 27.000000000000000000
+              Size.Width = 270.000000000000000000
+              Size.Height = 34.000000000000000000
+              Size.PlatformDefault = False
+              TextSettings.FontColor = claDimgray
+              TextSettings.Trimming = None
+              Text = 
+                'Stellt die Daten aus einem vorherigem Backup vom lokalen Telefon' +
+                'speicher wieder her'
+              TabOrder = 1
+            end
+          end
+          object lo_RestoreImage: TLayout
+            Align = Left
+            Margins.Left = 5.000000000000000000
+            Position.X = 5.000000000000000000
+            Size.Width = 24.000000000000000000
+            Size.Height = 72.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 1
+            object img_Restore: TImage
+              MultiResBitmap.Height = 48
+              MultiResBitmap.Width = 48
+              MultiResBitmap = <
+                item
+                  Width = 24
+                  Height = 24
+                  PNG = {
+                    89504E470D0A1A0A0000000D4948445200000018000000180806000000E0773D
+                    F80000000473424954080808087C0864880000027A494441544889B5953B6814
+                    511486BF7B6777270FC518581F859DA004635C105D050541A20956221662215A
+                    5BD8C5C2F56CD20441118C60650A2D4C2F1A1B1BD9640B319288041F483485B8
+                    9A4A4DF631F75AEC6EBC59B3D949300766987FFE73CE7FEF39E7CEC03A9BAA47
+                    A4D3E94BD6DA0160FB1AF21681411149E97A1EC6989B6B4C0E1005FA00EA0A28
+                    A5FC352677458834709A779E634009300E2E02B6827DA0E0E0E88A994564AA06
+                    CFD6E04F22B2D3C12F45A4DDC1D3B04289FE97AD46E0570D6E0913B438A65F33
+                    B2C5F30B5EAC10CB03DC7FA17A7A0FD867DBFC72CD8733F49EDDCFE8F86C213A
+                    F53176173801BC071600ACB57B9452D394FB04D02522CD0AE07BF6FA03853D1F
+                    6241F30ADBDF9E1C18149149E0B4887C80720F806E1199ABE06911D9AD01DE2C
+                    BC3A87256B94DEE55E18FBB646A0D9A22E84294DD522009D4D098D5193F183F2
+                    CE2573D9D48C868E251181AD7BFA973305F02D93FAEC79EC0817625EDF198D5C
+                    B3D6DE504A1568D0030DA0B5BEC8C2CFDF8D525BC59855BA5F441E2BA54AC019
+                    11498A48B292BCBB8A8119A88EA932B768DAD070EC94E5B0325C0DB7D3B24500
+                    14741ACC081173C5257529F20838BA24C2D84D0E6A734EAFE779DE6611A972DE
+                    A2C0C404765F42B79942A475A9BE6959EE288AC8292000EE555E6D025A832018
+                    71DC5A2B8B87B9F1D473AB38D668BB1313D8AE049978B2FF4823DFAA6980007D
+                    3B4C93F726C86ACB50D8E450299151F9610D9428CEB964908B6EF4E37F3FBB1E
+                    1C42510446086991F22DDAAEFCD8D0D664FAB24BE6B2A927404F4D4CD3AA7790
+                    CF51F4E3E6F88F3139E99206D3F14F845DFCE18417F0E30CE673AACF8F9BA72E
+                    593B4041C017EDF1703502EB6E7F00E47FE129D4421D230000000049454E44AE
+                    426082}
+                  FileName = 
+                    'C:\Users\Entwicklung\Desktop\png-transparent-computer-icons-back' +
+                    'up-database-others-computer-network-logo-data-thumbnail.png'
+                end>
+              Align = Left
+              HitTest = False
+              Size.Width = 24.000000000000000000
+              Size.Height = 72.000000000000000000
+              Size.PlatformDefault = False
+            end
+          end
+        end
+        object lstbxitm_108Reset: TListBoxItem
+          Tag = 4
+          EnableDragHighlight = False
+          StyledSettings = [Family, Size, Style, FontColor]
+          HitTest = True
+          ItemData.Accessory = aMore
+          Position.Y = 657.000000000000000000
+          Size.Width = 324.000000000000000000
+          Size.Height = 72.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 8
+          OnClick = lstbxitm_108ResetClick
+          object lo_ResetImage: TLayout
+            Align = Left
+            Margins.Left = 5.000000000000000000
+            Position.X = 5.000000000000000000
+            Size.Width = 24.000000000000000000
+            Size.Height = 72.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 1
+            object img_Reset: TImage
+              MultiResBitmap.Height = 24
+              MultiResBitmap = <
+                item
+                  Width = 24
+                  Height = 24
+                  PNG = {
+                    89504E470D0A1A0A0000000D4948445200000018000000180806000000E0773D
+                    F80000000473424954080808087C08648800000249494441544889ED94314C13
+                    611CC57FFFFBB0C54D1D843421D4091637E2E2A83899B8A0629CC418B4048351
+                    2024A6F9520783908803581C243A2071320CBAE0E8A8937171A94907D1857420
+                    2DF6BEBF0357735EAF5791B8F9B6FBDFFBBFF7BDFBF20EFEA30D24FC60AD9D03
+                    26808EBFD4AB030BD6DAC9C6C08B10C6F7214EB03B1E1E440D16F7211EAB113D
+                    ED347013B86FADCDEF45D55A5B0066028D5FF022A43A5006B27B110F9005CA81
+                    46BC4180D23E0C4AD161DC85968053710AD36BC5734EFD3181C3CE9399F98BB9
+                    8D88C1DBE84E5302112901196B6DAA319B5A2D0E4EAF2E3D73EA8E0BDE207803
+                    C697B38DF7013713EC261BA8EA17C018637A00665697FB6B525DAF8BEB579157
+                    0295BADBDE56D9CC4DBD280EB04BEE014CB09B6C40F01D9D73D93BCF1F1F759E
+                    9F4B93F245CCD5F9E11B1F9D717D07CCC1219FAE8AA81B6F70C3BB7F6400644D
+                    8A91AAEE5C836F29715C0698BB30F6757638F7A6039655E44883DBCA20EE92CB
+                    405D557B9D524A93EE842E3C4FBE034CBE5CECC6377755B48ACF3D0055ED65F7
+                    37516E9B20DC85B9E1EB2BA23C12788AE3F3E4DAD2797CAF28E818CA6D356E24
+                    94A0A903AD1234A26611D159989858797828D599FE202AC700366BD4BBD27488
+                    CAEB9041D3E7894DF09B4180852BB7B6B62AA6CF733AE0893BD1DD2943A89C79
+                    7029B7DECE2036818894543563AD4D596B77009E8C8EFE00DE47B9491D689920
+                    DA85242475A0A501A12EB43348EA00B4BEE44F404D5537ACB58906AA0A500B76
+                    9A2071438042A17052554FAB6A4B0E8088A8886CE4F3F9778927F957F809B802
+                    E9E5C93503A20000000049454E44AE426082}
+                  FileName = 'E:\Projekte\PCMManagerApp\Grafiken\24x24\garbage.png'
+                end>
+              Align = Left
+              HitTest = False
+              Size.Width = 24.000000000000000000
+              Size.Height = 72.000000000000000000
+              Size.PlatformDefault = False
+            end
+          end
+          object lo_ResetDetail: TLayout
+            Align = Client
+            Margins.Left = 5.000000000000000000
+            Margins.Right = 20.000000000000000000
+            Size.Width = 270.000000000000000000
+            Size.Height = 72.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 0
+            object lbl_ResetDetailHeader: TLabel
+              Align = Top
+              StyledSettings = [Family, FontColor]
+              Margins.Top = 10.000000000000000000
+              Position.Y = 10.000000000000000000
+              Size.Width = 270.000000000000000000
+              Size.Height = 17.000000000000000000
+              Size.PlatformDefault = False
+              TextSettings.Font.StyleExt = {00070000000000000004000000}
+              TextSettings.Trimming = None
+              Text = 'App zur'#252'cksetzen'
+              TabOrder = 2
+            end
+            object lbl_ResetDetailDescription: TLabel
+              Align = Top
+              StyledSettings = [Family, FontColor]
+              Position.Y = 27.000000000000000000
+              Size.Width = 270.000000000000000000
+              Size.Height = 34.000000000000000000
+              Size.PlatformDefault = False
+              TextSettings.FontColor = claDimgray
+              TextSettings.Trimming = None
+              Text = 
+                'Die App wird zur'#252'ckgesetzt und alle Daten werden unwiderruflich ' +
+                'gel'#246'scht.'
+              TabOrder = 1
+            end
+          end
+        end
+        object lstbxitm_109ProductVersion: TListBoxItem
+          Tag = 4
+          EnableDragHighlight = False
+          StyledSettings = [Family, Size, Style, FontColor]
+          HitTest = True
+          Position.Y = 729.000000000000000000
+          Size.Width = 324.000000000000000000
+          Size.Height = 105.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 6
+          object lo_ProductVersionImage: TLayout
+            Align = Left
+            Margins.Left = 5.000000000000000000
+            Position.X = 5.000000000000000000
+            Size.Width = 24.000000000000000000
+            Size.Height = 105.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 1
+            object img_ProductVersion: TImage
+              MultiResBitmap.Height = 48
+              MultiResBitmap.Width = 48
+              MultiResBitmap = <
+                item
+                  Width = 24
+                  Height = 24
+                  PNG = {
+                    89504E470D0A1A0A0000000D4948445200000018000000180806000000E0773D
+                    F80000000473424954080808087C08648800000250494441544889B5952D4C1C
+                    511485BFF7A62B96A4631090202B1138044991741D1A6C83276BB6259DCC4C86
+                    6C59B3C1E3C116B745D20481A314591C2908CC3661C464E656CCDDDFEEDB2D49
+                    39C94B4EF2EE3DE7FDDE0B2F0C336DB2D96CCE6759B62D2235600558D0A907E0
+                    CA18D3A9542AC77B7B7B8FCF3268B7DBD56EB7FB09D805E6807BE012B8D39025
+                    601558049E8043DFF7F7EBF57A3AD320499237799E9F02CB40C75A7B1004C1B9
+                    314686E344C42449B25E14C507A006DC789EB71904C14FA7818A7F1311DF5ABB
+                    1386E1496FAED56ABD4ED3B40250AD56B346A3F1BB3717C7F156511447C698AE
+                    E7796F874DECF0B1E4797E2A22BE316663581C204DD33BE0117854DE47188627
+                    C6980D11F1F33C3F6DB7DBD5BF0CF4CC97ADB53B51145D8C1F1DF0CAC10188A2
+                    E8C25ABB032CABD6C0A0D96CCE535E68677CE5CF81E676805DD52C0DB22CDB06
+                    E6ACB50753F233071F816ACCA96669A0EFFC3E0882F32906BF1C7C04AA71AF9A
+                    FD3B58012EC79FE2187E38F80854E35235FB060B0C3E912BF17A1277E04E3507
+                    AF681644E47A129F859EC103E5F79F86EF0E3E094BAAD937B8025645645AF1BB
+                    05DEEBB87505A9C6AA6A9606C6980EB09824C9FA14030B7CD1E13C5AD55854CD
+                    32B052A91C034F5AB85C88D15201B45C41AAF1A49AA581D6F343A016C7F19623
+                    B7EAE0831594B935E0B0D723FA5BF57D7F1FB8298AE2288AA2B509F9A9830310
+                    45D15A511447C08D6A316250AFD753CFF3368D315D11399BB0931098D7D1185F
+                    B9889C69B9DE1C6E3CB31ACE576BEDE7190DE723F08E7F69383DBC68CB1CC6FF
+                    68FA2F8E3F835C2BEDDB076A0E0000000049454E44AE426082}
+                  FileName = 'C:\Users\Entwicklung\Desktop\307315.png'
+                end>
+              Align = Left
+              HitTest = False
+              Size.Width = 24.000000000000000000
+              Size.Height = 105.000000000000000000
+              Size.PlatformDefault = False
+            end
+          end
+          object lo_ProductVersionDetail: TLayout
+            Align = Client
+            Margins.Left = 5.000000000000000000
+            Size.Width = 290.000000000000000000
+            Size.Height = 105.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 0
+            object lbl_ProductVersionImageDescription: TLabel
+              Align = Top
+              StyledSettings = [Family, FontColor]
+              Margins.Top = 10.000000000000000000
+              Position.Y = 10.000000000000000000
+              Size.Width = 290.000000000000000000
+              Size.Height = 17.000000000000000000
+              Size.PlatformDefault = False
+              TextSettings.Font.StyleExt = {00070000000000000004000000}
+              TextSettings.Trimming = None
+              Text = #220'ber diese App'
+              TabOrder = 5
+            end
+            object lbl_ProductVersionImageVersion: TLabel
+              Align = Top
+              StyledSettings = [Family, FontColor]
+              Position.Y = 27.000000000000000000
+              Size.Width = 290.000000000000000000
+              Size.Height = 17.000000000000000000
+              Size.PlatformDefault = False
+              TextSettings.FontColor = claDimgray
+              TextSettings.Trimming = None
+              Text = 'App-Version: '
+              TabOrder = 4
+            end
+            object lbl_ProductVersionImageOSDetail: TLabel
+              Align = Top
+              StyledSettings = [Family, FontColor]
+              Position.Y = 44.000000000000000000
+              Size.Width = 290.000000000000000000
+              Size.Height = 17.000000000000000000
+              Size.PlatformDefault = False
+              TextSettings.FontColor = claDimgray
+              TextSettings.Trimming = None
+              Text = 'Android-Version: '
+              TabOrder = 3
+            end
+            object lbl_ProductVersionImageDeviceDetail: TLabel
+              Align = Top
+              StyledSettings = [Family, FontColor]
+              Position.Y = 61.000000000000000000
+              Size.Width = 290.000000000000000000
+              Size.Height = 17.000000000000000000
+              Size.PlatformDefault = False
+              TextSettings.FontColor = claDimgray
+              TextSettings.Trimming = None
+              Text = 'Ger'#228'te-Typ:'
+              TabOrder = 2
+            end
+            object lbl_ProductVersionImageProviderDetail: TLabel
+              Align = Top
+              StyledSettings = [Family, FontColor]
+              Position.Y = 78.000000000000000000
+              Size.Width = 290.000000000000000000
+              Size.Height = 17.000000000000000000
+              Size.PlatformDefault = False
+              TextSettings.FontColor = claDimgray
+              TextSettings.Trimming = None
+              Text = 'Netzbetreiber:'
+              TabOrder = 1
+            end
+          end
+        end
+        object lstbxitm_110FCMInfos: TListBoxItem
+          Tag = 4
+          EnableDragHighlight = False
+          StyledSettings = [Family, Size, Style, FontColor]
+          HitTest = True
+          Position.Y = 834.000000000000000000
+          Size.Width = 324.000000000000000000
+          Size.Height = 170.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 7
+          OnClick = lstbxitm_110FCMInfosClick
+          object lo_FMCInfosImage: TLayout
+            Align = Left
+            Margins.Left = 5.000000000000000000
+            Position.X = 5.000000000000000000
+            Size.Width = 24.000000000000000000
+            Size.Height = 170.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 1
+            object img_FCMInfos: TImage
+              MultiResBitmap.Height = 48
+              MultiResBitmap.Width = 48
+              MultiResBitmap = <
+                item
+                  Width = 48
+                  Height = 48
+                  PNG = {
+                    89504E470D0A1A0A0000000D49484452000000300000003008060000005702F9
+                    870000000473424954080808087C086488000007FB494441546881CD5A6B6C14
+                    D7193DF7CEECCECECC7A1F7E601BA831859824188C55B52444699B487D3826C5
+                    AD525457101EA224B43534352910554A7E25FD53B5E4478994C481F24AA9020D
+                    359008296A2BA52E140552B9D0620C6B537BBD187BBDEFC7CCDCDB1F66EDB5BD
+                    EBDD592F518E6479F6DEEFFBEE39FBDDE7DC25B88FE0EDED8B82C1B1AFB244DC
+                    E2FEFDD18EFBD106294610DED62641B5B53086758490AA64525B65954477C8E7
+                    45F0F6CD29B6A2AC27445BF51024E9BC40C8FED2C37FE89E4BDB050B48271DA2
+                    68711222A7EAE2E110FC37AFC348C472C611653D21D86BCE0A54DA5C76F468D0
+                    2C8F8204F03DEDDF32400F08942C4E2F37741DFEFE5B888FF84CC70C7A0346C5
+                    CA874E9B15624A006F6F5FC42DC20142D03483C0B00FE1010F98A69909390341
+                    6FC098DFD8D0EE3E726C7F3EF6790BE07B5EDC1520782DBDAB00403216C5D86D
+                    0F928151B35C6785545ED535EFDD936B72D9E525C0D8F7E2EF28C88EF4326618
+                    08F9BC080D780AA4981B56A574B8F274E7BCD96CC45C418C7DBB3B28C896F4B2
+                    583088314F4F5E83B450F46A16B6AABCE4A7B9ECB20AE06D6D1257E5530493FD
+                    7D2E83D40C7A350B5BB5647EABABE3F8895CB6D933A04A7BD3076B70D887507F
+                    2F386345A2991966C80359C600DFF3F3860011BA9C84C8C95814FE5B37A045F2
+                    9FA2AD4EC54FA91A14447A0BA2D4C538ABA186B6C0607CC19DEE9E2F3AAA9D42
+                    31C8031932C0DBDA2446C4774A98218F0D0D203CD89F57A0A0376054362E7FB7
+                    FCC8890DB96CFD8D3FDC150F0EBCAA4735652EE4810C19E07B77BF1C09045E09
+                    F6DFCC6B90F66A16B67C61F98714B61F985D49EF6E587FA4FBB6AF15000A210F
+                    4C13107EED996FF65DBE76D6319A39C5D321C88A662BAD7CA2F4D0D18FCD369C
+                    C2E8F6EFD7F0A4F870D9C1E31F14E23F55C0DF97FF8D0494FAD15F5BDCB91C8B
+                    41BE189810C07B964A7706A4A02301AB2EEAD1FEF745C9713573263E2FE40180
+                    A61EC29AADC56E871500445D5486BF03A23689D14C4E4A45C586CF0379204D00
+                    07DF945EB1DA0095EB4714D70ECD9F5E2EBA9C83850CB6FB050A00A397BEE4A4
+                    84CCD8610280688FBADDFB8622BD9AC0004076B85EF82C09E682080082AC3D38
+                    9B91A0CB6AED967EDD11ACBBE6DC69EEDBB7BD175B6485BE790E1C67A0CEA77D
+                    5D13F9E14FB7977588004009ABCDE554596D17B174B0CB6C6322D16B09C82BE6
+                    696686AA73D8031C313B5500745000E020B5F938EB023F5F2C2285C2111BDF8B
+                    510DF3817B6340207C592EC7635DE0763254D062534CA8510E00A0E0CEF1FF00
+                    38436D2EC7F58FEB31F2C8A8E943F7FC10AAAA428659B7ACB0DDCBC058D0AB00
+                    F70631A7CC462667D48C109858100B25A157B946182A2C3AFCA522EE38042467
+                    6F2A2BAC0CB024C633506E1B26C0BD0C10089E5CCE1739570B6B761CA20654F8
+                    743C743381257774A83A371DC3159BFC0EC7841549604200F7E4725ECD098D76
+                    2D7FCC74ABD3400DC0E13750D79BC432AF86B258FE07247B6C52B4041E025263
+                    00F4BFF90460066F364777762841869A7E0DF59E24AA4306043E7B56E4C8A458
+                    6A2563406A0C807BF2793D71952CAD01AE9A6349854B6127FF4B2E337BC4802D
+                    A6857D2E6BB7DF429F9308A6EC8805CE27FA3F007022DC05EEED4663571B1719
+                    44F39008071D9919FC0295D807255FE9F5107D21E1EAE2E38FECBF6FA77AF558
+                    B852B461687A79596C3C5B294454FAC77FEE74AFA700203F7CB90FDCB89629E0
+                    A0CD117947796CB48F581F20506442F89EFB451E0088C45B3295A7F77F00302C
+                    E40D206D37CA201E9AEED4657FF0F62F6D5F569322299FB48B3EDFFA8F5D9545
+                    639C8ED7B944C19ECB54A5A4F57F43D4939FEC707D04A409A0063F987ABE4025
+                    F6BA7DCDF537C5055F981E8840913961BF2926EF145CF323CF13223466AAB326
+                    2605C415EB85D4F38400FB8A6E1F0C76ED26CA6307D535BE2BA25C97AD2102D2
+                    DA7A7167512F2C4A4E0497C5095ECE54E74C30D0B46554A7FC78EA79CA9AF851
+                    A4EE8DBDDE5ACB5824519D8C6948FDE95A864598634BB144A8C7C29584D253D3
+                    679E144AD2FAFF7062C8B8BCA3F440EAF38CD9F3C9F736DC6171AD62B6064591
+                    42B08EBF52223A1924AA65FDB9A7DE2EE888E93A196ED0384E89048BB3D92CF3
+                    6A5082E35D28E0A46F5DFEB1FB47590534776EAC0F87FA3F25ACCAD48E45566C
+                    9F0876F6DDCE6F1CCEEB4D5853E7B32FB1187EF2BF7F5756FA1B7EE189707949
+                    36DB953792100C0ECD4AA21FB7974ED9D2645CBFBE7D7AD39BF1507C9B190100
+                    407AC0C90ACB5D8B68B92450FA21009C7DFAEDFD4D9D9BB7122E9470A67F0D84
+                    B94702C6A30A35A409C71E3B1F59D1D6DB4F962E9D1E53D539EA7A930080B132
+                    FAB32BDBDD532E3EB22EC0F974A562232AAF1DFE176FB14A84385365D5210355
+                    833AA236A1EFE20BAEDAE93E59BB892C912705313AB7FB229350629D15ABBDBF
+                    95AD4CBB9D2A53A31C41898446056365269FAC02CEAC3DDC6D2D99F7C4672D82
+                    B8BBADCBBB772FAC20DEEB00C00D1E8AABA8BFB1B32CE3612AE71EAEB973637D
+                    38605C2030945CB6C5464C7DF63F89BB8F6FBBB2CD917586CBEB8E6CEDF98D35
+                    F161BD5BE7ACA478F466876495062D2EFE68AE59CDD4356BD3FB9B4E46A39E75
+                    66A75833203DE0B646DB9FCEAD3BF4BDBCECCD36D0DCB9B19E69E4642C9A78C0
+                    3CBDD9C121441D2EDB963F3777E4FDF2ACE09F1A34756EDE0A8DED8DC6FB96CC
+                    2523A407DCD620DD8085FEEADCDA83A6B72645F9B1C7536736BDCA93FC193362
+                    449BE8B788F4ACA0E0A57C57EF4C288A80E978FACCD6F50623D58CEBF5046C7C
+                    75E5D44FA8F8578172AF992E920BFF079B9641FF86CBCBF50000000049454E44
+                    AE426082}
+                  FileName = 'C:\Users\Entwicklung\Downloads\Google-1320568266385361674_48.png'
+                end>
+              Align = Left
+              HitTest = False
+              Size.Width = 24.000000000000000000
+              Size.Height = 170.000000000000000000
+              Size.PlatformDefault = False
+            end
+          end
+          object lo_FMCInfosDetail: TLayout
+            Align = Client
+            Margins.Left = 5.000000000000000000
+            Margins.Right = 20.000000000000000000
+            Size.Width = 270.000000000000000000
+            Size.Height = 170.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 0
+            object lbl_FMCInfosDetailGoogleInfo: TLabel
+              Align = Top
+              StyledSettings = [Family, FontColor]
+              Margins.Top = 10.000000000000000000
+              Position.Y = 10.000000000000000000
+              Size.Width = 270.000000000000000000
+              Size.Height = 17.000000000000000000
+              Size.PlatformDefault = False
+              TextSettings.Font.StyleExt = {00070000000000000004000000}
+              TextSettings.Trimming = None
+              Text = 'Google Informationen'
+              TabOrder = 3
+            end
+            object lbl_FMCInfosDetailToken: TLabel
+              Align = Top
+              StyledSettings = [Family, FontColor]
+              Position.Y = 27.000000000000000000
+              Size.Width = 270.000000000000000000
+              Size.Height = 17.000000000000000000
+              Size.PlatformDefault = False
+              TextSettings.FontColor = claDimgray
+              TextSettings.Trimming = None
+              Text = 'Token:'
+              TabOrder = 2
+            end
+            object mem_FMCInfosDetailToken: TMemo
+              Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+              DataDetectorTypes = []
+              ReadOnly = True
+              StyledSettings = [Family, Style, FontColor]
+              TextSettings.FontColor = claDimgray
+              TextSettings.WordWrap = True
+              Align = Top
+              Position.Y = 44.000000000000000000
+              Size.Width = 270.000000000000000000
+              Size.Height = 121.000000000000000000
+              Size.PlatformDefault = False
+              StyleLookup = 'memostyle'
+              TabOrder = 1
+              Viewport.Width = 270.000000000000000000
+              Viewport.Height = 121.000000000000000000
+            end
+          end
+        end
+      end
+    end
+    object ti_2Restore: TTabItem
+      CustomIcon = <
+        item
+        end>
+      TextSettings.Trimming = None
+      IsSelected = False
+      Size.Width = 8.000000000000000000
+      Size.Height = 8.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = ''
+      TabOrder = 0
+      ExplicitSize.cx = 8.000000000000000000
+      ExplicitSize.cy = 8.000000000000000000
+      object vsbx_RestoreDetailView: TVertScrollBox
+        Align = Client
+        Size.Width = 340.000000000000000000
+        Size.Height = 588.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        Viewport.Width = 340.000000000000000000
+        Viewport.Height = 588.000000000000000000
+        object btn_Restore: TButton
+          Align = Top
+          StyledSettings = [Family, Size, FontColor]
+          Margins.Left = 16.000000000000000000
+          Margins.Top = 10.000000000000000000
+          Margins.Right = 16.000000000000000000
+          Margins.Bottom = 10.000000000000000000
+          Position.X = 16.000000000000000000
+          Position.Y = 456.000000000000000000
+          Size.Width = 308.000000000000000000
+          Size.Height = 35.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 1
+          Text = 'ausgew'#228'hltes Backup wiederherstellen'
+          TextSettings.Trimming = None
+          OnClick = btn_RestoreClick
+        end
+        object lbl_Target: TLabel
+          Align = Top
+          StyledSettings = [Family, FontColor]
+          Margins.Left = 16.000000000000000000
+          Margins.Top = 5.000000000000000000
+          Margins.Right = 16.000000000000000000
+          Position.X = 16.000000000000000000
+          Position.Y = 5.000000000000000000
+          Size.Width = 308.000000000000000000
+          Size.Height = 27.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 16.000000000000000000
+          TextSettings.Font.StyleExt = {00070000000000000004000000}
+          TextSettings.FontColor = claWhite
+          TextSettings.Trimming = None
+          Text = 'Vorhandene Sicherungen:'
+          TabOrder = 114
+        end
+        object lo_8Belege: TLayout
+          Align = Top
+          Margins.Left = 16.000000000000000000
+          Margins.Right = 16.000000000000000000
+          Position.X = 16.000000000000000000
+          Position.Y = 306.000000000000000000
+          Size.Width = 308.000000000000000000
+          Size.Height = 30.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 127
+          object lo_BelegeSw: TLayout
+            Align = Right
+            Position.X = 230.000000000000000000
+            Size.Width = 78.000000000000000000
+            Size.Height = 30.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 0
+            object sw_Belege: TSwitch
+              Align = Right
+              IsChecked = False
+              Position.X = 34.000000000000000000
+              Size.Width = 44.000000000000000000
+              Size.Height = 30.000000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 1
+            end
+          end
+          object lo_BelegeLabel: TLayout
+            Align = Client
+            Size.Width = 230.000000000000000000
+            Size.Height = 30.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 1
+            object lbl_Belege: TLabel
+              Align = Top
+              StyledSettings = [Family, FontColor]
+              Size.Width = 230.000000000000000000
+              Size.Height = 30.000000000000000000
+              Size.PlatformDefault = False
+              TextSettings.FontColor = claDimgray
+              TextSettings.Trimming = None
+              Text = 'Belege wiederherstellen'
+              TabOrder = 1
+            end
+          end
+        end
+        object lo_9Gutscheine: TLayout
+          Align = Top
+          Margins.Left = 16.000000000000000000
+          Margins.Right = 16.000000000000000000
+          Position.X = 16.000000000000000000
+          Position.Y = 336.000000000000000000
+          Size.Width = 308.000000000000000000
+          Size.Height = 30.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 126
+          object lo_GutscheinSw: TLayout
+            Align = Right
+            Position.X = 230.000000000000000000
+            Size.Width = 78.000000000000000000
+            Size.Height = 30.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 0
+            object sw_Gutschein: TSwitch
+              Align = Right
+              IsChecked = False
+              Position.X = 34.000000000000000000
+              Size.Width = 44.000000000000000000
+              Size.Height = 30.000000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 1
+            end
+          end
+          object lo_GutscheinLabel: TLayout
+            Align = Client
+            Size.Width = 230.000000000000000000
+            Size.Height = 30.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 1
+            object lbl_Gutschein: TLabel
+              Align = Top
+              StyledSettings = [Family, FontColor]
+              Size.Width = 230.000000000000000000
+              Size.Height = 30.000000000000000000
+              Size.PlatformDefault = False
+              TextSettings.FontColor = claDimgray
+              TextSettings.Trimming = None
+              Text = 'Gutscheine wiederherstellen'
+              TabOrder = 1
+            end
+          end
+        end
+        object lo_7Ausgaben: TLayout
+          Align = Top
+          Margins.Left = 16.000000000000000000
+          Margins.Right = 16.000000000000000000
+          Position.X = 16.000000000000000000
+          Position.Y = 276.000000000000000000
+          Size.Width = 308.000000000000000000
+          Size.Height = 30.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 125
+          object lo_AusgabenSw: TLayout
+            Align = Right
+            Position.X = 230.000000000000000000
+            Size.Width = 78.000000000000000000
+            Size.Height = 30.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 0
+            object sw_Ausgaben: TSwitch
+              Align = Right
+              IsChecked = False
+              Position.X = 34.000000000000000000
+              Size.Width = 44.000000000000000000
+              Size.Height = 30.000000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 1
+            end
+          end
+          object lo_AusgabenLabel: TLayout
+            Align = Client
+            Size.Width = 230.000000000000000000
+            Size.Height = 30.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 1
+            object lbl_Ausgaben: TLabel
+              Align = Top
+              StyledSettings = [Family, FontColor]
+              Size.Width = 230.000000000000000000
+              Size.Height = 30.000000000000000000
+              Size.PlatformDefault = False
+              TextSettings.FontColor = claDimgray
+              TextSettings.Trimming = None
+              Text = 'Ausgaben wiederherstellen'
+              TabOrder = 1
+            end
+          end
+        end
+        object lo_6Einnahmen: TLayout
+          Align = Top
+          Margins.Left = 16.000000000000000000
+          Margins.Right = 16.000000000000000000
+          Position.X = 16.000000000000000000
+          Position.Y = 246.000000000000000000
+          Size.Width = 308.000000000000000000
+          Size.Height = 30.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 124
+          object lo_EinnahmenSw: TLayout
+            Align = Right
+            Position.X = 230.000000000000000000
+            Size.Width = 78.000000000000000000
+            Size.Height = 30.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 0
+            object sw_Einnahmen: TSwitch
+              Align = Right
+              IsChecked = False
+              Position.X = 34.000000000000000000
+              Size.Width = 44.000000000000000000
+              Size.Height = 30.000000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 1
+            end
+          end
+          object lo_EinnahmenLabel: TLayout
+            Align = Client
+            Size.Width = 230.000000000000000000
+            Size.Height = 30.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 1
+            object lbl_Einnahmen: TLabel
+              Align = Top
+              StyledSettings = [Family, FontColor]
+              Size.Width = 230.000000000000000000
+              Size.Height = 30.000000000000000000
+              Size.PlatformDefault = False
+              TextSettings.FontColor = claDimgray
+              TextSettings.Trimming = None
+              Text = 'Einnahmen wiederherstellen'
+              TabOrder = 1
+            end
+          end
+        end
+        object lo_5Serials: TLayout
+          Align = Top
+          Margins.Left = 16.000000000000000000
+          Margins.Right = 16.000000000000000000
+          Position.X = 16.000000000000000000
+          Position.Y = 216.000000000000000000
+          Size.Width = 308.000000000000000000
+          Size.Height = 30.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 123
+          object lo_SerialsSw: TLayout
+            Align = Right
+            Position.X = 230.000000000000000000
+            Size.Width = 78.000000000000000000
+            Size.Height = 30.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 0
+            object sw_Serial: TSwitch
+              Align = Right
+              IsChecked = False
+              Position.X = 34.000000000000000000
+              Size.Width = 44.000000000000000000
+              Size.Height = 30.000000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 1
+            end
+          end
+          object lo_SerialsLabel: TLayout
+            Align = Client
+            Size.Width = 230.000000000000000000
+            Size.Height = 30.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 1
+            object lbl_Serials: TLabel
+              Align = Top
+              StyledSettings = [Family, FontColor]
+              Size.Width = 230.000000000000000000
+              Size.Height = 30.000000000000000000
+              Size.PlatformDefault = False
+              TextSettings.FontColor = claDimgray
+              TextSettings.Trimming = None
+              Text = 'Serials wiederherstellen'
+              TabOrder = 1
+            end
+          end
+        end
+        object lo_4Passwort: TLayout
+          Align = Top
+          Margins.Left = 16.000000000000000000
+          Margins.Right = 16.000000000000000000
+          Position.X = 16.000000000000000000
+          Position.Y = 186.000000000000000000
+          Size.Width = 308.000000000000000000
+          Size.Height = 30.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 122
+          object lo_PasswortSw: TLayout
+            Align = Right
+            Position.X = 230.000000000000000000
+            Size.Width = 78.000000000000000000
+            Size.Height = 30.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 0
+            object sw_Passwort: TSwitch
+              Align = Right
+              IsChecked = False
+              Position.X = 34.000000000000000000
+              Size.Width = 44.000000000000000000
+              Size.Height = 30.000000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 1
+            end
+          end
+          object lo_PasswortLabel: TLayout
+            Align = Client
+            Size.Width = 230.000000000000000000
+            Size.Height = 30.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 1
+            object lbl_Passwort: TLabel
+              Align = Top
+              StyledSettings = [Family, FontColor]
+              Size.Width = 230.000000000000000000
+              Size.Height = 30.000000000000000000
+              Size.PlatformDefault = False
+              TextSettings.FontColor = claDimgray
+              TextSettings.Trimming = None
+              Text = 'Passw'#246'rter wiederherstellen'
+              TabOrder = 1
+            end
+          end
+        end
+        object lo_3Kalender: TLayout
+          Align = Top
+          Margins.Left = 16.000000000000000000
+          Margins.Right = 16.000000000000000000
+          Position.X = 16.000000000000000000
+          Position.Y = 156.000000000000000000
+          Size.Width = 308.000000000000000000
+          Size.Height = 30.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 121
+          object lo_KalenderSw: TLayout
+            Align = Right
+            Position.X = 230.000000000000000000
+            Size.Width = 78.000000000000000000
+            Size.Height = 30.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 0
+            object sw_Kalender: TSwitch
+              Align = Right
+              IsChecked = False
+              Position.X = 34.000000000000000000
+              Size.Width = 44.000000000000000000
+              Size.Height = 30.000000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 1
+            end
+          end
+          object lo_KalenderLabel: TLayout
+            Align = Client
+            Size.Width = 230.000000000000000000
+            Size.Height = 30.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 1
+            object lbl_Kalender: TLabel
+              Align = Top
+              StyledSettings = [Family, FontColor]
+              Size.Width = 230.000000000000000000
+              Size.Height = 30.000000000000000000
+              Size.PlatformDefault = False
+              TextSettings.FontColor = claDimgray
+              TextSettings.Trimming = None
+              Text = 'Kalender wiederherstellen'
+              TabOrder = 1
+            end
+          end
+        end
+        object lo_2Kontakte: TLayout
+          Align = Top
+          Margins.Left = 16.000000000000000000
+          Margins.Right = 16.000000000000000000
+          Position.X = 16.000000000000000000
+          Position.Y = 126.000000000000000000
+          Size.Width = 308.000000000000000000
+          Size.Height = 30.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 120
+          object lo_KontakteSw: TLayout
+            Align = Right
+            Position.X = 230.000000000000000000
+            Size.Width = 78.000000000000000000
+            Size.Height = 30.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 0
+            object sw_Kontakt: TSwitch
+              Align = Right
+              IsChecked = False
+              Position.X = 34.000000000000000000
+              Size.Width = 44.000000000000000000
+              Size.Height = 30.000000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 1
+            end
+          end
+          object lo_KontakteLabel: TLayout
+            Align = Client
+            Size.Width = 230.000000000000000000
+            Size.Height = 30.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 1
+            object lbl_Kontakte: TLabel
+              Align = Top
+              StyledSettings = [Family, FontColor]
+              Size.Width = 230.000000000000000000
+              Size.Height = 30.000000000000000000
+              Size.PlatformDefault = False
+              TextSettings.FontColor = claDimgray
+              TextSettings.Trimming = None
+              Text = 'Kontakte wiederherstellen'
+              TabOrder = 1
+            end
+          end
+        end
+        object lo_1All: TLayout
+          Align = Top
+          Margins.Left = 16.000000000000000000
+          Margins.Right = 16.000000000000000000
+          Position.X = 16.000000000000000000
+          Position.Y = 96.000000000000000000
+          Size.Width = 308.000000000000000000
+          Size.Height = 30.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 130
+          object lo_Allsw: TLayout
+            Align = Right
+            Position.X = 230.000000000000000000
+            Size.Width = 78.000000000000000000
+            Size.Height = 30.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 0
+            object sw_All: TSwitch
+              Align = Right
+              IsChecked = False
+              Position.X = 34.000000000000000000
+              Size.Width = 44.000000000000000000
+              Size.Height = 30.000000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 1
+              OnClick = sw_AllClick
+            end
+          end
+          object lo_AllLabel: TLayout
+            Align = Client
+            Size.Width = 230.000000000000000000
+            Size.Height = 30.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 1
+            object lbl_All: TLabel
+              Align = Top
+              StyledSettings = [Family, FontColor]
+              Size.Width = 230.000000000000000000
+              Size.Height = 30.000000000000000000
+              Size.PlatformDefault = False
+              TextSettings.FontColor = claDimgray
+              TextSettings.Trimming = None
+              Text = 'Alle Module wiederherstellen'
+              TabOrder = 1
+            end
+          end
+        end
+        object lbl_Tables: TLabel
+          Align = Top
+          StyledSettings = [Family, FontColor]
+          Margins.Left = 16.000000000000000000
+          Margins.Top = 5.000000000000000000
+          Margins.Right = 16.000000000000000000
+          Position.X = 16.000000000000000000
+          Position.Y = 69.000000000000000000
+          Size.Width = 308.000000000000000000
+          Size.Height = 27.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 16.000000000000000000
+          TextSettings.Font.StyleExt = {00070000000000000004000000}
+          TextSettings.FontColor = claWhite
+          TextSettings.Trimming = None
+          Text = 'Tabellen ausw'#228'hlen:'
+          TabOrder = 113
+        end
+        object cbx_Files: TComboBox
+          Align = Top
+          Margins.Left = 16.000000000000000000
+          Margins.Right = 16.000000000000000000
+          Position.X = 16.000000000000000000
+          Position.Y = 32.000000000000000000
+          Size.Width = 308.000000000000000000
+          Size.Height = 32.000000000000000000
+          Size.PlatformDefault = False
+          StyleLookup = 'comboboxstyle'
+          TabOrder = 0
+          OnChange = cbx_FilesChange
+        end
+        object lbl_Description: TLabel
+          Align = Top
+          StyledSettings = [Family, FontColor]
+          Margins.Left = 16.000000000000000000
+          Margins.Top = 5.000000000000000000
+          Margins.Right = 16.000000000000000000
+          Position.X = 16.000000000000000000
+          Position.Y = 371.000000000000000000
+          Size.Width = 308.000000000000000000
+          Size.Height = 75.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.StyleExt = {00070000000000000004000000}
+          TextSettings.Trimming = None
+          TabOrder = 137
+        end
+        object prgbr_Restore: TProgressBar
+          Align = Top
+          Orientation = Horizontal
+          Position.X = 20.000000000000000000
+          Position.Y = 446.000000000000000000
+          Scale.Y = 5.000000000000000000
+          Size.Width = 300.000000000000000000
+          Size.Height = 5.000000000000000000
+          Size.PlatformDefault = False
+          StyleLookup = 'progressbarstyle'
+          Value = 50.000000000000000000
+          Visible = False
+        end
+      end
+    end
+  end
+  object bckup_sqlBackup: TFDSQLiteBackup
+    Catalog = 'MAIN'
+    DestCatalog = 'MAIN'
+    Left = 160
+    Top = 448
+  end
+  object qry_Restore: TFDQuery
+    Left = 183
+    Top = 292
+  end
+  object qry_Main: TFDQuery
+    Left = 103
+    Top = 292
+  end
+end

@@ -1,0 +1,99 @@
+object WaitForm: TWaitForm
+  Align = Client
+  Size.Width = 448.000000000000000000
+  Size.Height = 517.000000000000000000
+  Size.PlatformDefault = False
+  object rec_Main: TRectangle
+    StyleName = 'panelstyle'
+    Align = Client
+    Fill.Color = claDimgray
+    Opacity = 0.600000023841857900
+    Size.Width = 448.000000000000000000
+    Size.Height = 517.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object lo_FrameWait: TLayout
+    Align = Center
+    Size.Width = 250.000000000000000000
+    Size.Height = 124.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    object rec_FrameWait: TRectangle
+      Align = Client
+      Fill.Color = xFF9CB6DB
+      Size.Width = 250.000000000000000000
+      Size.Height = 124.000000000000000000
+      Size.PlatformDefault = False
+      Stroke.Color = claDimgray
+      object lo_FrameWaitHeader: TLayout
+        Align = Top
+        Size.Width = 250.000000000000000000
+        Size.Height = 50.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 1
+        object lbl_WaitTitle: TLabel
+          Align = Client
+          StyledSettings = [Family, FontColor]
+          Margins.Left = 10.000000000000000000
+          Size.Width = 240.000000000000000000
+          Size.Height = 48.000000000000000000
+          Size.PlatformDefault = False
+          StyleLookup = 'buttonstylelabel'
+          TextSettings.Font.Size = 15.000000000000000000
+          TextSettings.Font.StyleExt = {00070000000000000004000000}
+          TextSettings.FontColor = claWhite
+          TextSettings.Trimming = None
+          Text = 'Titel'
+        end
+        object ln_FrameWait: TLine
+          Align = Bottom
+          LineType = Bottom
+          Position.Y = 48.000000000000000000
+          Size.Width = 250.000000000000000000
+          Size.Height = 2.000000000000000000
+          Size.PlatformDefault = False
+          Stroke.Color = claGray
+          Stroke.Thickness = 1.500000000000000000
+        end
+      end
+      object lo_FrameWaitDetail: TLayout
+        Align = Client
+        Size.Width = 250.000000000000000000
+        Size.Height = 74.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 2
+        object lbl_WaitText: TLabel
+          Align = Client
+          StyledSettings = [Family, FontColor]
+          Margins.Left = 5.000000000000000000
+          Size.Width = 190.000000000000000000
+          Size.Height = 74.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 13.000000000000000000
+          TextSettings.FontColor = claWhite
+          TextSettings.Trimming = None
+          Text = 'Laden...'
+        end
+        object anInd_Wait: TAniIndicator
+          Align = Left
+          Margins.Left = 10.000000000000000000
+          Margins.Top = 5.000000000000000000
+          Margins.Right = 5.000000000000000000
+          Margins.Bottom = 5.000000000000000000
+          Position.X = 10.000000000000000000
+          Position.Y = 5.000000000000000000
+          Size.Width = 40.000000000000000000
+          Size.Height = 64.000000000000000000
+          Size.PlatformDefault = False
+        end
+      end
+      object shef_FrameWait: TShadowEffect
+        Distance = 3.000000000000000000
+        Direction = 45.000000000000000000
+        Softness = 0.300000011920929000
+        Opacity = 0.699999988079071000
+        ShadowColor = claBlack
+      end
+    end
+  end
+end
