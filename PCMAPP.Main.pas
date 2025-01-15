@@ -1767,20 +1767,40 @@ procedure Tfrm_PCM_Main.btn_LoginClick(Sender: TObject);
     {$IFDEF ANDROID}
     if (bHasBiometric) then
     begin
-    TDialogServiceAsync.MessageDialog('Möchten Sie Ihren Fingerabdruck zum Anmelden verwenden?',
-    TMsgDlgType.mtInformation, mbYesNo, TMsgDlgBtn.mbNo, 0,
-      procedure(const AResult: TModalResult)
-      begin
-        qry_Work.SQL.Text := sSQL_UPDATE_FingerAutologin_AUTOLOGIN;
-        if AResult = mrYes then
+      TDialogServiceAsync.MessageDialog('Möchten Sie Ihren Fingerabdruck zum Anmelden verwenden?',
+      TMsgDlgType.mtInformation, mbYesNo, TMsgDlgBtn.mbNo, 0,
+        procedure(const AResult: TModalResult)
         begin
-          qry_Work.ParamByName('Finger').AsBoolean:= true;
-        end
-        else begin
-          qry_Work.ParamByName('Finger').AsBoolean:= false;
-        end;
-        qry_Work.ExecSQL;
-      end);
+          qry_Work.SQL.Text := sSQL_UPDATE_FingerAutologin_AUTOLOGIN;
+          if AResult = mrYes then
+          begin
+            qry_Work.ParamByName('Finger').AsBoolean:= true;
+            qry_Work.ParamByName('Autologin').AsBoolean:= false;
+          end
+          else begin
+            qry_Work.ParamByName('Finger').AsBoolean:= false;
+            qry_Work.ParamByName('Autologin').AsBoolean:= false;
+          end;
+          qry_Work.ExecSQL;
+        end);
+    end
+    else begin
+      TDialogServiceAsync.MessageDialog('Möchten Sie automatisches Login aktivieren?',
+      TMsgDlgType.mtInformation, mbYesNo, TMsgDlgBtn.mbNo, 0,
+        procedure(const AResult: TModalResult)
+        begin
+          qry_Work.SQL.Text := sSQL_UPDATE_FingerAutologin_AUTOLOGIN;
+          if AResult = mrYes then
+          begin
+            qry_Work.ParamByName('Finger').AsBoolean:= false;
+            qry_Work.ParamByName('Autologin').AsBoolean:= true;
+          end
+          else begin
+            qry_Work.ParamByName('Finger').AsBoolean:= false;
+            qry_Work.ParamByName('Autologin').AsBoolean:= false;
+          end;
+          qry_Work.ExecSQL;
+        end);
     end;
     {$ENDIF ANDROID}
     dmmain.wfWaitFrame.Execute('Erstes Login...', 'Login', True);
@@ -2123,8 +2143,8 @@ begin
   iServerID := -1;
   try
     {$IFDEF ANDROID}
-//    if not TPlatformServices.Current.SupportsPlatformService (IFMXClipboardService, IInterface (clpbrdsrvClipboardService)) then
-//       raise Exception.Create ( 'Can not get access to clipboard service!');
+    if not TPlatformServices.Current.SupportsPlatformService (IFMXClipboardService, IInterface (clpbrdsrvClipboardService)) then
+       raise Exception.Create ( 'Can not get access to clipboard service!');
     if TPlatformServices.Current.SupportsPlatformService(IFMXApplicationEventService, evsrvEventService) then
       sCallPhonePermission := JStringToString(TJManifest_permission.JavaClass.CALL_PHONE);
     TPlatformServices.Current.SupportsPlatformService(IFMXPhoneDialerService, pdsrvPhoneDialerService);
@@ -2291,11 +2311,11 @@ begin
         img_BiometricClick(Self);
         tc_Main.ActiveTab:= ti_1Login;
       end;
-//      if qry_Work.FieldByName('Autologin').AsBoolean = True then
-//      begin
-//        AutoLogin(qry_Work.FieldByName('Benutzername').AsString, qry_Work.FieldByName('Passwort').AsString);
-//        qry_Work.Close;
-//      end;
+      if qry_Work.FieldByName('Autologin').AsBoolean = True then
+      begin
+        AutoLogin(qry_Work.FieldByName('Benutzername').AsString, qry_Work.FieldByName('Passwort').AsString);
+        qry_Work.Close;
+      end;
       {$ENDIF ANDROID}
     end;
   except

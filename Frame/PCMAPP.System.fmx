@@ -344,7 +344,7 @@ object frm_PCMAPP_System: Tfrm_PCMAPP_System
               Size.PlatformDefault = False
               TextSettings.Font.StyleExt = {00070000000000000004000000}
               TextSettings.Trimming = None
-              Text = 'Biometrische Authentifizierung'
+              Text = 'Automatisches Login'
               TabOrder = 2
             end
             object Label2: TLabel
@@ -356,9 +356,7 @@ object frm_PCMAPP_System: Tfrm_PCMAPP_System
               Size.PlatformDefault = False
               TextSettings.FontColor = claDimgray
               TextSettings.Trimming = None
-              Text = 
-                'Erm'#246'glicht das Login mit Biometrie. Aktuell Biometrie nur mit Fi' +
-                'nger.'
+              Text = 'Erm'#246'glicht ein automatisches Login ohne Benutzer und Passwort.'
               TabOrder = 1
             end
           end
@@ -607,6 +605,7 @@ object frm_PCMAPP_System: Tfrm_PCMAPP_System
               Size.PlatformDefault = False
               TabOrder = 1
               OnClick = sw_LogClick
+              OnSwitch = sw_LogSwitch
             end
           end
         end

@@ -214,9 +214,11 @@ type
     procedure sw_LocalAccountClick(Sender: TObject);
     procedure sw_LogClick(Sender: TObject);
     procedure sw_AutologinClick(Sender: TObject);
+    procedure sw_LogSwitch(Sender: TObject);
   private
     { Private-Deklarationen }
     qry_Work: TFDQuery;
+    function GetFieldValue(AField: String): boolean;
     procedure SetDesign;
   public
     procedure Execute;
@@ -236,6 +238,23 @@ uses
 // Functions                                                                  //
 ////////////////////////////////////////////////////////////////////////////////
 {$Region Functions}
+function Tfrm_PCMAPP_System.GetFieldValue(AField: String): boolean;
+var
+  qry_Fieldvalue: TFDQuery;
+begin
+  qry_Fieldvalue:= TFDQuery.Create(nil);
+  qry_Fieldvalue.Connection:= dmmain.con_PCM;
+  qry_Fieldvalue.SQL.Text := 'SELECT ' + AField + ' From AUto_login';
+  qry_Fieldvalue.open;
+  Result:= false;
+  while not qry_Fieldvalue.Eof do
+  begin
+    Result:= qry_Fieldvalue.FieldByName(AField).AsBoolean;
+    qry_Fieldvalue.Next;
+  end;
+  qry_Fieldvalue.Close;
+  FreeAndnil(qry_Fieldvalue);
+end;
 procedure Tfrm_PCMAPP_System.Execute;
   procedure ReadInformation;
   {$IFDEF ANDROID}
@@ -322,7 +341,7 @@ begin
     begin
       sw_Log.IsChecked:= false;
     end;
-    if qry_Work.FieldByName('Autologin').asInteger = 1 then
+    if qry_Work.FieldByName('Autologin').AsBoolean = True then
     begin
       sw_Autologin.IsChecked:= true;
     end
@@ -750,7 +769,10 @@ begin
   end;
 end;
 procedure Tfrm_PCMAPP_System.sw_AutologinClick(Sender: TObject);
+var
+  bFinger: boolean;
 begin
+  bFinger:= GetFieldValue('FingerAuthenticate');
   qry_Work:= TFDQuery.Create(nil);
   qry_Work.Connection:= dmmain.con_PCM;
   qry_Work.SQL.Text := sSQL_UPDATE_FingerAutologin_AUTOLOGIN;
@@ -762,15 +784,20 @@ begin
   end
   else begin
     qry_Work.ParamByName('Autologin').asBoolean:= false;
+    qry_Work.ParamByName('Finger').asBoolean:= bFinger;
   end;
   qry_Work.ExecSQL;
   FreeAndnil(qry_Work);
 end;
 procedure Tfrm_PCMAPP_System.sw_BiometrieClick(Sender: TObject);
+var
+  bAutologin: boolean;
 begin
+  bAutologin:= GetFieldValue('Autologin');
   qry_Work:= TFDQuery.Create(nil);
   qry_Work.Connection:= dmmain.con_PCM;
   qry_Work.SQL.Text := sSQL_UPDATE_FingerAutologin_AUTOLOGIN;
+
   if sw_Biometrie.IsChecked then
   begin
     qry_Work.ParamByName('Finger').AsBoolean:= true;
@@ -779,6 +806,7 @@ begin
   end
   else begin
     qry_Work.ParamByName('Finger').AsBoolean:= false;
+    qry_Work.ParamByName('Autologin').AsBoolean:= bAutologin;
   end;
   qry_Work.ExecSQL;
   FreeAndnil(qry_Work);
@@ -807,5 +835,7 @@ begin
   qry_Work.ExecSQL;
   FreeAndnil(qry_Work);
 end;
+
+
 {$EndRegion Buttonfunctions}
 end.

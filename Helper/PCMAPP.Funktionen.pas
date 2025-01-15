@@ -188,7 +188,6 @@ begin
   qry_Work.Close;
   Freeandnil(qry_Work);
 end;
-
 function GetCountFromTableServer: integer;
 var
   qry_Work: TFDQuery;
@@ -1294,6 +1293,8 @@ begin
       dmMain.sqlSM_SetzeLetzteBuchung.SQLConnection := con_SQLConnection;
       dmMain.sqlSM_HoleBuchungenJahr.SQLConnection := con_SQLConnection;
       dmMain.sqlSM_SetzeLogin.SQLConnection := con_SQLConnection;
+      dmMain.sqlSM_HoleFehltage.SQLConnection := con_SQLConnection;
+      dmMain.sqlSM_SetzeGeraeteID.SQLConnection := con_SQLConnection;
       // Login Synchronisieren
       {$Region Login}
       if ALogin then

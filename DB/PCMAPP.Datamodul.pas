@@ -110,8 +110,8 @@ type
     procedure con_PCMAfterConnect(Sender: TObject);
     procedure con_PCMBeforeConnect(Sender: TObject);
     procedure DataModuleCreate(Sender: TObject);
-    procedure locsens_LocationLocationChanged(Sender: TObject; const [Ref] OldLocation, NewLocation: TLocationCoord2D);
     procedure DataModuleDestroy(Sender: TObject);
+    procedure locsens_LocationLocationChanged(Sender: TObject; const [Ref] OldLocation, NewLocation: TLocationCoord2D);
   private
     { Private-Deklarationen }
   public
