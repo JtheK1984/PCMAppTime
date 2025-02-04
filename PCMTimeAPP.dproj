@@ -299,7 +299,7 @@ $(PostBuildEvent)]]></PostBuildEvent>
         <VerInfo_Locale>1031</VerInfo_Locale>
         <UWP_DelphiLogo44>Grafiken\48x48\48.png</UWP_DelphiLogo44>
         <UWP_DelphiLogo150>Grafiken\144x144\144.png</UWP_DelphiLogo150>
-        <Icon_MainIcon>..\PCMManagerAPP\PCMManagerAPP_Icon.ico</Icon_MainIcon>
+        <Icon_MainIcon>PCMTimeAPP_Icon.ico</Icon_MainIcon>
         <AppDPIAwarenessMode>none</AppDPIAwarenessMode>
         <VerInfo_MinorVer>6</VerInfo_MinorVer>
         <VerInfo_Build>1</VerInfo_Build>
@@ -313,7 +313,7 @@ $(PostBuildEvent)]]></PostBuildEvent>
         <VerInfo_Locale>1031</VerInfo_Locale>
         <UWP_DelphiLogo44>Grafiken\48x48\48.png</UWP_DelphiLogo44>
         <UWP_DelphiLogo150>Grafiken\144x144\144.png</UWP_DelphiLogo150>
-        <Icon_MainIcon>..\PCMManagerAPP\PCMManagerAPP_Icon.ico</Icon_MainIcon>
+        <Icon_MainIcon>PCMTimeAPP_Icon.ico</Icon_MainIcon>
         <AppDPIAwarenessMode>none</AppDPIAwarenessMode>
         <VerInfo_MinorVer>6</VerInfo_MinorVer>
         <VerInfo_Build>1</VerInfo_Build>
@@ -454,7 +454,7 @@ $(PostBuildEvent)]]></PostBuildEvent>
         <AppDPIAwarenessMode>PerMonitor</AppDPIAwarenessMode>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
-        <Icon_MainIcon>..\PCMManagerAPP\PCMManagerAPP_Icon.ico</Icon_MainIcon>
+        <Icon_MainIcon>PCMTimeAPP_Icon.ico</Icon_MainIcon>
         <VerInfo_MinorVer>6</VerInfo_MinorVer>
         <VerInfo_Build>1</VerInfo_Build>
     </PropertyGroup>
@@ -463,7 +463,7 @@ $(PostBuildEvent)]]></PostBuildEvent>
         <AppDPIAwarenessMode>PerMonitor</AppDPIAwarenessMode>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
-        <Icon_MainIcon>..\PCMManagerAPP\PCMManagerAPP_Icon.ico</Icon_MainIcon>
+        <Icon_MainIcon>PCMTimeAPP_Icon.ico</Icon_MainIcon>
         <VerInfo_MinorVer>6</VerInfo_MinorVer>
         <VerInfo_Build>1</VerInfo_Build>
     </PropertyGroup>
