@@ -180,6 +180,8 @@
 $(PostBuildEvent)]]></PostBuildEvent>
         <Android_SplashTileMode>disabled</Android_SplashTileMode>
         <Android_SplashGravity>center</Android_SplashGravity>
+        <Android_BackgroundColor>#000000</Android_BackgroundColor>
+        <Android_DarkBackgroundColor>#000000</Android_DarkBackgroundColor>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Android64)'!=''">
         <VerInfo_Keys>package=com.delphiworlds.$(MSBuildProjectName);label=$(MSBuildProjectName);versionCode=1;versionName=1.6.0;persistent=False;restoreAnyVersion=False;installLocation=auto;largeHeap=False;theme=TitleBar;hardwareAccelerated=true;apiKey=</VerInfo_Keys>
@@ -212,6 +214,8 @@ $(PostBuildEvent)]]></PostBuildEvent>
         <Android_NotificationIcon48>Grafiken\48x48\48.png</Android_NotificationIcon48>
         <Android_NotificationIcon72>Grafiken\72x72\72.png</Android_NotificationIcon72>
         <Android_NotificationIcon96>Grafiken\96x96\96.png</Android_NotificationIcon96>
+        <Android_BackgroundColor>#FFFFFF</Android_BackgroundColor>
+        <Android_DarkBackgroundColor>#000000</Android_DarkBackgroundColor>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_iOSDevice64)'!=''">
         <iPhone_AppIcon180>$(BDS)\bin\Artwork\iOS\iPhone\FM_ApplicationIcon_180x180.png</iPhone_AppIcon180>
@@ -291,11 +295,11 @@ $(PostBuildEvent)]]></PostBuildEvent>
         <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
         <DCC_UsePackage>DBXSqliteDriver;RESTComponents;DataSnapServerMidas;DBXDb2Driver;DBXInterBaseDriver;vclactnband;vclFireDAC;emsclientfiredac;DataSnapFireDAC;svnui;FireDACADSDriver;DBXMSSQLDriver;DatasnapConnectorsFreePascal;FireDACMSSQLDriver;vcltouch;FMXTee924;vcldb;bindcompfmx;svn;DBXOracleDriver;inetdb;TMSFMXWebGMapsPkgDXE10;emsedge;FireDACIBDriver;fmx;fmxdae;FireDACDBXDriver;dbexpress;IndyCore;vclx;dsnap;DataSnapCommon;emsclient;FireDACCommon;RESTBackendComponents;DataSnapConnectors;VCLRESTComponents;soapserver;FMXTeeImport924;vclie;bindengine;DBXMySQLDriver;FireDACOracleDriver;CloudService;FireDACMySQLDriver;DBXFirebirdDriver;FireDACCommonODBC;FireDACCommonDriver;DataSnapClient;FMXTeeLanguage924;inet;bindcompdbx;IndyIPCommon;vcl;DBXSybaseASEDriver;IndyIPServer;IndySystem;FireDACDb2Driver;dsnapcon;madExcept_;FireDACMSAccDriver;fmxFireDAC;FireDACInfxDriver;vclimg;madBasic_;TeeDB;FireDAC;emshosting;FireDACSqliteDriver;FireDACPgDriver;FireDACASADriver;DBXOdbcDriver;FireDACTDataDriver;soaprtl;DbxCommonDriver;Tee;DataSnapServer;xmlrtl;soapmidas;DataSnapNativeClient;fmxobj;vclwinx;FireDACDSDriver;rtl;madDisAsm_;DbxClientDriver;FMXTree24;DBXSybaseASADriver;CustomIPTransport;vcldsnap;TMSFMXPackPkgDXE10;FMXTeeDB924;bindcomp;appanalytics;FmxTeeUI924;DBXInformixDriver;IndyIPClient;bindcompvcl;TeeUI;dbxcds;VclSmp;adortl;FireDACODBCDriver;DataSnapIndy10ServerTransport;FMXTeePro924;dsnapxml;DataSnapProviderClient;dbrtl;inetdbxpress;FireDACMongoDBDriver;IndyProtocols;TMSFMXPackPkgDEDXE10;fmxase;$(DCC_UsePackage)</DCC_UsePackage>
         <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
-        <VerInfo_Keys>CompanyName=PCM;FileVersion=1.6.0.1;InternalName=PCM Managerapp 32-Bit;LegalCopyright=Jens Henske;LegalTrademarks=;OriginalFilename=PCM Managerapp 32-Bit;ProductVersion=1.6;Comments=011023;ProgramID=com.embarcadero.$(MSBuildProjectName);FileDescription=$(MSBuildProjectName);ProductName=$(MSBuildProjectName) 32-Bit</VerInfo_Keys>
+        <VerInfo_Keys>CompanyName=PCM;FileVersion=1.6.0.1;InternalName=PCM Time 32-Bit;LegalCopyright=Jens Henske;LegalTrademarks=;OriginalFilename=PCM Time 32-Bit;ProductVersion=1.6;Comments=04022025;ProgramID=com.embarcadero.$(MSBuildProjectName);FileDescription=$(MSBuildProjectName);ProductName=$(MSBuildProjectName) 32-Bit</VerInfo_Keys>
         <VerInfo_Locale>1031</VerInfo_Locale>
         <UWP_DelphiLogo44>Grafiken\48x48\48.png</UWP_DelphiLogo44>
         <UWP_DelphiLogo150>Grafiken\144x144\144.png</UWP_DelphiLogo150>
-        <Icon_MainIcon>PCMManagerAPP_Icon.ico</Icon_MainIcon>
+        <Icon_MainIcon>..\PCMManagerAPP\PCMManagerAPP_Icon.ico</Icon_MainIcon>
         <AppDPIAwarenessMode>none</AppDPIAwarenessMode>
         <VerInfo_MinorVer>6</VerInfo_MinorVer>
         <VerInfo_Build>1</VerInfo_Build>
@@ -305,11 +309,11 @@ $(PostBuildEvent)]]></PostBuildEvent>
         <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;$(DCC_Namespace)</DCC_Namespace>
         <DCC_UsePackage>DBXSqliteDriver;RESTComponents;DataSnapServerMidas;DBXDb2Driver;DBXInterBaseDriver;vclactnband;vclFireDAC;emsclientfiredac;DataSnapFireDAC;FireDACADSDriver;DBXMSSQLDriver;DatasnapConnectorsFreePascal;FireDACMSSQLDriver;vcltouch;vcldb;bindcompfmx;DBXOracleDriver;inetdb;emsedge;FireDACIBDriver;fmx;fmxdae;FireDACDBXDriver;dbexpress;IndyCore;vclx;dsnap;DataSnapCommon;emsclient;FireDACCommon;RESTBackendComponents;DataSnapConnectors;VCLRESTComponents;soapserver;vclie;bindengine;DBXMySQLDriver;FireDACOracleDriver;CloudService;FireDACMySQLDriver;DBXFirebirdDriver;FireDACCommonODBC;FireDACCommonDriver;DataSnapClient;inet;bindcompdbx;IndyIPCommon;vcl;DBXSybaseASEDriver;IndyIPServer;IndySystem;FireDACDb2Driver;dsnapcon;FireDACMSAccDriver;fmxFireDAC;FireDACInfxDriver;vclimg;TeeDB;FireDAC;emshosting;FireDACSqliteDriver;FireDACPgDriver;FireDACASADriver;DBXOdbcDriver;FireDACTDataDriver;soaprtl;DbxCommonDriver;Tee;DataSnapServer;xmlrtl;soapmidas;DataSnapNativeClient;fmxobj;vclwinx;FireDACDSDriver;rtl;DbxClientDriver;DBXSybaseASADriver;CustomIPTransport;vcldsnap;bindcomp;appanalytics;DBXInformixDriver;IndyIPClient;bindcompvcl;TeeUI;dbxcds;VclSmp;adortl;FireDACODBCDriver;DataSnapIndy10ServerTransport;dsnapxml;DataSnapProviderClient;dbrtl;inetdbxpress;FireDACMongoDBDriver;IndyProtocols;fmxase;$(DCC_UsePackage)</DCC_UsePackage>
         <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
-        <VerInfo_Keys>CompanyName=PCM;FileVersion=1.6.0.1;InternalName=PCM Managerapp 64-Bit;LegalCopyright=Jens Henske;LegalTrademarks=;OriginalFilename=PCM Managerapp 64-Bit;ProductVersion=1.6;Comments=011023;ProgramID=com.embarcadero.$(MSBuildProjectName);FileDescription=$(MSBuildProjectName);ProductName=$(MSBuildProjectName) 64-Bit</VerInfo_Keys>
+        <VerInfo_Keys>CompanyName=PCM;FileVersion=1.6.0.1;InternalName=PCM Time 64-Bit;LegalCopyright=Jens Henske;LegalTrademarks=;OriginalFilename=PCM Time 64-Bit;ProductVersion=1.6;Comments=04022025;ProgramID=com.embarcadero.$(MSBuildProjectName);FileDescription=$(MSBuildProjectName);ProductName=$(MSBuildProjectName) 64-Bit</VerInfo_Keys>
         <VerInfo_Locale>1031</VerInfo_Locale>
         <UWP_DelphiLogo44>Grafiken\48x48\48.png</UWP_DelphiLogo44>
         <UWP_DelphiLogo150>Grafiken\144x144\144.png</UWP_DelphiLogo150>
-        <Icon_MainIcon>PCMManagerAPP_Icon.ico</Icon_MainIcon>
+        <Icon_MainIcon>..\PCMManagerAPP\PCMManagerAPP_Icon.ico</Icon_MainIcon>
         <AppDPIAwarenessMode>none</AppDPIAwarenessMode>
         <VerInfo_MinorVer>6</VerInfo_MinorVer>
         <VerInfo_Build>1</VerInfo_Build>
@@ -342,7 +346,7 @@ $(PostBuildEvent)]]></PostBuildEvent>
         <Android_GcmDefaultSenderId>179997971509</Android_GcmDefaultSenderId>
         <Android_ProjectId>pcm-manager</Android_ProjectId>
         <DCC_DcuOutput>.\$(Platform)\$(Config)</DCC_DcuOutput>
-        <Android_BackgroundColor>#FFFFFF</Android_BackgroundColor>
+        <Android_BackgroundColor>#000000</Android_BackgroundColor>
         <Android_DarkBackgroundColor>#000000</Android_DarkBackgroundColor>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Android64)'!=''">
@@ -413,7 +417,7 @@ $(PostBuildEvent)]]></PostBuildEvent>
         <AppDPIAwarenessMode>PerMonitor</AppDPIAwarenessMode>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
-        <Icon_MainIcon>PCMManagerAPP_Icon.ico</Icon_MainIcon>
+        <Icon_MainIcon>..\PCMManagerAPP\PCMManagerAPP_Icon.ico</Icon_MainIcon>
         <VerInfo_MinorVer>6</VerInfo_MinorVer>
         <VerInfo_Build>1</VerInfo_Build>
     </PropertyGroup>
@@ -422,7 +426,7 @@ $(PostBuildEvent)]]></PostBuildEvent>
         <AppDPIAwarenessMode>PerMonitor</AppDPIAwarenessMode>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
-        <Icon_MainIcon>PCMManagerAPP_Icon.ico</Icon_MainIcon>
+        <Icon_MainIcon>..\PCMManagerAPP\PCMManagerAPP_Icon.ico</Icon_MainIcon>
         <VerInfo_MinorVer>6</VerInfo_MinorVer>
         <VerInfo_Build>1</VerInfo_Build>
     </PropertyGroup>
@@ -434,7 +438,7 @@ $(PostBuildEvent)]]></PostBuildEvent>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2_Android)'!=''">
         <VerInfo_Build>1</VerInfo_Build>
-        <Android_BackgroundColor>#FFFFFF</Android_BackgroundColor>
+        <Android_BackgroundColor>#000000</Android_BackgroundColor>
         <Android_DarkBackgroundColor>#000000</Android_DarkBackgroundColor>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2_Android64)'!=''">
@@ -450,7 +454,7 @@ $(PostBuildEvent)]]></PostBuildEvent>
         <AppDPIAwarenessMode>PerMonitor</AppDPIAwarenessMode>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
-        <Icon_MainIcon>PCMManagerAPP_Icon.ico</Icon_MainIcon>
+        <Icon_MainIcon>..\PCMManagerAPP\PCMManagerAPP_Icon.ico</Icon_MainIcon>
         <VerInfo_MinorVer>6</VerInfo_MinorVer>
         <VerInfo_Build>1</VerInfo_Build>
     </PropertyGroup>
@@ -459,7 +463,7 @@ $(PostBuildEvent)]]></PostBuildEvent>
         <AppDPIAwarenessMode>PerMonitor</AppDPIAwarenessMode>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
-        <Icon_MainIcon>PCMManagerAPP_Icon.ico</Icon_MainIcon>
+        <Icon_MainIcon>..\PCMManagerAPP\PCMManagerAPP_Icon.ico</Icon_MainIcon>
         <VerInfo_MinorVer>6</VerInfo_MinorVer>
         <VerInfo_Build>1</VerInfo_Build>
     </PropertyGroup>

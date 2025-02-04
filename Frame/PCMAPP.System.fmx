@@ -605,7 +605,6 @@ object frm_PCMAPP_System: Tfrm_PCMAPP_System
               Size.PlatformDefault = False
               TabOrder = 1
               OnClick = sw_LogClick
-              OnSwitch = sw_LogSwitch
             end
           end
         end

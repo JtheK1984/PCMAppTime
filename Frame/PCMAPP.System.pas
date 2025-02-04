@@ -214,7 +214,6 @@ type
     procedure sw_LocalAccountClick(Sender: TObject);
     procedure sw_LogClick(Sender: TObject);
     procedure sw_AutologinClick(Sender: TObject);
-    procedure sw_LogSwitch(Sender: TObject);
   private
     { Private-Deklarationen }
     qry_Work: TFDQuery;
