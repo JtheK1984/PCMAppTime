@@ -108,20 +108,15 @@ var
   DayItem: TListBoxItem;
   FirstDate: TDateTime;
   i: Integer;
-  dtDateTimeEvent: TDateTime;
   dtLoopDate: TDateTime;
   wMonthDaysCount: Word;
   qry_Buchungen: TFDQuery;
-  tConstTime: TTime;
 begin
-  tConstTime:= StrToTime('00:00');
   FirstDate := StartOfTheMonth(Self.Date);
   wMonthDaysCount := DaysInMonth(FirstDate);
   qry_Buchungen:= TFDQuery.Create(Self);
   qry_Buchungen.Connection:= dmmain.con_PCM;
   qry_Buchungen.SQL.Text:= 'SELECT Datum,Fehltag,Feiertag,Kommen,Gehen From Buchungen Where Datum between :Von and :Bis';
-//  qry_Buchungen.ParamByName('Kommen').AsTime:= tConstTime;
-//  qry_Buchungen.ParamByName('Gehen').AsTime:= tConstTime;
   qry_Buchungen.ParamByName('Von').AsDate:= StartOfTheMonth(Self.Date);
   qry_Buchungen.ParamByName('Bis').AsDate:= EndOfTheMonth(Self.Date);
   qry_Buchungen.open;

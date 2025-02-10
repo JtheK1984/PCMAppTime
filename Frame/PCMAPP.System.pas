@@ -62,8 +62,11 @@ type
   Tfrm_PCMAPP_System = class(TFrame)
     bckup_sqlBackup: TFDSQLiteBackup;
     btn_Restore: TButton;
+    cbx_Animation: TComboBox;
     cbx_DesignStyle: TComboBox;
     cbx_Files: TComboBox;
+    Image1: TImage;
+    img_Animation: TImage;
     img_Backup: TImage;
     img_Biometrie: TImage;
     img_Design: TImage;
@@ -74,7 +77,12 @@ type
     img_Reset: TImage;
     img_Restore: TImage;
     img_Userdata: TImage;
+    Label1: TLabel;
+    Label2: TLabel;
+    Layout2: TLayout;
+    Layout3: TLayout;
     lbl_All: TLabel;
+    lbl_Animation: TLabel;
     lbl_Ausgaben: TLabel;
     lbl_BackupDetailDescription: TLabel;
     lbl_BackupDetailHeader: TLabel;
@@ -113,6 +121,7 @@ type
     lbl_UserdataDetailServerPort: TLabel;
     lbl_UserdataDetailUser: TLabel;
     lbl_UserdataDetailUserdata: TLabel;
+    ListBoxItem1: TListBoxItem;
     lo_1All: TLayout;
     lo_2Kontakte: TLayout;
     lo_3Kalender: TLayout;
@@ -124,8 +133,11 @@ type
     lo_9Gutscheine: TLayout;
     lo_AllLabel: TLayout;
     lo_Allsw: TLayout;
+    lo_AnimationDetail: TLayout;
+    lo_AnimationImage: TLayout;
     lo_AusgabenLabel: TLayout;
     lo_AusgabenSw: TLayout;
+    lo_AutologinImage: TLayout;
     lo_BackupDetail: TLayout;
     lo_BackupImage: TLayout;
     lo_BelegeLabel: TLayout;
@@ -166,6 +178,7 @@ type
     lstbx_SystemInformation: TListBox;
     lstbxitm_101Design: TListBoxItem;
     lstbxitm_102Biometrie: TListBoxItem;
+    lstbxitm_102Design: TListBoxItem;
     lstbxitm_103LocalAccount: TListBoxItem;
     lstbxitm_104Log: TListBoxItem;
     lstbxitm_105Userdata: TListBoxItem;
@@ -180,6 +193,7 @@ type
     qry_Restore: TFDQuery;
     sw_All: TSwitch;
     sw_Ausgaben: TSwitch;
+    sw_Autologin: TSwitch;
     sw_Belege: TSwitch;
     sw_Biometrie: TSwitch;
     sw_Einnahmen: TSwitch;
@@ -190,18 +204,11 @@ type
     sw_Log: TSwitch;
     sw_Passwort: TSwitch;
     sw_Serial: TSwitch;
-    tc_Optionen: TTabControl;
-    ti_1Optionen: TTabItem;
+    tc_Options: TTabControl;
+    ti_1Options: TTabItem;
     ti_2Restore: TTabItem;
     vsbx_RestoreDetailView: TVertScrollBox;
-    ListBoxItem1: TListBoxItem;
-    lo_AutologinImage: TLayout;
-    Image1: TImage;
-    Layout2: TLayout;
-    Label1: TLabel;
-    Label2: TLabel;
-    Layout3: TLayout;
-    sw_Autologin: TSwitch;
+    Llbl_DeviceIDDetail: TLabel;
     procedure btn_RestoreClick(Sender: TObject);
     procedure cbx_DesignStyleChange(Sender: TObject);
     procedure cbx_FilesChange(Sender: TObject);
@@ -214,6 +221,7 @@ type
     procedure sw_LocalAccountClick(Sender: TObject);
     procedure sw_LogClick(Sender: TObject);
     procedure sw_AutologinClick(Sender: TObject);
+    procedure cbx_AnimationChange(Sender: TObject);
   private
     { Private-Deklarationen }
     qry_Work: TFDQuery;
@@ -277,7 +285,12 @@ procedure Tfrm_PCMAPP_System.Execute;
     lbl_ProductVersionImageOSDetail.text:=  'Android-Version: ' + frm_PCM_Main.sOSDetail;
     lbl_ProductVersionImageDeviceDetail.Text:= 'Geräte-Typ: ' + frm_PCM_Main.sDeviceDetail;
     lbl_ProductVersionImageProviderDetail.text:= 'Netzbetreiber: ' + frm_PCM_Main.sProviderDetail;
-    mem_FMCInfosDetailToken.Text:=   dmmain.sDeviceToken;
+    qry_Work.Connection:= dmmain.con_PCM;
+    qry_Work.SQL.Text:= 'SELECT DeviceID, DeviceToken From Auto_login';
+    qry_Work.open;
+    Llbl_DeviceIDDetail.Text:= 'Geräte-ID: '+ qry_Work.FieldByName('DeviceID').asString;
+    mem_FMCInfosDetailToken.Text:= qry_Work.FieldByName('DeviceToken').asString;
+    qry_Work.Close;
     {$ENDIF ANDROID}
     {$IFDEF MSWINDOWS}
     lbl_ProductVersionImageVersion.Text:= 'App-Version: 1.6.0';
@@ -296,19 +309,21 @@ begin
   cbx_DesignStyle.items.Add('Dunkel Blau');
   {$ENDIF ANDROID}
   {$IFDEF MSWINDOWS}
+  tc_Options.Margins.Left:= 16;
+  tc_Options.Margins.Right:= 16;
   cbx_DesignStyle.items.Add('Calypso');
   cbx_DesignStyle.items.Add('Hell');
   cbx_DesignStyle.items.Add('Dunkel');
   cbx_DesignStyle.items.Add('Mineshaft');
   cbx_DesignStyle.items.Add('Ubuntu');
   {$ENDIF MSWINDOWS}
-  cbx_DesignStyle.ItemIndex:= frm_pcm_main.iDesignAPP;
+
   SetDesign;
-  tc_Optionen.ActiveTab:= ti_1Optionen;
+  tc_Options.ActiveTab:= ti_1Options;
   ReadInformation;
   qry_Work:= TFDQuery.Create(nil);
   qry_Work.Connection:= dmmain.con_PCM;
-  qry_Work.SQL.Text := sSQL_SELECT_All_AUTOLOGIN;
+  qry_Work.SQL.Text := sSQL_SEL_All_AUtologin;
   qry_Work.Open;
   if qry_Work.RecordCount > 0 then
   begin
@@ -348,18 +363,23 @@ begin
     begin
       sw_Autologin.IsChecked:= false;
     end;
-
+    cbx_Animation.ItemIndex:= qry_Work.FieldByName('Design').AsInteger;
+    {$IFDEF MSWINDOWS}
+    cbx_DesignStyle.ItemIndex:= frm_PCM_Main.iDesignWin;
+    {$ENDIF MSWINDOWS}
+    {$IFDEF ANDROID}
+    cbx_DesignStyle.ItemIndex:= frm_PCM_Main.iDesignApp;
+    {$ENDIF ANDROID}
     lbl_UserdataDetailPasswort.text:= 'Passwort: ********';
     FreeAndnil(qry_Work);
   end;
   frm_PCM_Main.tc_More.ActiveTab := frm_PCM_Main.ti_2ConfigConfig;
   frm_PCM_Main.lbl_ModulName.Text := 'Einstellungen';
   frm_PCM_Main.SetDisableToolButtons;
-//  frm_PCM_Main.btn_Synchronisation.Visible := True;
+  frm_PCM_Main.btn_Synchronisation.Visible := True;
   frm_PCM_Main.btn_BackSystem.Visible := True;
   {$IFDEF MSWINDOWS}
   lstbxitm_102Biometrie.Visible:= false;
-//  lstbxitm_110ProductVersion.Visible:= false;
   lstbxitm_110FCMInfos.Visible:= false;
   {$ENDIF MSWINDOWS}
 end;
@@ -399,6 +419,12 @@ begin
       TextColor:= TAlphaColorRec.White;
     end;
     {$ENDIF MSWINDOWS}
+  end;
+  for icbxCount := 0 to cbx_Animation.count - 1 do
+  begin
+    cbx_Animation.ListBox.ListItems[icbxCount].StyledSettings:= cbx_Animation.ListBox.ListItems[icbxCount].StyledSettings - [TStyledSetting.Size,TStyledSetting.Style,TStyledSetting.FontColor,TStyledSetting.Other];
+    cbx_Animation.ListBox.ListItems[icbxCount].TextSettings.Font.Size:= 14;
+    cbx_Animation.ListBox.ListItems[icbxCount].TextSettings.FontColor:= TextColor;
   end;
   for icbxCount := 0 to cbx_Designstyle.count - 1 do
   begin
@@ -595,6 +621,17 @@ begin
 //  end);
 
 end;
+procedure Tfrm_PCMAPP_System.cbx_AnimationChange(Sender: TObject);
+begin
+  qry_Work:= TFDQuery.Create(nil);
+  qry_Work.Connection:= dmmain.con_PCM;
+  frm_PCM_Main.iAnimation:= cbx_Animation.ItemIndex;
+  qry_Work.SQL.Text := sSQL_UPD_Desgin_Autologin;
+  qry_Work.ParamByName('Design').AsInteger:= cbx_Animation.ItemIndex;
+  qry_Work.ExecSQL;
+  FreeAndnil(qry_Work);
+end;
+
 procedure Tfrm_PCMAPP_System.cbx_DesignStyleChange(Sender: TObject);
 begin
   qry_Work:= TFDQuery.Create(nil);
@@ -686,7 +723,7 @@ begin
   except
   end;
   try
-  tc_Optionen.ActiveTab:= ti_2Restore;
+  tc_Options.ActiveTab:= ti_2Restore;
   except
   end;
 end;

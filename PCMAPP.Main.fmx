@@ -1075,7 +1075,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
           Size.Height = 861.000000000000000000
           Size.PlatformDefault = False
           TabHeight = 49.000000000000000000
-          TabIndex = 3
+          TabIndex = 0
           TabOrder = 0
           TabPosition = None
           OnChange = tc_MainAppChange
@@ -1113,7 +1113,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
             TextSettings.Font.Size = 10.000000000000000000
             TextSettings.Trimming = None
             StyledSettings = [Family, FontColor]
-            IsSelected = False
+            IsSelected = True
             Size.Width = 8.000000000000000000
             Size.Height = 8.000000000000000000
             Size.PlatformDefault = False
@@ -2925,12 +2925,12 @@ object frm_PCM_Main: Tfrm_PCM_Main
                       Align = Left
                       HitTest = False
                       Position.Y = 50.000000000000000000
-                      Size.Width = 120.000000000000000000
+                      Size.Width = 130.000000000000000000
                       Size.Height = 151.000000000000000000
                       Size.PlatformDefault = False
                       TabOrder = 3
                       CanFocus = False
-                      Viewport.Width = 120.000000000000000000
+                      Viewport.Width = 130.000000000000000000
                       Viewport.Height = 151.000000000000000000
                       object trvwitm_BookingDatum: TTreeViewItem
                         StyledSettings = [Family, FontColor]
@@ -3000,12 +3000,12 @@ object frm_PCM_Main: Tfrm_PCM_Main
                       Align = Client
                       HitTest = False
                       Margins.Right = 8.000000000000000000
-                      Size.Width = 376.000000000000000000
+                      Size.Width = 366.000000000000000000
                       Size.Height = 151.000000000000000000
                       Size.PlatformDefault = False
                       TabOrder = 1
                       CanFocus = False
-                      Viewport.Width = 376.000000000000000000
+                      Viewport.Width = 366.000000000000000000
                       Viewport.Height = 151.000000000000000000
                       object trvwitm_BookingDatumVal: TTreeViewItem
                         StyledSettings = [Family, FontColor]
@@ -4566,6 +4566,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
                                   TextSettings.FontColor = claWhite
                                   Position.X = 16.000000000000000000
                                   Position.Y = 32.000000000000000000
+                                  Enabled = False
                                   Margins.Left = 16.000000000000000000
                                   Margins.Right = 16.000000000000000000
                                   Size.Width = 584.000000000000000000
@@ -5824,7 +5825,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
             TextSettings.Font.Size = 10.000000000000000000
             TextSettings.Trimming = None
             StyledSettings = [Family, FontColor]
-            IsSelected = True
+            IsSelected = False
             Size.Width = 8.000000000000000000
             Size.Height = 8.000000000000000000
             Size.PlatformDefault = False
@@ -5835,7 +5836,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
             ExplicitSize.cy = 49.000000000000000000
             object cal_Calendar: TCalendar
               Align = Top
-              Date = 45692.000000000000000000
+              Date = 45698.000000000000000000
               FirstDayOfWeek = dowMonday
               Size.Width = 616.000000000000000000
               Size.Height = 300.000000000000000000
@@ -7181,12 +7182,12 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     HitTest = False
                     Margins.Left = 16.000000000000000000
                     Size.Width = 424.000000000000000000
-                    Size.Height = 758.000000000000000000
+                    Size.Height = 682.000000000000000000
                     Size.PlatformDefault = False
                     TabOrder = 2
                     CanFocus = False
                     Viewport.Width = 424.000000000000000000
-                    Viewport.Height = 758.000000000000000000
+                    Viewport.Height = 682.000000000000000000
                     object TreeViewItem29: TTreeViewItem
                       StyledSettings = [Family, FontColor]
                       TextSettings.Font.StyleExt = {00070000000000000004000000}
@@ -7253,12 +7254,12 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     Position.X = 440.000000000000000000
                     Position.Y = 54.000000000000000000
                     Size.Width = 160.000000000000000000
-                    Size.Height = 758.000000000000000000
+                    Size.Height = 682.000000000000000000
                     Size.PlatformDefault = False
                     TabOrder = 1
                     CanFocus = False
                     Viewport.Width = 160.000000000000000000
-                    Viewport.Height = 758.000000000000000000
+                    Viewport.Height = 682.000000000000000000
                     object TreeViewItem48: TTreeViewItem
                       StyledSettings = [Family, FontColor]
                       TextSettings.Font.StyleExt = {00070000000000000004000000}
@@ -7436,6 +7437,22 @@ object frm_PCM_Main: Tfrm_PCM_Main
                       Text = 'Jahr:'
                       TabOrder = 124
                     end
+                  end
+                  object btn_AuswertungJahrCalc: TButton
+                    Align = Bottom
+                    Margins.Left = 16.000000000000000000
+                    Margins.Top = 16.000000000000000000
+                    Margins.Right = 16.000000000000000000
+                    Margins.Bottom = 16.000000000000000000
+                    Position.X = 16.000000000000000000
+                    Position.Y = 752.000000000000000000
+                    Size.Width = 584.000000000000000000
+                    Size.Height = 44.000000000000000000
+                    Size.PlatformDefault = False
+                    TabOrder = 11
+                    Text = 'Berechne Jahr'
+                    TextSettings.Trimming = None
+                    OnClick = btn_AuswertungJahrCalcClick
                   end
                 end
               end
@@ -8784,7 +8801,6 @@ object frm_PCM_Main: Tfrm_PCM_Main
   end
   object wtcsr_WaitCursor: TFDGUIxWaitCursor
     Provider = 'FMX'
-    ScreenCursor = gcrDefault
     Left = 304
     Top = 714
   end

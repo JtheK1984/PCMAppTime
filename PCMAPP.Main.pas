@@ -611,6 +611,7 @@ type
     Layout13: TLayout;
     Label11: TLabel;
     Circle6: TCircle;
+    btn_AuswertungJahrCalc: TButton;
     {$IFDEF ANDROID}
     procedure BiometricAuth1AuthenticateSuccess(Sender: TObject);
     procedure BiometricAuth1AuthenticateFail(Sender: TObject; const FailReason: TBiometricFailReason; const ResultMessage: string);
@@ -666,6 +667,7 @@ type
     procedure cmbbx_JahrJAChange(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
+    procedure btn_AuswertungJahrCalcClick(Sender: TObject);
  private
     { Private-Deklarationen }
     {$IFDEF ANDROID}
@@ -715,7 +717,6 @@ type
     procedure Listening(const AIsListening: Boolean);
     procedure TakePhoneCallPermissionRequestResult(Sender: TObject; const APermissions: TClassicStringDynArray; const AGrantResults: TClassicPermissionStatusDynArray);
     {$ENDIF ANDROID}
-    function GetServerID: integer;
     procedure AfterLogin(AFirstStart: Boolean);
     procedure AutoLogin(sBenutzername, sPasswort: String);
     procedure BerechneMonatsUebersicht(AMonat,AJahr: integer);
@@ -732,6 +733,7 @@ type
     procedure ResizeLayout;
     procedure SendMail(ATarget: string);
     procedure SendToMapApp(AStreet,AZip: string);
+    procedure SetAnimation(AAnimation: integer);
     procedure SetAutoLogin(sUsername, sPasswort: String; iID_MA_Stammdaten, iID_Server: Integer; bAutoLogin: Boolean);
     procedure SetDesign(ADesignApp,ADesignWin: integer);
     procedure SetDisableToolButtons;
@@ -761,27 +763,6 @@ uses
 // HELPER FUNCTIONS                                                           //
 ////////////////////////////////////////////////////////////////////////////////
 {$Region Helperfunctions}
-function Tfrm_PCM_Main.GetServerID: integer;
-var
-  qry_work: TFDQuery;
-begin
-  Result:= -1;
-  try
-    qry_work:= TFDQuery.Create(nil);
-    qry_work.Connection:= dmmain.con_PCM;
-    qry_work.SQL.Text := sSQL_SELECT_All_SERVER_WHERE_BEZEICHNUNG;
-    qry_work.ParamByName('Bezeichnung').AsString:= frm_PCM_main.edt_Server.Text;
-    qry_work.Open;
-    while not qry_work.Eof do
-    begin
-      Result:= qry_work.FieldByName('ID').AsInteger;
-      qry_work.Next;
-    end;
-    qry_work.Close;
-    Freeandnil(qry_work);
-  except
-  end;
-end;
 procedure Tfrm_PCM_Main.AfterLogin(AFirstStart: Boolean);
 begin
   ShowStartPage;
@@ -789,95 +770,70 @@ end;
 procedure Tfrm_PCM_Main.AutoLogin(sBenutzername, sPasswort: String);
 var
   bLocalaccount: boolean;
-  sHash: String;
   slocalBenutzername: String;
   slocalPasswort: String;
 begin
-  try
-    {$IFDEF MSWINDOWS}
-    btn_CloseApp.Visible:= true;
-    {$ENDIF MSWINDOWS}
-    iServerID:= GetServerID;
-    dmmain.wfWaitFrame.Execute('Auto Login...', 'Login', True);
-    TTask.Run(
-    procedure()
+  {$IFDEF MSWINDOWS}
+  btn_CloseApp.Visible:= true;
+  {$ENDIF MSWINDOWS}
+  dmmain.wfWaitFrame.Execute('Auto Login...', 'Login', True);
+  TTask.Run(
+  procedure()
+  begin
+    qry_Work.SQL.Text := sSQL_SEL_All_AUtologin;
+    qry_Work.Open;
+    bLocalaccount:= qry_Work.FieldByName('Localaccount').AsBoolean;
+    slocalBenutzername:= qry_Work.FieldByName('Benutzername').AsString;
+    slocalPasswort:= qry_Work.FieldByName('Passwort').AsString;
+    qry_Work.Close;
+    if bLocalaccount then
     begin
-      qry_Work.SQL.Text := sSQL_SELECT_All_AUTOLOGIN;
-      qry_Work.Open;
-      bLocalaccount:= qry_Work.FieldByName('Localaccount').AsBoolean;
-      slocalBenutzername:= qry_Work.FieldByName('Benutzername').AsString;
-      slocalPasswort:= qry_Work.FieldByName('Passwort').AsString;
-      qry_Work.Close;
-      if bLocalaccount then
+      if (sBenutzername = slocalBenutzername) and (sPasswort = slocalPasswort) then
       begin
-        if (sBenutzername = slocalBenutzername) and (sPasswort = slocalPasswort) then
-        begin
-          bFirstLogin:= false;
-          dmmain.iUserID:= 0;
-          SetAutoLogin(sBenutzername, sHash, dmmain.iUserID, iServerID, true);
-          AfterLogin(True);
-        end
-        else
-        begin
-          TThread.Synchronize(nil,
-          procedure()
-          begin
-            if (sBenutzername = slocalBenutzername) and (sPasswort <> slocalPasswort) then
-              ShowMessage('Passwort stimmt nicht überein.');
-            if (sBenutzername <> slocalBenutzername) and (sPasswort = slocalPasswort) then
-              ShowMessage('Benutzer stimmt nicht überein.');
-            if (sBenutzername <> slocalBenutzername) and (sPasswort <> slocalPasswort) then
-              ShowMessage('Benutzer und Passwort stimmen nicht überein.');
-          end);
-        end;
+        bFirstLogin:= false;
+        dmmain.iUserID:= 0;
+        SetAutoLogin(sBenutzername, sPasswort, dmmain.iUserID, iServerID, true);
+        AfterLogin(True);
       end
       else
       begin
-        qry_Work.Close;
-        qry_Work.SQL.Text := sSQL_SELECT_All_SERVER_WHERE_ID;
-        qry_Work.ParamByName('ID').AsInteger := iServerID;
-        qry_Work.Open;
+        TThread.Synchronize(nil,
+        procedure()
+        begin
+          if (sBenutzername = slocalBenutzername) and (sPasswort <> slocalPasswort) then
+            ShowMessage('Passwort stimmt nicht überein.');
+          if (sBenutzername <> slocalBenutzername) and (sPasswort = slocalPasswort) then
+            ShowMessage('Benutzer stimmt nicht überein.');
+          if (sBenutzername <> slocalBenutzername) and (sPasswort <> slocalPasswort) then
+            ShowMessage('Benutzer und Passwort stimmen nicht überein.');
+        end);
+      end;
+    end
+    else
+    begin
+      SetServerlist;
+      if iServerID <> -1 then
+      begin
+        qry_Work.SQL.Text := sSQL_SELECT_ALL_Login_Where_Benutzer_IDServer;
+        qry_Work.ParamByName('User').AsString := sBenutzername;
+        qry_Work.ParamByName('ID_Server').AsInteger := iServerID;
+        qry_Work.Open();
         if qry_Work.RecordCount > 0 then
         begin
-          dmMain.sHostname := qry_Work.FieldByName('Hostname').AsString;
-          dmMain.sPort := qry_Work.FieldByName('Port').AsString;
-          dmMain.con_SQL.Params.Values['Hostname'] := dmMain.sHostname;
-          dmMain.con_SQL.Params.Values['Port'] := dmMain.sPort;
-          qry_Work.Close;
-          qry_Work.SQL.Text := sSQL_SELECT_ALL_Login_Where_Benutzer_IDServer;
-          qry_Work.ParamByName('User').AsString := sBenutzername;
-          qry_Work.ParamByName('ID_Server').AsInteger := iServerID;
-          qry_Work.Open();
-          if qry_Work.RecordCount > 0 then
+          if (qry_Work.FieldByName('Passwort').AsString = sPasswort) then
           begin
-            if (qry_Work.FieldByName('Passwort').AsString = sPasswort) then
+            dmmain.iUserID := qry_Work.FieldByName('ID_MA_Stammdaten').AsInteger;
+            if CheckServerConnection then
             begin
-              dmmain.iUserID := qry_Work.FieldByName('ID_MA_Stammdaten').AsInteger;
-              if CheckServerConnection then
-              begin
-                WriteLog('Benutzer ' + sBenutzername + ' erfolgreich eingeloggt',0,false);
-                try
-                  SynchFull(dmmain.iUserID, iServerID, dmmain.wfWaitFrame,false);
-                except
-                end;
-              end;
-              qry_Work.Close;
-              qry_Work.SQL.Text := sSQL_SELECT_ALL_Login_Where_IDBenutzer_IDServer;
-              qry_Work.ParamByName('ID_MA_Stammdaten').AsInteger := dmmain.iUserID;
-              qry_Work.ParamByName('ID_Server').AsInteger := iServerID;
-              qry_Work.Open;
-              qry_Work.Close;
-              AfterLogin(False);
-            end else
-            begin
-              TThread.Synchronize(nil,
-              procedure()
-              begin
-                iServerID := -1;
-                tc_Main.ActiveTab := ti_1Login;
-                ShowMessage('Ihre gespeicherten Logindaten stimmen nicht mehr überein. Bitte Login erneut eingeben.');
-              end);
+              Synchronisation(dmmain.iUserID, iServerID, dmmain.wfWaitFrame,false);
             end;
+            qry_Work.Close;
+            qry_Work.SQL.Text := sSQL_SELECT_ALL_Login_Where_IDBenutzer_IDServer;
+            qry_Work.ParamByName('ID_MA_Stammdaten').AsInteger := dmmain.iUserID;
+            qry_Work.ParamByName('ID_Server').AsInteger := iServerID;
+            qry_Work.Open;
+            qry_Work.Close;
+            AfterLogin(False);
           end else
           begin
             TThread.Synchronize(nil,
@@ -888,24 +844,30 @@ begin
               ShowMessage('Ihre gespeicherten Logindaten stimmen nicht mehr überein. Bitte Login erneut eingeben.');
             end);
           end;
-        end else
-        begin
+        end
+        else begin
           TThread.Synchronize(nil,
           procedure()
           begin
             iServerID := -1;
             tc_Main.ActiveTab := ti_1Login;
-            ShowMessage('Der hinterlegte Server ist nicht mehr vorhanden.');
+            ShowMessage('Ihre gespeicherten Logindaten stimmen nicht mehr überein. Bitte Login erneut eingeben.');
           end);
         end;
-
+      end else
+      begin
+        TThread.Synchronize(nil,
+        procedure()
+        begin
+          iServerID := -1;
+          tc_Main.ActiveTab := ti_1Login;
+          ShowMessage('Der hinterlegte Server ist nicht mehr vorhanden.');
+        end);
       end;
-      dmmain.wfWaitFrame.HideFW;
-    end);
-  except
-    on e:Exception do
-      WriteLog('Fehler Autologin: ' + e.Message,0,false);
-  end;
+
+    end;
+    dmmain.wfWaitFrame.HideFW;
+  end);
 end;
 procedure Tfrm_PCM_Main.BerechneJahresUebersicht(AJahr: integer);
 var
@@ -1286,8 +1248,6 @@ procedure Tfrm_PCM_Main.Logout;
 begin
   edt_Benutzername.Text := '';
   edt_Passwort.Text := '';
-  if (dmMain.con_SQL.Connected) and (CheckServerConnection) then
-    dmMain.con_SQL.Connected := False;
   dmmain.iUserID := 0;
   iServerID := -1;
 end;
@@ -1395,51 +1355,127 @@ begin
   ShellExecute(0, 'open', PChar('http://maps.google.de/maps?q=' + AStreet + ',' + AZiP + '&z=12'), nil, nil, 1);
   {$ENDIF MSWINDOWS}
 end;
+procedure Tfrm_PCM_Main.SetAnimation(AAnimation: integer);
+begin
+  rec_1Personal.Align:= TAlignLayout.None;
+  rec_2Booking.Align:= TAlignLayout.None;
+  rec_3Calendar.Align:= TAlignLayout.None;
+  rec_4Auswertung.Align:= TAlignLayout.None;
+
+
+
+
+
+  rec_1Personal.Width:= frm_PCM_Main.ClientWidth - 32;
+  rec_2Booking.Width:= frm_PCM_Main.ClientWidth - 32;
+  rec_3Calendar.Width:= frm_PCM_Main.ClientWidth - 32;
+  rec_4Auswertung.Width:= frm_PCM_Main.ClientWidth - 32;
+
+  case AAnimation of
+  // Keine Animation
+  0:
+    begin
+      rec_1Personal.Align:= TAlignLayout.Top;
+      rec_2Booking.Align:= TAlignLayout.Top;
+      rec_3Calendar.Align:= TAlignLayout.Top;
+      rec_4Auswertung.Align:= TAlignLayout.Top;
+    end;
+  // von allen Richtungen
+  1:
+    begin
+      fa_Personal.Trigger:= '';
+      fa_Booking.Trigger:= '';
+      fa_Calendar.Trigger:= '';
+      fa_Auswertung.Trigger:= '';
+
+
+      rec_1Personal.Visible:= true;
+      rec_2Booking.Visible:= true;
+      rec_3Calendar.Visible:= true;
+      rec_4Auswertung.Visible:= true;
+
+      fa_Personal.OnFinish:= nil;
+      fa_Booking.OnFinish:= nil;
+      fa_Calendar.OnFinish:= nil;
+      fa_Auswertung.OnFinish:= nil;
+
+      fa_Personal.StartValue:= -192;
+      fa_Booking.StartValue:= -184;
+      fa_Calendar.StartValue:= -184;
+      fa_Auswertung.StartValue:= 216;
+
+      fa_Personal.StopValue:= 8;
+      fa_Booking.StopValue:= 16;
+      fa_Calendar.StopValue:= 0;
+      fa_Auswertung.StopValue:= 16;
+
+
+      fa_Personal.PropertyName:= 'Position.Y';
+      fa_Booking.PropertyName:= 'Position.X';
+      fa_Calendar.PropertyName:= 'Position.X';
+      fa_Auswertung.PropertyName:= 'Position.X';
+
+      fa_Personal.Stop;
+      fa_Booking.Stop;
+      fa_Calendar.Stop;
+      fa_Auswertung.Stop;
+
+      fa_Personal.Start;
+      fa_Booking.Start;
+      fa_Calendar.Start;
+      fa_Auswertung.Start;
+    end;
+  end;
+//  rec1.Align:= TAlignLayout.Top;
+//  rec_2Calendar.Align:= TAlignLayout.Top;
+//  rec_3PasswordSerials.Align:= TAlignLayout.Top;
+//  rec_3Password.Align:= TAlignLayout.left;
+//  rec_3Serials.Align:= TAlignLayout.right;
+//  rec_4Auswertung.Align:= TAlignLayout.Top;
+//  rec_5BelegeGiftCards.Align:= TAlignLayout.Top;
+//  rec_5left.Align:= TAlignLayout.left;
+//  rec_5GiftCards.Align:= TAlignLayout.right;
+end;
 procedure Tfrm_PCM_Main.SetAutoLogin(sUsername, sPasswort: String; iID_MA_Stammdaten, iID_Server: Integer; bAutoLogin: Boolean);
 begin
-  try
-    if GetCountFromTableAuto_Login = 0 then
-    begin
-      qry_Work.SQL.Text := sSQL_INSERT_ALL_AUTOLOGIN_WITHOUT_LOCALACCOUNT;
-      qry_Work.ParamByName('Benutzername').AsString := sUsername;
-      qry_Work.ParamByName('Passwort').AsString := sPasswort;
-      qry_Work.ParamByName('Autologin').AsBoolean := true;
-      qry_Work.ParamByName('ID').AsInteger := iID_MA_Stammdaten;
-      qry_Work.ParamByName('ID_Server').AsInteger := iID_Server;
-      qry_Work.ParamByName('Design').AsInteger := 0;
-      qry_Work.ParamByName('DesignApp').AsInteger := 0;
-      qry_Work.ParamByName('DesignWin').AsInteger := 0;
-      qry_Work.ParamByName('Log').AsInteger := 1;
-      qry_Work.ExecSQL;
-    end;
-    qry_Work.Close;
-    if sUsername <> '' then
-    begin
-      qry_Work.SQL.Text := sSQL_UPDATE_Benutzer_Autologin;
-      qry_Work.ParamByName('Benutzername').AsString := sUsername;
-      qry_Work.ExecSQL;
-    end;
-    if sPasswort <> '' then
-    begin
-      qry_Work.SQL.Text := sSQL_UPDATE_Passwort_Autologin;
-      qry_Work.ParamByName('Passwort').AsString := sPasswort;
-      qry_Work.ExecSQL;
-    end;
-    if dmmain.sDeviceToken <> '' then
-    begin
-      qry_Work.SQL.Text := sSQL_UPDATE_DEVICETOKEN_Autologin;
-      qry_Work.ParamByName('DeviceToken').AsString := dmmain.sDeviceToken;
-      qry_Work.ExecSQL;
-    end;
-    if dmmain.sDeviceID <> '' then
-    begin
-      qry_Work.SQL.Text := sSQL_UPDATE_DEVICEID_Autologin;
-      qry_Work.ParamByName('DeviceID').AsString := dmmain.sDeviceID;
-      qry_Work.ExecSQL;
-    end;
-  except
-    on e:Exception do
-      WriteLog('Fehler SetAutoLogin: ' + e.Message,0,false);
+  if GetCountFromTableAuto_Login = 0 then
+  begin
+    qry_Work.SQL.Text := sSQL_INSERT_ALL_AUTOLOGIN_WITHOUT_LOCALACCOUNT;
+    qry_Work.ParamByName('Benutzername').AsString := sUsername;
+    qry_Work.ParamByName('Passwort').AsString := sPasswort;
+    qry_Work.ParamByName('Autologin').AsBoolean := true;
+    qry_Work.ParamByName('ID').AsInteger := iID_MA_Stammdaten;
+    qry_Work.ParamByName('ID_Server').AsInteger := iID_Server;
+    qry_Work.ParamByName('Design').AsInteger := 0;
+    qry_Work.ParamByName('DesignApp').AsInteger := 0;
+    qry_Work.ParamByName('DesignWin').AsInteger := 0;
+    qry_Work.ParamByName('Log').AsInteger := 0;
+    qry_Work.ExecSQL;
+  end;
+  qry_Work.Close;
+  if sUsername <> '' then
+  begin
+    qry_Work.SQL.Text := sSQL_UPDATE_Benutzer_Autologin;
+    qry_Work.ParamByName('Benutzername').AsString := sUsername;
+    qry_Work.ExecSQL;
+  end;
+  if sPasswort <> '' then
+  begin
+    qry_Work.SQL.Text := sSQL_UPDATE_Passwort_Autologin;
+    qry_Work.ParamByName('Passwort').AsString := sPasswort;
+    qry_Work.ExecSQL;
+  end;
+  if dmmain.sDeviceToken <> '' then
+  begin
+    qry_Work.SQL.Text := sSQL_UPDATE_DEVICETOKEN_Autologin;
+    qry_Work.ParamByName('DeviceToken').AsString := dmmain.sDeviceToken;
+    qry_Work.ExecSQL;
+  end;
+  if dmmain.sDeviceID <> '' then
+  begin
+    qry_Work.SQL.Text := sSQL_UPDATE_DEVICEID_Autologin;
+    qry_Work.ParamByName('DeviceID').AsString := dmmain.sDeviceID;
+    qry_Work.ExecSQL;
   end;
 end;
 procedure Tfrm_PCM_Main.SetDesign(ADesignApp,ADesignWin: integer);
@@ -1715,11 +1751,14 @@ end;
 procedure Tfrm_PCM_Main.SetServerList;
 begin
   try
-    qry_Work_Sub.SQL.Text := sSQL_SELECT_All_Server;
+    iServerID:= -1;
+    qry_Work_Sub.SQL.Text := sSQL_SEL_All_Server;
     qry_Work_Sub.Open;
     while not qry_Work_Sub.Eof do
     begin
       edt_Server.Text:= qry_Work_Sub.FieldByName('Bezeichnung').AsString;
+      dmmain.sHostname:= qry_Work_Sub.FieldByName('Hostname').AsString;
+      dmmain.sPort:= qry_Work_Sub.FieldByName('Port').AsString;
       iServerID:= qry_Work_Sub.FieldByName('ID').AsInteger;
       qry_Work_Sub.Next;
     end;
@@ -1729,16 +1768,12 @@ begin
 end;
 procedure Tfrm_PCM_Main.ShowStartpage;
 begin
-  try
-    lbl_Modulname.Text:= 'Startseite';
-    iTags:= 0;
-    tc_Main.ActiveTab:= ti_2MainProgram;
-    CreateDashboard;
-    tc_MainApp.ActiveTab:= ti_1MainHome;
-  except
-    on e:exception do
-      WriteLog('Fehler ShowStartpage: ' + e.Message,0,false);
-  end;
+  lbl_Modulname.Text:= 'Startseite';
+  iTags:= 0;
+  tc_Main.ActiveTab:= ti_2MainProgram;
+  CreateDashboard;
+  tc_MainApp.ActiveTab:= ti_1MainHome;
+  SetAnimation(iAnimation);
 end;
 {$EndRegion Helperfunctions}
 ////////////////////////////////////////////////////////////////////////////////
@@ -1751,19 +1786,26 @@ begin
   btn_UnLock.Visible:= true;
   edt_Passwort.Password:= false;
 end;
+procedure Tfrm_PCM_Main.btn_UnlockClick(Sender: TObject);
+begin
+  btn_Lock.Visible:= true;
+  btn_UnLock.Visible:= false;
+  edt_Passwort.Password:= true;
+end;
+procedure Tfrm_PCM_Main.lbl_CreateAccountNewClick(Sender: TObject);
+begin
+  CreateFormServer;
+end;
 procedure Tfrm_PCM_Main.btn_LoginClick(Sender: TObject);
   procedure LoginFirstStart;
   var
     bLocalaccount: boolean;
     bSynch: Boolean;
-    con_SQL_Login: TSQlConnection;
-    sHash: String;
     slocalBenutzername: String;
     slocalPasswort: String;
     sBenutzername: String;
     sPasswort: String;
   begin
-    iServerID:= GetServerID;
     {$IFDEF ANDROID}
     if (bHasBiometric) then
     begin
@@ -1817,18 +1859,11 @@ procedure Tfrm_PCM_Main.btn_LoginClick(Sender: TObject);
       sPasswort := edt_Passwort.Text;
       if bLocalaccount then
       begin
-        with TIdHashMessageDigest5.Create do
-        begin
-          sHash := HashStringAsHex(sPasswort);
-          sHash := LowerCase(sHash);
-          Free;
-        end;
-        if (sBenutzername = slocalBenutzername) and (sHash = slocalPasswort) then
+        if (sBenutzername = slocalBenutzername) and (sPasswort = slocalPasswort) then
         begin
           bFirstLogin:= true;
           dmmain.iUserID:= 0;
-          SetAutoLogin(sBenutzername, sHash, dmmain.iUserID, iServerID, true);
-
+          SetAutoLogin(sBenutzername, sPasswort, dmmain.iUserID, iServerID, true);
           AfterLogin(True);
         end
         else
@@ -1836,11 +1871,11 @@ procedure Tfrm_PCM_Main.btn_LoginClick(Sender: TObject);
           TThread.Synchronize(nil,
           procedure()
           begin
-            if (sBenutzername = slocalBenutzername) and (sHash <> slocalPasswort) then
+            if (sBenutzername = slocalBenutzername) and (sPasswort <> slocalPasswort) then
               ShowMessage('Passwort stimmt nicht überein.');
-            if (sBenutzername <> slocalBenutzername) and (sHash = slocalPasswort) then
+            if (sBenutzername <> slocalBenutzername) and (sPasswort = slocalPasswort) then
               ShowMessage('Benutzer stimmt nicht überein.');
-            if (sBenutzername <> slocalBenutzername) and (sHash <> slocalPasswort) then
+            if (sBenutzername <> slocalBenutzername) and (sPasswort <> slocalPasswort) then
               ShowMessage('Benutzer und Passwort stimmen nicht überein.');
           end);
         end;
@@ -1848,66 +1883,30 @@ procedure Tfrm_PCM_Main.btn_LoginClick(Sender: TObject);
       else
       begin
         bSynch := False;
-        qry_Work.Close;
-        qry_Work.SQL.Text := sSQL_SELECT_All_SERVER_WHERE_ID;
-        qry_Work.ParamByName('ID').AsInteger := iServerID;
-        qry_Work.Open;
-        if qry_Work.RecordCount > 0 then
+        SetServerList;
+        if iServerID <> -1 then
         begin
-          dmMain.sHostname := qry_Work.FieldByName('Hostname').AsString;
-          dmMain.sPort := qry_Work.FieldByName('Port').AsString;
-          dmMain.con_SQL.Params.Values['Hostname'] := dmMain.sHostname;
-          dmMain.con_SQL.Params.Values['Port'] := dmMain.sPort;
           if CheckServerConnection then
           begin
-            con_SQL_Login := dmMain.con_SQL.CloneConnection;
-            try
-              with TIdHashMessageDigest5.Create do
+            if CheckLogin then
+            begin
+              bFirstLogin:= true;
+              SetAutoLogin(sBenutzername, sPasswort, dmmain.iUserID, iServerID, true);
+              qry_Work_Sub.SQL.Text := sSQL_UPD_FIRSTSTART_login;
+              qry_Work_Sub.ParamByName('Bool').AsBoolean := False;
+              qry_Work_Sub.ParamByName('ID').AsInteger := dmmain.iUserID;
+              qry_Work_Sub.ParamByName('ID_Server').AsInteger := iServerID;
+              qry_Work_Sub.ExecSQL;
+              SaveLogin(sBenutzername, sPasswort,dmmain.iUserID, iServerID,true);
+              Synchronisation(dmmain.iUserID, iServerID, dmmain.wfWaitFrame,false);
+              AfterLogin(True);
+            end else
+            begin
+              TThread.Synchronize(nil,
+              procedure()
               begin
-                sHash := HashStringAsHex(sPasswort);
-                sHash := LowerCase(sHash);
-                Free;
-              end;
-              dmMain.sqlSM_PruefeLogin.ParamByName('Benutzername').Clear;
-              dmMain.sqlSM_PruefeLogin.ParamByName('Benutzername').AsString := sBenutzername;
-              dmMain.sqlSM_PruefeLogin.ParamByName('Passwort').Clear;
-              dmMain.sqlSM_PruefeLogin.ParamByName('Passwort').AsString := sHash;
-              dmMain.sqlSM_PruefeLogin.SQLConnection := con_SQL_Login;
-              dmMain.sqlSM_PruefeLogin.ExecuteMethod;
-              if dmMain.sqlSM_PruefeLogin.ParamByName('ReturnParameter').AsBoolean = True then
-              begin
-                dmMain.sqlSM_PruefeLogin.Close;
-                dmMain.sqlSM_HoleUserID.ParamByName('Benutzername').AsString := sBenutzername;
-                dmMain.sqlSM_HoleUserID.SQLConnection := con_SQL_Login;
-                dmMain.sqlSM_HoleUserID.ExecuteMethod;
-                dmmain.iUserID := dmMain.sqlSM_HoleUserID.ParamByName('ReturnParameter').AsInteger;
-                dmMain.sqlSM_HoleUserID.Close;
-                bFirstLogin:= true;
-                SetAutoLogin(sBenutzername, sHash, dmmain.iUserID, iServerID, true);
-                qry_Work_Sub.SQL.Text := sSQL_UPDATE_FIRSTSTART_login;
-                qry_Work_Sub.ParamByName('Bool').AsBoolean := False;
-                qry_Work_Sub.ParamByName('ID').AsInteger := dmmain.iUserID;
-                qry_Work_Sub.ParamByName('ID_Server').AsInteger := iServerID;
-                qry_Work_Sub.ExecSQL;
-                WriteLog('Benutzer ' + sBenutzername + ' erfolgreich eingeloggt',0,false);
-                SynchFirst(dmmain.iUserID, iServerID, dmmain.wfWaitFrame,false);
-                dmMain.sqlSM_HoleLogin.ParamByName('ID_Benutzer').AsInteger := dmmain.iUserID;
-                dmMain.sqlSM_HoleLogin.SQLConnection := con_SQL_Login;
-                dmMain.sqlSM_HoleLogin.ExecuteMethod;
-                dmMain.sqlSM_HoleLogin.Open;
-                dmMain.sqlSM_HoleLogin.Close;
-                AfterLogin(True);
-              end else
-              begin
-                TThread.Synchronize(nil,
-                procedure()
-                begin
-                  ShowMessage('Benutzername oder Passwort falsch. Bitte geben Sie ein gültiges Login ein.');
-                end);
-              end;
-            finally
-              con_SQL_Login.Connected := False;
-              con_SQL_Login.Free;
+                ShowMessage('Benutzername oder Passwort falsch. Bitte geben Sie ein gültiges Login ein.');
+              end);
             end;
           end else
           begin
@@ -1933,13 +1932,11 @@ procedure Tfrm_PCM_Main.btn_LoginClick(Sender: TObject);
   procedure Login;
   var
     bLocalaccount: boolean;
-    sHash: String;
     slocalBenutzername: String;
     slocalPasswort: String;
     sBenutzername: String;
     sPasswort: String;
   begin
-    iServerID := GetServerID;
     dmmain.wfWaitFrame.Execute('Login...', 'Login',True);
     TTask.Run(
     procedure ()
@@ -1954,43 +1951,30 @@ procedure Tfrm_PCM_Main.btn_LoginClick(Sender: TObject);
       sPasswort := edt_Passwort.Text;
       if bLocalaccount then
       begin
-        if (sBenutzername = slocalBenutzername) and (sHash = slocalPasswort) then
+        if (sBenutzername = slocalBenutzername) and (sPasswort = slocalPasswort) then
         begin
           bFirstLogin:= false;
           dmmain.iUserID:= 0;
-          SetAutoLogin(sBenutzername, sHash, dmmain.iUserID, iServerID, true);
+          SetAutoLogin(sBenutzername, sPasswort, dmmain.iUserID, iServerID, true);
           AfterLogin(True);
         end
         else
         begin
-          if (sBenutzername = slocalBenutzername) and (sHash <> slocalPasswort) then
+          if (sBenutzername = slocalBenutzername) and (sPasswort <> slocalPasswort) then
             ShowMessage('Passwort stimmt nicht überein.');
-          if (sBenutzername <> slocalBenutzername) and (sHash = slocalPasswort) then
+          if (sBenutzername <> slocalBenutzername) and (sPasswort = slocalPasswort) then
             ShowMessage('Benutzer stimmt nicht überein.');
-          if (sBenutzername <> slocalBenutzername) and (sHash <> slocalPasswort) then
+          if (sBenutzername <> slocalBenutzername) and (sPasswort <> slocalPasswort) then
             ShowMessage('Benutzer und Passwort stimmen nicht überein.');
         end;
       end
       else
       begin
-        qry_Work.Close;
-        qry_Work.SQL.Text := sSQL_SELECT_All_SERVER_WHERE_ID;
-        qry_Work.ParamByName('ID').AsInteger := iServerID;
-        qry_Work.Open;
-        if (qry_Work.RecordCount > 0) then
+        SetServerList;
+        if iServerID <> -1 then
         begin
-          dmMain.sHostname := qry_Work.FieldByName('Hostname').AsString;
-          dmMain.sPort := qry_Work.FieldByName('Port').AsString;
-          dmMain.con_SQL.Params.Values['Hostname'] := dmMain.sHostname;
-          dmMain.con_SQL.Params.Values['Port'] := dmMain.sPort;
           sBenutzername :=  edt_Benutzername.Text;
           sPasswort := edt_Passwort.Text;
-          with TIdHashMessageDigest5.Create do
-          begin
-            sHash := HashStringAsHex(sPasswort);
-            sHash := LowerCase(sHash);
-            Free;
-          end;
           qry_Work.Close;
           qry_Work.SQL.Text := sSQL_SELECT_ALL_Login_Where_Benutzer_IDServer;
           qry_Work.ParamByName('User').AsString := sBenutzername;
@@ -1998,15 +1982,15 @@ procedure Tfrm_PCM_Main.btn_LoginClick(Sender: TObject);
           qry_Work.Open;
           if qry_Work.RecordCount > 0 then
           begin
-            if (qry_Work.FieldByName('Passwort').AsString = sHash) then
+            if (qry_Work.FieldByName('Passwort').AsString = sPasswort) then
             begin
               dmmain.iUserID := qry_Work.FieldByName('ID_MA_Stammdaten').AsInteger;
-              SetAutoLogin(sBenutzername, sHash, dmmain.iUserID, iServerID, True);
+              SetAutoLogin(sBenutzername, sPasswort, dmmain.iUserID, iServerID, True);
               qry_Work.Close;
               if CheckServerConnection then
               begin
-                WriteLog('Benutzer ' + sBenutzername + ' erfolgreich eingeloggt',0,false);
-                SynchFull(dmmain.iUserID, iServerID, dmmain.wfWaitFrame,false);
+                SaveLogin(sBenutzername, sPasswort,dmmain.iUserID, iServerID,false);
+                Synchronisation(dmmain.iUserID, iServerID, dmmain.wfWaitFrame,false)
               end;
               qry_Work.Close;
               qry_Work.SQL.Text := sSQL_SELECT_ALL_Login_Where_IDBenutzer_IDServer;
@@ -2044,16 +2028,6 @@ begin
     Login;
   end;
 end;
-procedure Tfrm_PCM_Main.btn_UnlockClick(Sender: TObject);
-begin
-  btn_Lock.Visible:= true;
-  btn_UnLock.Visible:= false;
-  edt_Passwort.Password:= true;
-end;
-procedure Tfrm_PCM_Main.lbl_CreateAccountNewClick(Sender: TObject);
-begin
-  CreateFormServer;
-end;
 {$EndRegion Loginfunctions}
 ////////////////////////////////////////////////////////////////////////////////
 // BIOMETRIC / PERMISSION FUNCTIONS                                           //
@@ -2073,15 +2047,10 @@ begin
 end;
 procedure Tfrm_PCM_Main.BiometricAuth1AuthenticateSuccess(Sender: TObject);
 begin
-  try
-    qry_Work.SQL.Text := sSQL_SELECT_All_AUtologin;
-    qry_Work.Open;
-    AutoLogin(qry_Work.FieldByName('Benutzername').AsString, qry_Work.FieldByName('Passwort').AsString);
-    qry_Work.Close;
-  except
-    on e:Exception do
-    WriteLog('Fehler BiometricAuthSucces ' + e.Message,0,false);
-  end;
+  qry_Work.SQL.Text := sSQL_SELECT_All_AUtologin;
+  qry_Work.Open;
+  AutoLogin(qry_Work.FieldByName('Benutzername').AsString, qry_Work.FieldByName('Passwort').AsString);
+  qry_Work.Close;
 end;
 procedure Tfrm_PCM_Main.Listening(const AIsListening: Boolean);
 begin
@@ -2129,19 +2098,15 @@ begin
   CloseDetailFrame('Beenden', 5);
   if Assigned(dmmain.wfWaitFrame) then
     FreeAndNil(dmmain.wfWaitFrame);
-  if (dmMain.con_SQL.Connected) AND (CheckServerConnection) then
-  begin
-    dmMain.con_SQL.Connected := False;
-  end;
   Action := TCloseAction.caFree;
 end;
 procedure Tfrm_PCM_Main.FormCreate(Sender: TObject);
 begin
-  iAnimation:= 0;
-  iDesignAPP:= 0;
-  iDesignwin:= 0;
-  iServerID := -1;
+  FormatSettings.LongTimeFormat:= 'HH:mm:ss';
+  FormatSettings.ShortTimeFormat:= 'HH:mm';
+  FormatSettings.ShortDateFormat:= 'dd.mm.yyyy';
   try
+    iServerID := -1;
     {$IFDEF ANDROID}
     if not TPlatformServices.Current.SupportsPlatformService (IFMXClipboardService, IInterface (clpbrdsrvClipboardService)) then
        raise Exception.Create ( 'Can not get access to clipboard service!');
@@ -2156,12 +2121,15 @@ begin
       iAnimation:= qry_Work.FieldByName('Design').AsInteger;
       iDesignAPP:= qry_Work.FieldByName('DesignApp').AsInteger;
       iDesignwin:= qry_Work.FieldByName('DesignWin').AsInteger;
+    end
+    else begin
+      iAnimation:= 0;
+      iDesignAPP:= 0;
+      iDesignwin:= 0;
     end;
     SetDesign(iDesignAPP,iDesignwin);
     qry_Work.close;
   except
-    on e:Exception do
-      WriteLog('Fehler FormCreate: ' + e.Message,0,false);
   end;
 end;
 procedure Tfrm_PCM_Main.FormShow(Sender: TObject);
@@ -2202,125 +2170,98 @@ var
    consrvServiceConnection: TPushServiceConnection;
    pshsrvNtnNotifications: TArray<TPushServiceNotification>;
    pshsrvPushService: TPushService;
-   Availability: TBiometricAvailability;
 {$ENDIF ANDROID}
 begin
   WriteLog('PCM - APP FormShow',0,true);
-
+  {$IFDEF ANDROID}
+  PermissionsService.RequestPermissions([ 'android.permission.READ_MEDIA_AUDIO',
+                                          'android.permission.READ_MEDIA_IMAGES',
+                                          'android.permission.READ_MEDIA_AUDIO',
+                                          'android.permission.CAMERA',
+                                          'android.permission.POST_NOTIFICATIONS',
+                                          'android.permission.READ_CONTACTS',
+                                          'android.permission.CALL_PHONE'], procedure(const APermissions: TClassicStringDynArray; const AGrantResults: TClassicPermissionStatusDynArray) begin end);
+  btn_CloseApp.Visible:= false;
+  baBiometric:= TBioMetricauth.Create(nil);
+  baBiometric.BiometricStrengths := [ TBiometricStrength.DeviceCredential,TBiometricStrength.Strong,TBiometricStrength.Weak];
+  baBiometric.PromptTitle:= 'PCM - Time entsperren';
+  baBiometric.PromptSubTitle:= 'Bitte bestätigen Sie Ihre Identität per Fingerabdruck';
+  baBiometric.PromptCancelButtonText := 'Cancel';
+  baBiometric.OnAuthenticateFail:= BiometricAuth1AuthenticateFail;
+  baBiometric.OnAuthenticateSuccess:= BiometricAuth1AuthenticateSuccess;
+   if baBiometric.CanAuthenticate then
+  begin
+    bHasBiometric:= true;
+  end
+  else begin
+    bHasBiometric:= false;
+  end;
+  pshsrvPushService := TPushServiceManager.Instance.GetServiceByName(TPushService.TServiceNames.FCM);
+  consrvServiceConnection := TPushServiceConnection.Create(pshsrvPushService);
+  consrvServiceConnection.Active := True;
+  consrvServiceConnection.OnChange := OnServiceConnectionChange;
+  consrvServiceConnection.OnReceiveNotification := OnReceiveNotificationEvent;
+  dmmain.sDeviceId := pshsrvPushService.DeviceIDValue[TPushService.TDeviceIDNames.DeviceId];
+  pshsrvNtnNotifications := pshsrvPushService.StartupNotifications;
+  {$ENDIF ANDROID}
+  tc_more.ActiveTab:= ti_1ConfigMenu;
+  SetDisableToolButtons;
+  rec_main.Visible:= false;
+  bOpened:= false;
+  iProgramm:= 1;
+  tc_Main.ActiveTab := ti_1Login;
+  snglClientWidth := frm_PCM_Main.Width;
+  snglClientHeight := frm_PCM_Main.Height;
+  rec_main.Height := 48;
+  {$IFDEF MSWINDOWS}
+  btn_CloseApp.Visible:= true;
+  lstbxitm_103Beenden.Visible:= true;
+  FMX.Types.VKAutoShowMode:= TVKAutoShowMode.never;
+  rec_main.Margins.Top:= 0;
+  frm_PCM_Main.BorderStyle:= TFmxFormBorderStyle.None;
+  {$ENDIF MSWINDOWS}
+  {$IFDEF ANDROID}
+  vsbx_Login.Touch.InteractiveGestures := [TInteractiveGesture.Pan];
+  sDeviceDetail := JStringToString(TJBuild.JavaClass.MANUFACTURER) + ' ' + JStringToString(TJBuild.JavaClass.MODEL);
+  sOSDetail := GetCodename(JStringToString(TJBuild_VERSION.JavaClass.RELEASE));
   try
-    {$IFDEF ANDROID}
-    PermissionsService.RequestPermissions([ 'android.permission.READ_MEDIA_AUDIO',
-                                            'android.permission.READ_MEDIA_IMAGES',
-                                            'android.permission.READ_MEDIA_AUDIO',
-                                            'android.permission.CAMERA',
-                                            'android.permission.POST_NOTIFICATIONS',
-                                            'android.permission.READ_CONTACTS',
-                                            'android.permission.CALL_PHONE'], procedure(const APermissions: TClassicStringDynArray; const AGrantResults: TClassicPermissionStatusDynArray) begin end);
-    btn_CloseApp.Visible:= false;
-    baBiometric:= TBioMetricauth.Create(nil);
-    baBiometric.BiometricStrengths := [ TBiometricStrength.DeviceCredential,TBiometricStrength.Strong,TBiometricStrength.Weak];
-    baBiometric.PromptTitle:= 'PCM - Time entsperren';
-    baBiometric.PromptSubTitle:= 'Bitte bestätigen Sie Ihre Identität per Fingerabdruck';
-    baBiometric.PromptCancelButtonText := 'Cancel';
-    baBiometric.OnAuthenticateFail:= BiometricAuth1AuthenticateFail;
-    baBiometric.OnAuthenticateSuccess:= BiometricAuth1AuthenticateSuccess;
-    Availability := baBiometric.GetBiometricAvailability;
-    case Availability of
-      TBiometricAvailability.Available:
-      begin
-        if baBiometric.IsSupported then
-        begin
-          bHasBiometric:= true;
-        end
-        else begin
-          bHasBiometric:= false;
-        end;
-      end;
-      TBiometricAvailability.HardwareUnavailable:
-        bHasBiometric:= false;
-      TBiometricAvailability.NoHardware:
-        bHasBiometric:= false;
-      TBiometricAvailability.NoneEnrolled:
-        bHasBiometric:= false;
-      TBiometricAvailability.SecurityUpdateRequired:
-        bHasBiometric:= false;
-      TBiometricAvailability.Unsupported:
-        bHasBiometric:= false;
-      TBiometricAvailability.Unknown:
-        bHasBiometric:= false;
+    if pdsrvPhoneDialerService <> nil then
+    begin
+      sProviderDetail := pdsrvPhoneDialerService.GetCarrier.GetCarrierName;
+    end
+    else begin
+      sProviderDetail:= 'kein Provider vorhanden'
     end;
-    if bHasBiometric then
-      Writelog('Biometric enabled',0,false)
-    else
-      Writelog('Biometric disabled',0,false);
-    pshsrvPushService := TPushServiceManager.Instance.GetServiceByName(TPushService.TServiceNames.FCM);
-    consrvServiceConnection := TPushServiceConnection.Create(pshsrvPushService);
-    consrvServiceConnection.Active := True;
-    consrvServiceConnection.OnChange := OnServiceConnectionChange;
-    consrvServiceConnection.OnReceiveNotification := OnReceiveNotificationEvent;
-    dmmain.sDeviceId := pshsrvPushService.DeviceIDValue[TPushService.TDeviceIDNames.DeviceId];
-    pshsrvNtnNotifications := pshsrvPushService.StartupNotifications;
-    {$ENDIF ANDROID}
-    tc_more.ActiveTab:= ti_1ConfigMenu;
-    SetDisableToolButtons;
-    rec_main.Visible:= false;
-    bOpened:= false;
-    iProgramm:= 1;
-    tc_Main.ActiveTab := ti_1Login;
-    snglClientWidth := frm_PCM_Main.Width;
-    snglClientHeight := frm_PCM_Main.Height;
-    rec_main.Height := 48;
-    Writelog('0',0,false);    
-    {$IFDEF MSWINDOWS}
-    lstbxitm_103Beenden.Visible:= true;
-    btn_CloseApp.Visible:= true;
-    FMX.Types.VKAutoShowMode:= TVKAutoShowMode.never;
-    rec_main.Margins.Top:= 0;
-    frm_PCM_Main.BorderStyle:= TFmxFormBorderStyle.None;
+  except
+  end;
+  {$ENDIF ANDROID}
+  SetServerList;
+  if iServerID <> -1 then
+    CheckServerConnection;
+  qry_Work.SQL.Text := sSQL_SELECT_All_AUTOLOGIN;
+  qry_Work.Open;
+  if qry_Work.RecordCount > 0 then
+  begin
+    edt_Benutzername.text:= qry_Work.FieldByName('Benutzername').AsString;
+    {$ifdef MSWINDOWS}
+    AutoLogin(qry_Work.FieldByName('Benutzername').AsString, qry_Work.FieldByName('Passwort').AsString);
+    qry_Work.Close;
     {$ENDIF MSWINDOWS}
     {$IFDEF ANDROID}
-    Writelog('1',0,false);
-    vsbx_Login.Touch.InteractiveGestures := [TInteractiveGesture.Pan];
-    sDeviceDetail := JStringToString(TJBuild.JavaClass.MANUFACTURER) + ' ' + JStringToString(TJBuild.JavaClass.MODEL);
-    sOSDetail := GetCodename(JStringToString(TJBuild_VERSION.JavaClass.RELEASE));
-    try
-      if pdsrvPhoneDialerService <> nil then 
-      begin
-        sProviderDetail := pdsrvPhoneDialerService.GetCarrier.GetCarrierName;
-      end
-      else begin
-        sProviderDetail:= 'kein Provider vorhanden'
-      end;
-    except
-    end;
-    {$ENDIF ANDROID}
-    SetServerList;
-    qry_Work.SQL.Text := sSQL_SELECT_All_AUTOLOGIN;
-    qry_Work.Open;
-    if qry_Work.RecordCount > 0 then
+    if qry_Work.FieldByName('FingerAuthenticate').AsBoolean = True then
     begin
-      edt_Benutzername.text:= qry_Work.FieldByName('Benutzername').AsString;
-      {$ifdef MSWINDOWS}
-      AutoLogin(qry_Work.FieldByName('Benutzername').AsString, qry_Work.FieldByName('Passwort').AsString);
       qry_Work.Close;
-      {$ENDIF MSWINDOWS}
-      {$IFDEF ANDROID}
-      if qry_Work.FieldByName('FingerAuthenticate').AsBoolean = True then
-      begin
-        qry_Work.Close;
-        img_BiometricClick(Self);
-        tc_Main.ActiveTab:= ti_1Login;
-      end;
+      img_BiometricClick(Self);
+      tc_Main.ActiveTab:= ti_1Login;
+    end
+    else begin
       if qry_Work.FieldByName('Autologin').AsBoolean = True then
       begin
         AutoLogin(qry_Work.FieldByName('Benutzername').AsString, qry_Work.FieldByName('Passwort').AsString);
         qry_Work.Close;
       end;
-      {$ENDIF ANDROID}
     end;
-  except
-    on e:Exception do
-      WriteLog('Fehler FormShow: ' + e.Message,0,false);
+    {$ENDIF ANDROID}
   end;
 end;
 procedure Tfrm_PCM_Main.FormResize(Sender: TObject);
@@ -3231,6 +3172,48 @@ end;
 // Monatswerte                                                                //
 ////////////////////////////////////////////////////////////////////////////////
 {$Region Monatswerte}
+procedure Tfrm_PCM_Main.btn_AuswertungJahrCalcClick(Sender: TObject);
+begin
+  dmmain.wfWaitFrame.Execute('Berechne Monat...', 'Monatswerte', True);
+  TTask.Run(
+  procedure()
+  begin
+    TThread.Synchronize(nil,
+    procedure()
+    begin
+      try
+        BerechneTage(0,1,StrToint(frm_PCM_Main.cmbbx_MonatJahr.Items[frm_PCM_Main.cmbbx_MonatJahr.ItemIndex]));
+        BerechneMonat(1,StrToint(frm_PCM_Main.cmbbx_MonatJahr.Items[frm_PCM_Main.cmbbx_MonatJahr.ItemIndex]));
+        BerechneTage(0,2,StrToint(frm_PCM_Main.cmbbx_MonatJahr.Items[frm_PCM_Main.cmbbx_MonatJahr.ItemIndex]));
+        BerechneMonat(2,StrToint(frm_PCM_Main.cmbbx_MonatJahr.Items[frm_PCM_Main.cmbbx_MonatJahr.ItemIndex]));
+        BerechneTage(0,3,StrToint(frm_PCM_Main.cmbbx_MonatJahr.Items[frm_PCM_Main.cmbbx_MonatJahr.ItemIndex]));
+        BerechneMonat(3,StrToint(frm_PCM_Main.cmbbx_MonatJahr.Items[frm_PCM_Main.cmbbx_MonatJahr.ItemIndex]));
+        BerechneTage(0,4,StrToint(frm_PCM_Main.cmbbx_MonatJahr.Items[frm_PCM_Main.cmbbx_MonatJahr.ItemIndex]));
+        BerechneMonat(4,StrToint(frm_PCM_Main.cmbbx_MonatJahr.Items[frm_PCM_Main.cmbbx_MonatJahr.ItemIndex]));
+        BerechneTage(0,5,StrToint(frm_PCM_Main.cmbbx_MonatJahr.Items[frm_PCM_Main.cmbbx_MonatJahr.ItemIndex]));
+        BerechneMonat(5,StrToint(frm_PCM_Main.cmbbx_MonatJahr.Items[frm_PCM_Main.cmbbx_MonatJahr.ItemIndex]));
+        BerechneTage(0,6,StrToint(frm_PCM_Main.cmbbx_MonatJahr.Items[frm_PCM_Main.cmbbx_MonatJahr.ItemIndex]));
+        BerechneMonat(6,StrToint(frm_PCM_Main.cmbbx_MonatJahr.Items[frm_PCM_Main.cmbbx_MonatJahr.ItemIndex]));
+        BerechneTage(0,7,StrToint(frm_PCM_Main.cmbbx_MonatJahr.Items[frm_PCM_Main.cmbbx_MonatJahr.ItemIndex]));
+        BerechneMonat(7,StrToint(frm_PCM_Main.cmbbx_MonatJahr.Items[frm_PCM_Main.cmbbx_MonatJahr.ItemIndex]));
+        BerechneTage(0,8,StrToint(frm_PCM_Main.cmbbx_MonatJahr.Items[frm_PCM_Main.cmbbx_MonatJahr.ItemIndex]));
+        BerechneMonat(8,StrToint(frm_PCM_Main.cmbbx_MonatJahr.Items[frm_PCM_Main.cmbbx_MonatJahr.ItemIndex]));
+        BerechneTage(0,9,StrToint(frm_PCM_Main.cmbbx_MonatJahr.Items[frm_PCM_Main.cmbbx_MonatJahr.ItemIndex]));
+        BerechneMonat(9,StrToint(frm_PCM_Main.cmbbx_MonatJahr.Items[frm_PCM_Main.cmbbx_MonatJahr.ItemIndex]));
+        BerechneTage(0,10,StrToint(frm_PCM_Main.cmbbx_MonatJahr.Items[frm_PCM_Main.cmbbx_MonatJahr.ItemIndex]));
+        BerechneMonat(10,StrToint(frm_PCM_Main.cmbbx_MonatJahr.Items[frm_PCM_Main.cmbbx_MonatJahr.ItemIndex]));
+        BerechneTage(0,11,StrToint(frm_PCM_Main.cmbbx_MonatJahr.Items[frm_PCM_Main.cmbbx_MonatJahr.ItemIndex]));
+        BerechneMonat(11,StrToint(frm_PCM_Main.cmbbx_MonatJahr.Items[frm_PCM_Main.cmbbx_MonatJahr.ItemIndex]));
+        BerechneTage(0,12,StrToint(frm_PCM_Main.cmbbx_MonatJahr.Items[frm_PCM_Main.cmbbx_MonatJahr.ItemIndex]));
+        BerechneMonat(12,StrToint(frm_PCM_Main.cmbbx_MonatJahr.Items[frm_PCM_Main.cmbbx_MonatJahr.ItemIndex]));
+        BerechneJahresUebersicht(StrToint(cmbbx_JahrJa.Items[cmbbx_JahrJa.ItemIndex]));
+      except
+        dmmain.wfWaitFrame.HideFW;
+      end;
+    end);
+    dmmain.wfWaitFrame.HideFW;
+  end);
+end;
 procedure Tfrm_PCM_Main.btn_AuswertungMonatCalcClick(Sender: TObject);
 begin
   dmmain.wfWaitFrame.Execute('Berechne Monat...', 'Monatswerte', True);

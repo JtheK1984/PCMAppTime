@@ -2,7 +2,7 @@ object frm_PCMAPP_System: Tfrm_PCMAPP_System
   Size.Width = 340.000000000000000000
   Size.Height = 588.000000000000000000
   Size.PlatformDefault = False
-  object tc_Optionen: TTabControl
+  object tc_Options: TTabControl
     Align = Client
     Size.Width = 340.000000000000000000
     Size.Height = 588.000000000000000000
@@ -16,7 +16,7 @@ object frm_PCMAPP_System: Tfrm_PCMAPP_System
       588s
       340s
       588s)
-    object ti_1Optionen: TTabItem
+    object ti_1Options: TTabItem
       CustomIcon = <
         item
         end>
@@ -27,7 +27,7 @@ object frm_PCMAPP_System: Tfrm_PCMAPP_System
       Size.PlatformDefault = False
       StyleLookup = ''
       TabOrder = 0
-      Text = 'ti_1Optionen'
+      Text = 'ti_1Options'
       ExplicitSize.cx = 8.000000000000000000
       ExplicitSize.cy = 8.000000000000000000
       object lstbx_SystemInformation: TListBox
@@ -43,8 +43,100 @@ object frm_PCMAPP_System: Tfrm_PCMAPP_System
         DefaultItemStyles.GroupFooterStyle = ''
         Viewport.Width = 324.000000000000000000
         Viewport.Height = 588.000000000000000000
+        object lstbxitm_102Design: TListBoxItem
+          HitTest = True
+          Size.Width = 324.000000000000000000
+          Size.Height = 60.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 14
+          object lo_AnimationDetail: TLayout
+            Align = Client
+            Margins.Left = 5.000000000000000000
+            Margins.Right = 20.000000000000000000
+            Size.Width = 270.000000000000000000
+            Size.Height = 60.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 1
+            object lbl_Animation: TLabel
+              Align = Top
+              StyledSettings = [Family, FontColor]
+              Margins.Top = 10.000000000000000000
+              Position.Y = 10.000000000000000000
+              Size.Width = 270.000000000000000000
+              Size.Height = 17.000000000000000000
+              Size.PlatformDefault = False
+              TextSettings.Font.StyleExt = {00070000000000000004000000}
+              TextSettings.Trimming = None
+              Text = 'Animationen'
+              TabOrder = 1
+            end
+            object cbx_Animation: TComboBox
+              Align = Top
+              Items.Strings = (
+                'keine Animation'
+                'von allen Richtungen'
+                'von links alle'
+                'von links einzeln'
+                'von oben alle'
+                'von oben einzeln'
+                'von rechts alle'
+                'von rechts einzeln'
+                'von unten alle'
+                'von unten einzeln')
+              ItemIndex = 0
+              Position.Y = 27.000000000000000000
+              Size.Width = 270.000000000000000000
+              Size.Height = 22.000000000000000000
+              Size.PlatformDefault = False
+              StyleLookup = 'comboboxstyle'
+              TabOrder = 2
+              OnChange = cbx_AnimationChange
+            end
+          end
+          object lo_AnimationImage: TLayout
+            Align = Left
+            Margins.Left = 5.000000000000000000
+            Position.X = 5.000000000000000000
+            Size.Width = 24.000000000000000000
+            Size.Height = 60.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 0
+            object img_Animation: TImage
+              MultiResBitmap.Height = 64
+              MultiResBitmap.Width = 64
+              MultiResBitmap = <
+                item
+                  Width = 64
+                  Height = 64
+                  PNG = {
+                    89504E470D0A1A0A0000000D4948445200000040000000400806000000AA6971
+                    DE0000000473424954080808087C086488000001B549444154789CED9A414AC3
+                    401486DF244AC1766111C4237427DDE9BA7BE92D7A81823B19DC095E20B7A807
+                    701D5D49771EA1A48A2EB4504A1A3711A434294C5EF2C7F4FF568190977F3E26
+                    93F64D44082184EC2F061D60136BED5044021139552A1989C8C85A3BD976D253
+                    BA89269A8397B4569075B28E023407BFB3661D05540A05A003A0A10074003407
+                    AE17BE3DDBA1499681C8A1CAAA7D72710BF94DE23C0334078FA4C023F0FF072F
+                    C235800228001D000D05A003A0A10074003414800EF0CB6C3A6EA7875109E533
+                    6BD64680BFE80CD2C391E84A88D29A5B71FE07F6FE7493B85EBB9DE4D56BF997
+                    DDBEFDD4AD9B4F6D668088E9AD9771380FEDD59FC7A1FCBBBA5EA83F038AE1DA
+                    4FA8D10CC04001E800682AEBC3CDA6E3B6BFE80C3C13DF89989E767DD735A0F2
+                    46E4C78B3D5E2FE3505B82AB80CCAE7059BBB4DDBE9DCC437BED99F58352DD42
+                    E4AD01A5EDD2C6475F8F8A750B9127A0B45DDAB3F3FBEF126A3BB1F76F010A40
+                    07404301E8006828001D000D05A003A0698880957313B501025651625A995DDF
+                    5D387F235414D437419B346006148302D001D050003A009A3C0195EED2A2C813
+                    50E92E2D218410523D3F160D53712EBB81600000000049454E44AE426082}
+                  FileName = 'C:\Users\Entwicklung\Desktop\606462.png'
+                end>
+              Align = Left
+              Size.Width = 24.000000000000000000
+              Size.Height = 60.000000000000000000
+              Size.PlatformDefault = False
+            end
+          end
+        end
         object lstbxitm_101Design: TListBoxItem
           HitTest = True
+          Position.Y = 60.000000000000000000
           Size.Width = 324.000000000000000000
           Size.Height = 60.000000000000000000
           Size.PlatformDefault = False
@@ -138,7 +230,7 @@ object frm_PCMAPP_System: Tfrm_PCMAPP_System
           EnableDragHighlight = False
           StyledSettings = [Family, Size, Style, FontColor]
           HitTest = True
-          Position.Y = 60.000000000000000000
+          Position.Y = 120.000000000000000000
           Size.Width = 324.000000000000000000
           Size.Height = 72.000000000000000000
           Size.PlatformDefault = False
@@ -269,7 +361,7 @@ object frm_PCMAPP_System: Tfrm_PCMAPP_System
           EnableDragHighlight = False
           StyledSettings = [Family, Size, Style, FontColor]
           HitTest = True
-          Position.Y = 132.000000000000000000
+          Position.Y = 192.000000000000000000
           Size.Width = 324.000000000000000000
           Size.Height = 72.000000000000000000
           Size.PlatformDefault = False
@@ -384,7 +476,7 @@ object frm_PCMAPP_System: Tfrm_PCMAPP_System
         end
         object lstbxitm_103LocalAccount: TListBoxItem
           HitTest = True
-          Position.Y = 204.000000000000000000
+          Position.Y = 264.000000000000000000
           Size.Width = 324.000000000000000000
           Size.Height = 97.000000000000000000
           Size.PlatformDefault = False
@@ -496,7 +588,7 @@ object frm_PCMAPP_System: Tfrm_PCMAPP_System
           EnableDragHighlight = False
           StyledSettings = [Family, Size, Style, FontColor]
           HitTest = True
-          Position.Y = 301.000000000000000000
+          Position.Y = 361.000000000000000000
           Size.Width = 324.000000000000000000
           Size.Height = 72.000000000000000000
           Size.PlatformDefault = False
@@ -613,7 +705,7 @@ object frm_PCMAPP_System: Tfrm_PCMAPP_System
           EnableDragHighlight = False
           StyledSettings = [Family, Size, Style, FontColor]
           HitTest = True
-          Position.Y = 373.000000000000000000
+          Position.Y = 433.000000000000000000
           Size.Width = 324.000000000000000000
           Size.Height = 140.000000000000000000
           Size.PlatformDefault = False
@@ -760,7 +852,7 @@ object frm_PCMAPP_System: Tfrm_PCMAPP_System
           StyledSettings = [Family, Size, Style, FontColor]
           HitTest = True
           ItemData.Accessory = aMore
-          Position.Y = 513.000000000000000000
+          Position.Y = 573.000000000000000000
           Size.Width = 324.000000000000000000
           Size.Height = 72.000000000000000000
           Size.PlatformDefault = False
@@ -855,11 +947,11 @@ object frm_PCMAPP_System: Tfrm_PCMAPP_System
         end
         object lstbxitm_107Restore: TListBoxItem
           StyledSettings = [Family, Size, Style, FontColor]
-          Position.Y = 585.000000000000000000
+          Position.Y = 645.000000000000000000
           Size.Width = 324.000000000000000000
           Size.Height = 72.000000000000000000
           Size.PlatformDefault = False
-          TabOrder = 14
+          TabOrder = 15
           OnClick = lstbxitm_107RestoreClick
           object lo_RestoreDetail: TLayout
             Align = Client
@@ -954,7 +1046,7 @@ object frm_PCMAPP_System: Tfrm_PCMAPP_System
           StyledSettings = [Family, Size, Style, FontColor]
           HitTest = True
           ItemData.Accessory = aMore
-          Position.Y = 657.000000000000000000
+          Position.Y = 717.000000000000000000
           Size.Width = 324.000000000000000000
           Size.Height = 72.000000000000000000
           Size.PlatformDefault = False
@@ -1047,7 +1139,7 @@ object frm_PCMAPP_System: Tfrm_PCMAPP_System
           EnableDragHighlight = False
           StyledSettings = [Family, Size, Style, FontColor]
           HitTest = True
-          Position.Y = 729.000000000000000000
+          Position.Y = 789.000000000000000000
           Size.Width = 324.000000000000000000
           Size.Height = 105.000000000000000000
           Size.PlatformDefault = False
@@ -1173,7 +1265,7 @@ object frm_PCMAPP_System: Tfrm_PCMAPP_System
           EnableDragHighlight = False
           StyledSettings = [Family, Size, Style, FontColor]
           HitTest = True
-          Position.Y = 834.000000000000000000
+          Position.Y = 894.000000000000000000
           Size.Width = 324.000000000000000000
           Size.Height = 170.000000000000000000
           Size.PlatformDefault = False
@@ -1290,9 +1382,38 @@ object frm_PCMAPP_System: Tfrm_PCMAPP_System
               TextSettings.Font.StyleExt = {00070000000000000004000000}
               TextSettings.Trimming = None
               Text = 'Google Informationen'
-              TabOrder = 3
+              TabOrder = 4
             end
             object lbl_FMCInfosDetailToken: TLabel
+              Align = Top
+              StyledSettings = [Family, FontColor]
+              Position.Y = 44.000000000000000000
+              Size.Width = 270.000000000000000000
+              Size.Height = 17.000000000000000000
+              Size.PlatformDefault = False
+              TextSettings.FontColor = claDimgray
+              TextSettings.Trimming = None
+              Text = 'Token:'
+              TabOrder = 3
+            end
+            object mem_FMCInfosDetailToken: TMemo
+              Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+              DataDetectorTypes = []
+              ReadOnly = True
+              StyledSettings = [Family, Style, FontColor]
+              TextSettings.FontColor = claDimgray
+              TextSettings.WordWrap = True
+              Align = Top
+              Position.Y = 61.000000000000000000
+              Size.Width = 270.000000000000000000
+              Size.Height = 121.000000000000000000
+              Size.PlatformDefault = False
+              StyleLookup = 'memostyle'
+              TabOrder = 1
+              Viewport.Width = 270.000000000000000000
+              Viewport.Height = 121.000000000000000000
+            end
+            object Llbl_DeviceIDDetail: TLabel
               Align = Top
               StyledSettings = [Family, FontColor]
               Position.Y = 27.000000000000000000
@@ -1303,23 +1424,6 @@ object frm_PCMAPP_System: Tfrm_PCMAPP_System
               TextSettings.Trimming = None
               Text = 'Token:'
               TabOrder = 2
-            end
-            object mem_FMCInfosDetailToken: TMemo
-              Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
-              DataDetectorTypes = []
-              ReadOnly = True
-              StyledSettings = [Family, Style, FontColor]
-              TextSettings.FontColor = claDimgray
-              TextSettings.WordWrap = True
-              Align = Top
-              Position.Y = 44.000000000000000000
-              Size.Width = 270.000000000000000000
-              Size.Height = 121.000000000000000000
-              Size.PlatformDefault = False
-              StyleLookup = 'memostyle'
-              TabOrder = 1
-              Viewport.Width = 270.000000000000000000
-              Viewport.Height = 121.000000000000000000
             end
           end
         end

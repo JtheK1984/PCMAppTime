@@ -37,18 +37,19 @@ uses
   FireDAC.Stan.Pool,
   FireDAC.UI.Intf,
   FMX.Controls,
-  fmx.dialogs,
+  FMX.dialogs,
   FMX.Forms,
   FMX.ImgList,
   FMX.Types,
-  IdBaseComponent,
-  IdComponent,
+  IdIPAddress,
+  IdSSLOpenSSL,
+  IdGlobal,
   IdHTTP,
   IdIOHandler,
   IdIOHandlerSocket,
   IdIOHandlerStack,
   IdSSL,
-  IdSSLOpenSSL,
+  IdStack,
   IdTCPClient,
   IdTCPConnection,
   IniFiles,
@@ -79,34 +80,21 @@ type
   Tdmmain = class(TDataModule)
     con_PCM: TFDConnection;
     con_Restore: TFDConnection;
-    con_SQL: TSQLConnection;
     imglst_Frame: TImageList;
     locsens_Location: TLocationSensor;
     physdrvlnk: TFDPhysSQLiteDriverLink;
     qry_timer: TFDQuery;
-    RESTClient2: TRESTClient;
-    RESTRequest2: TRESTRequest;
-    RESTResponse2: TRESTResponse;
-    sqlSM_HoleBuchungenJahr: TSqlServerMethod;
-    sqlSM_HoleFehltage: TSqlServerMethod;
-    sqlSM_HoleFehltageKonfiguration: TSqlServerMethod;
-    sqlSM_HoleLetzteBuchung: TSqlServerMethod;
-    sqlSM_HoleLogin: TSqlServerMethod;
-    sqlSM_HoleMonatswerte: TSqlServerMethod;
-    sqlSM_HolePersonalDaten: TSqlServerMethod;
-    sqlSM_HoleUserID: TSqlServerMethod;
-    sqlSM_PruefeLogin: TSqlServerMethod;
-    sqlSM_SetzeBuchung: TSqlServerMethod;
-    sqlSM_SetzeFehltage: TSqlServerMethod;
-    sqlSM_SetzeGeraeteID: TSqlServerMethod;
-    sqlSM_SetzeLetzteBuchung: TSqlServerMethod;
-    sqlSM_SetzeLogin: TSqlServerMethod;
     stB_0: TStyleBook;
     stB_1: TStyleBook;
     stB_2: TStyleBook;
     stB_3: TStyleBook;
     stB_4: TStyleBook;
-    procedure AfterCloseDataset(DataSet: TDataSet);
+    RestRequestGoogle: TRESTRequest;
+    RESTClientPCM: TRESTClient;
+    HTTPBasicAuthenticatorPCM: THTTPBasicAuthenticator;
+    RESTClient2: TRESTClient;
+    RESTRequest2: TRESTRequest;
+    RESTResponse2: TRESTResponse;
     procedure con_PCMAfterConnect(Sender: TObject);
     procedure con_PCMBeforeConnect(Sender: TObject);
     procedure DataModuleCreate(Sender: TObject);
@@ -122,6 +110,7 @@ type
     sDeviceToken: string;
     sHostname, sPort: String;
     wfWaitFrame: TWaitForm;
+    function RestRequest(ARequestBody: TJSONObject; AResource: String; AGETPOST: TRESTRequestMethod = rmPOST): TJSONObject;
   end;
   {$EndRegion Types}
 var
@@ -133,17 +122,59 @@ implementation
 uses
   {$Region Uses}
   PCMAPP.Funktionen,
-  PCMAPP.Main;
+  PCMAPP.Main,
+  PCMAPP.SQL;
   {$EndRegion Uses}
 {$R *.dfm}
+function Tdmmain.RestRequest(ARequestBody: TJSONObject; AResource: String; AGETPOST: TRESTRequestMethod = rmPOST): TJSONObject;
+var
+  RestRequest: TRESTRequest;
+  qry_Work: TFDQuery;
+begin
+  qry_Work:= TFDQuery.Create(nil);
+  qry_Work.Connection:= con_PCM;
+  qry_Work.SQL.Text := sSQL_SEL_All_AUtologin;
+  qry_Work.Open;
+  HTTPBasicAuthenticatorPCM.Username:= qry_Work.FieldByName('Benutzername').AsString;
+  HTTPBasicAuthenticatorPCM.Password:= qry_Work.FieldByName('Passwort').AsString;
+  if HTTPBasicAuthenticatorPCM.Username = '' then
+  begin
+    HTTPBasicAuthenticatorPCM.Username:= frm_PCM_main.edt_Benutzername.Text;
+    HTTPBasicAuthenticatorPCM.Password:= frm_PCM_main.edt_Passwort.Text;
+  end;
+  qry_Work.Close;
+  FreeAndNil(qry_Work);
+  if dmMain.sHostname <> '' then
+  begin
+    RestClientPCM.BaseURL:= 'https://' +  dmMain.sHostname +':' + dmmain.sPort + '/PCM/api/v1/';
+  end
+  else begin
+    RestClientPCM.BaseURL:= 'https://' +  GStack.ResolveHost(dmMain.sHostname, Id_IPv4) +':' + dmmain.sPort + '/PCM/api/v1/';
+//    RestClient1.BaseURL:= 'https://pcmapps.ddns.net:5443/PCM/api/v1/';
+  end;
+  RESTClientPCM.ContentType.Empty;
+
+  RestRequest := TRESTRequest.Create(nil);
+  try
+    RestRequest.Timeout:= 30000;
+    RESTRequest.AcceptEncoding := 'gzip, deflate, br';
+    RestRequest.Client := RestClientPCM;
+    RestRequest.Method := AGETPOST;
+    RestRequest.Resource := AResource;
+    if ARequestBody <> nil then
+    begin
+      RestRequest.Body.Add(ARequestBody);
+    end;
+    RestRequest.Execute;
+    Result:= TJSonObject.ParseJSONValue(RestRequest.Response.JSONText) as TJSONObject;
+  finally
+    RestRequest.DisposeOf;
+  end;
+end;
 ////////////////////////////////////////////////////////////////////////////////
 // DATAMODUL FUNCTIONS                                                        //
 ////////////////////////////////////////////////////////////////////////////////
 {$Region DATAMODUL FUNCTIONS}
-procedure Tdmmain.AfterCloseDataset(DataSet: TDataSet);
-begin
-  con_SQL.Close;
-end;
 procedure Tdmmain.con_PCMAfterConnect(Sender: TObject);
 begin
   CreateDatabase;
@@ -160,7 +191,6 @@ procedure Tdmmain.DataModuleDestroy(Sender: TObject);
 begin
   con_PCM.Connected := False;
   con_Restore.Connected := False;
-  con_SQL.Connected := False;
   locsens_Location.Active := False;
 end;
 procedure Tdmmain.locsens_LocationLocationChanged(Sender: TObject; const [Ref] OldLocation, NewLocation: TLocationCoord2D);
