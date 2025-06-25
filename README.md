@@ -13,7 +13,7 @@ TODO: Beschreiben und zeigen Sie, wie Ihr Code kompiliert wird und wie die Tests
 
  #Beitragen
 TODO: Erläutern Sie, wie andere Benutzer und Entwickler zu einer Verbesserung Ihres Codes beitragen können. 
-
+ 
 Weitere Informationen zum Erstellen hilfreicher Infodateien finden Sie im folgenden [Leitfaden](https://docs.microsoft.com/de-de/azure/devops/repos/git/create-a-readme?view=azure-devops). Weitere Anregungen finden Sie zudem in den folgenden Infodateien:
 – [ASP.NET Core](https://github.com/aspnet/Home)
 – [Visual Studio Code](https://github.com/Microsoft/vscode)
