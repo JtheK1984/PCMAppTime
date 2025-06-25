@@ -2,12 +2,12 @@ pool:
   name: DEV
 
 variables:
-  version.MajorMinor: '1.6.0' # Manually adjust the version number as needed. Patch is auto-incremented.
+  version.MajorMinor: '1.0.0' # Manually adjust the version number as needed. Patch is auto-incremented.
   version.Patch: $[counter(variables['version.MajorMinor'], 0)]
   versionNumber: '$(version.MajorMinor).$(VersionBuild)' 
   # Android Variables
-  sdkPath: 'C:\Users\Public\Documents\Embarcadero\Studio\23.0\CatalogRepository\AndroidSDK-3301-22.0.44500.8973'
-  ndkPath: 'C:\Users\Public\Documents\Embarcadero\Studio\23.0\CatalogRepository\AndroidNDK-21-23.0.50491.5718\android-ndk-r21'
+  sdkPath: 'C:\Users\Public\Documents\Embarcadero\Studio\23.0\CatalogRepository\AndroidSDK 36'
+  ndkPath: 'C:\Users\Public\Documents\Embarcadero\Studio\23.0\CatalogRepository\android-ndk-r28b'
   javaHome: 'C:\Program Files\Eclipse Adoptium\jdk-11.0.15.10-hotspot\bin'     # Update to the correct path
 
 steps:
