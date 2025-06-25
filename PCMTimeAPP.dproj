@@ -6,9 +6,10 @@
         <MainSource>PCMTimeAPP.dpr</MainSource>
         <Base>True</Base>
         <Config Condition="'$(Config)'==''">Debug</Config>
-        <Platform Condition="'$(Platform)'==''">Android64</Platform>
+        <Platform Condition="'$(Platform)'==''">Win32</Platform>
         <TargetedPlatforms>32787</TargetedPlatforms>
         <AppType>Application</AppType>
+        <ProjectName Condition="'$(ProjectName)'==''">PCMTimeAPP</ProjectName>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
         <Base>true</Base>
@@ -141,6 +142,7 @@
         <DCC_NXCompat>false</DCC_NXCompat>
         <DCC_HighEntropyVa>false</DCC_HighEntropyVa>
         <DCC_Define>PCMTime;$(DCC_Define)</DCC_Define>
+        <OrientationPortrait>true</OrientationPortrait>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Android)'!=''">
         <VerInfo_Build>1</VerInfo_Build>
@@ -262,13 +264,12 @@
         <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
         <DCC_UsePackage>DBXSqliteDriver;RESTComponents;DataSnapServerMidas;DBXDb2Driver;DBXInterBaseDriver;vclactnband;vclFireDAC;emsclientfiredac;DataSnapFireDAC;svnui;FireDACADSDriver;DBXMSSQLDriver;DatasnapConnectorsFreePascal;FireDACMSSQLDriver;vcltouch;FMXTee924;vcldb;bindcompfmx;svn;DBXOracleDriver;inetdb;TMSFMXWebGMapsPkgDXE10;emsedge;FireDACIBDriver;fmx;fmxdae;FireDACDBXDriver;dbexpress;IndyCore;vclx;dsnap;DataSnapCommon;emsclient;FireDACCommon;RESTBackendComponents;DataSnapConnectors;VCLRESTComponents;soapserver;FMXTeeImport924;vclie;bindengine;DBXMySQLDriver;FireDACOracleDriver;CloudService;FireDACMySQLDriver;DBXFirebirdDriver;FireDACCommonODBC;FireDACCommonDriver;DataSnapClient;FMXTeeLanguage924;inet;bindcompdbx;IndyIPCommon;vcl;DBXSybaseASEDriver;IndyIPServer;IndySystem;FireDACDb2Driver;dsnapcon;madExcept_;FireDACMSAccDriver;fmxFireDAC;FireDACInfxDriver;vclimg;madBasic_;TeeDB;FireDAC;emshosting;FireDACSqliteDriver;FireDACPgDriver;FireDACASADriver;DBXOdbcDriver;FireDACTDataDriver;soaprtl;DbxCommonDriver;Tee;DataSnapServer;xmlrtl;soapmidas;DataSnapNativeClient;fmxobj;vclwinx;FireDACDSDriver;rtl;madDisAsm_;DbxClientDriver;FMXTree24;DBXSybaseASADriver;CustomIPTransport;vcldsnap;TMSFMXPackPkgDXE10;FMXTeeDB924;bindcomp;appanalytics;FmxTeeUI924;DBXInformixDriver;IndyIPClient;bindcompvcl;TeeUI;dbxcds;VclSmp;adortl;FireDACODBCDriver;DataSnapIndy10ServerTransport;FMXTeePro924;dsnapxml;DataSnapProviderClient;dbrtl;inetdbxpress;FireDACMongoDBDriver;IndyProtocols;TMSFMXPackPkgDEDXE10;fmxase;$(DCC_UsePackage)</DCC_UsePackage>
         <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
-        <VerInfo_Keys>CompanyName=PCM;FileVersion=1.6.0.1;InternalName=PCM Time 32-Bit;LegalCopyright=Jens Henske;LegalTrademarks=;OriginalFilename=PCM Time 32-Bit;ProductVersion=1.6;Comments=04022025;ProgramID=com.embarcadero.$(MSBuildProjectName);FileDescription=$(MSBuildProjectName);ProductName=$(MSBuildProjectName) 32-Bit</VerInfo_Keys>
+        <VerInfo_Keys>CompanyName=PCM;FileVersion=1.0.0.1;InternalName=PCM Time 32-Bit;LegalCopyright=Jens Henske;LegalTrademarks=;OriginalFilename=PCM Time 32-Bit;ProductVersion=1.0;Comments=04022025;ProgramID=com.embarcadero.$(MSBuildProjectName);FileDescription=$(MSBuildProjectName);ProductName=$(MSBuildProjectName) 32-Bit</VerInfo_Keys>
         <VerInfo_Locale>1031</VerInfo_Locale>
         <UWP_DelphiLogo44>Grafiken\48x48\48.png</UWP_DelphiLogo44>
         <UWP_DelphiLogo150>Grafiken\144x144\144.png</UWP_DelphiLogo150>
         <Icon_MainIcon>PCMTimeAPP_Icon.ico</Icon_MainIcon>
         <AppDPIAwarenessMode>none</AppDPIAwarenessMode>
-        <VerInfo_MinorVer>6</VerInfo_MinorVer>
         <VerInfo_Build>1</VerInfo_Build>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win64)'!=''">
@@ -276,13 +277,12 @@
         <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;$(DCC_Namespace)</DCC_Namespace>
         <DCC_UsePackage>DBXSqliteDriver;RESTComponents;DataSnapServerMidas;DBXDb2Driver;DBXInterBaseDriver;vclactnband;vclFireDAC;emsclientfiredac;DataSnapFireDAC;FireDACADSDriver;DBXMSSQLDriver;DatasnapConnectorsFreePascal;FireDACMSSQLDriver;vcltouch;vcldb;bindcompfmx;DBXOracleDriver;inetdb;emsedge;FireDACIBDriver;fmx;fmxdae;FireDACDBXDriver;dbexpress;IndyCore;vclx;dsnap;DataSnapCommon;emsclient;FireDACCommon;RESTBackendComponents;DataSnapConnectors;VCLRESTComponents;soapserver;vclie;bindengine;DBXMySQLDriver;FireDACOracleDriver;CloudService;FireDACMySQLDriver;DBXFirebirdDriver;FireDACCommonODBC;FireDACCommonDriver;DataSnapClient;inet;bindcompdbx;IndyIPCommon;vcl;DBXSybaseASEDriver;IndyIPServer;IndySystem;FireDACDb2Driver;dsnapcon;FireDACMSAccDriver;fmxFireDAC;FireDACInfxDriver;vclimg;TeeDB;FireDAC;emshosting;FireDACSqliteDriver;FireDACPgDriver;FireDACASADriver;DBXOdbcDriver;FireDACTDataDriver;soaprtl;DbxCommonDriver;Tee;DataSnapServer;xmlrtl;soapmidas;DataSnapNativeClient;fmxobj;vclwinx;FireDACDSDriver;rtl;DbxClientDriver;DBXSybaseASADriver;CustomIPTransport;vcldsnap;bindcomp;appanalytics;DBXInformixDriver;IndyIPClient;bindcompvcl;TeeUI;dbxcds;VclSmp;adortl;FireDACODBCDriver;DataSnapIndy10ServerTransport;dsnapxml;DataSnapProviderClient;dbrtl;inetdbxpress;FireDACMongoDBDriver;IndyProtocols;fmxase;$(DCC_UsePackage)</DCC_UsePackage>
         <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
-        <VerInfo_Keys>CompanyName=PCM;FileVersion=1.6.0.1;InternalName=PCM Time 64-Bit;LegalCopyright=Jens Henske;LegalTrademarks=;OriginalFilename=PCM Time 64-Bit;ProductVersion=1.6;Comments=04022025;ProgramID=com.embarcadero.$(MSBuildProjectName);FileDescription=$(MSBuildProjectName);ProductName=$(MSBuildProjectName) 64-Bit</VerInfo_Keys>
+        <VerInfo_Keys>CompanyName=PCM;FileVersion=1.0.0.1;InternalName=PCM Time 64-Bit;LegalCopyright=Jens Henske;LegalTrademarks=;OriginalFilename=PCM Time 64-Bit;ProductVersion=1.0;Comments=04022025;ProgramID=com.embarcadero.$(MSBuildProjectName);FileDescription=$(MSBuildProjectName);ProductName=$(MSBuildProjectName) 64-Bit</VerInfo_Keys>
         <VerInfo_Locale>1031</VerInfo_Locale>
         <UWP_DelphiLogo44>Grafiken\48x48\48.png</UWP_DelphiLogo44>
         <UWP_DelphiLogo150>Grafiken\144x144\144.png</UWP_DelphiLogo150>
         <Icon_MainIcon>PCMTimeAPP_Icon.ico</Icon_MainIcon>
         <AppDPIAwarenessMode>none</AppDPIAwarenessMode>
-        <VerInfo_MinorVer>6</VerInfo_MinorVer>
         <VerInfo_Build>1</VerInfo_Build>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1)'!=''">
@@ -308,7 +308,7 @@
         <AUP_BIND_DEVICE_ADMIN>true</AUP_BIND_DEVICE_ADMIN>
         <EL_ApsEnvironment>true</EL_ApsEnvironment>
         <Android_AppId>1:179997971509:android:c21297d07373cf60ad0d7c</Android_AppId>
-        <VerInfo_Keys>package=com.embarcadero.PCMTimeAPP;label=PCM - Time;versionCode=1;versionName=1.6.0;persistent=False;restoreAnyVersion=False;installLocation=auto;largeHeap=False;theme=TitleBar;hardwareAccelerated=true;apiKey=;minSdkVersion=23;targetSdkVersion=35</VerInfo_Keys>
+        <VerInfo_Keys>package=com.embarcadero.PCMTimeAPP;label=PCM - Time;versionCode=1;versionName=1.0.0;persistent=False;restoreAnyVersion=False;installLocation=auto;largeHeap=False;theme=TitleBar;hardwareAccelerated=true;apiKey=;minSdkVersion=23;targetSdkVersion=35</VerInfo_Keys>
         <Android_ApiKey>AIzaSyBEBf9yKTznpUuFuZ8epvDUIVKO5QA-hVE</Android_ApiKey>
         <Android_GcmDefaultSenderId>179997971509</Android_GcmDefaultSenderId>
         <Android_ProjectId>pcm-manager</Android_ProjectId>
@@ -385,7 +385,6 @@
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
         <Icon_MainIcon>PCMTimeAPP_Icon.ico</Icon_MainIcon>
-        <VerInfo_MinorVer>6</VerInfo_MinorVer>
         <VerInfo_Build>1</VerInfo_Build>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win64)'!=''">
@@ -394,7 +393,6 @@
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
         <Icon_MainIcon>PCMTimeAPP_Icon.ico</Icon_MainIcon>
-        <VerInfo_MinorVer>6</VerInfo_MinorVer>
         <VerInfo_Build>1</VerInfo_Build>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
@@ -422,7 +420,6 @@
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
         <Icon_MainIcon>PCMTimeAPP_Icon.ico</Icon_MainIcon>
-        <VerInfo_MinorVer>6</VerInfo_MinorVer>
         <VerInfo_Build>1</VerInfo_Build>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2_Win64)'!=''">
@@ -431,7 +428,6 @@
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
         <Icon_MainIcon>PCMTimeAPP_Icon.ico</Icon_MainIcon>
-        <VerInfo_MinorVer>6</VerInfo_MinorVer>
         <VerInfo_Build>1</VerInfo_Build>
     </PropertyGroup>
     <ItemGroup>
