@@ -612,6 +612,7 @@ type
     Label11: TLabel;
     Circle6: TCircle;
     btn_AuswertungJahrCalc: TButton;
+    Button3: TButton;
     {$IFDEF ANDROID}
     procedure BiometricAuth1AuthenticateSuccess(Sender: TObject);
     procedure BiometricAuth1AuthenticateFail(Sender: TObject; const FailReason: TBiometricFailReason; const ResultMessage: string);
@@ -668,6 +669,7 @@ type
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure btn_AuswertungJahrCalcClick(Sender: TObject);
+    procedure Button3Click(Sender: TObject);
  private
     { Private-Deklarationen }
     {$IFDEF ANDROID}
@@ -3142,6 +3144,62 @@ procedure Tfrm_PCM_Main.Button2Click(Sender: TObject);
 begin
   rec_buchungenInfo.Visible:= false;
 end;
+procedure Tfrm_PCM_Main.Button3Click(Sender: TObject);
+begin
+  dmmain.wfWaitFrame.Execute('Berechne Jahr...', 'Monatswerte', True);
+
+  TTask.Run(
+  procedure()
+  begin
+    TThread.Synchronize(nil,
+    procedure()
+    begin
+      try
+        BerechneTage(0,1,StrToint(frm_PCM_Main.cmbbx_MonatJahr.Items[frm_PCM_Main.cmbbx_MonatJahr.ItemIndex]));
+        BerechneMonat(1,StrToint(frm_PCM_Main.cmbbx_MonatJahr.Items[frm_PCM_Main.cmbbx_MonatJahr.ItemIndex]));
+
+        BerechneTage(0,2,StrToint(frm_PCM_Main.cmbbx_MonatJahr.Items[frm_PCM_Main.cmbbx_MonatJahr.ItemIndex]));
+        BerechneMonat(2,StrToint(frm_PCM_Main.cmbbx_MonatJahr.Items[frm_PCM_Main.cmbbx_MonatJahr.ItemIndex]));
+
+        BerechneTage(0,3,StrToint(frm_PCM_Main.cmbbx_MonatJahr.Items[frm_PCM_Main.cmbbx_MonatJahr.ItemIndex]));
+        BerechneMonat(3,StrToint(frm_PCM_Main.cmbbx_MonatJahr.Items[frm_PCM_Main.cmbbx_MonatJahr.ItemIndex]));
+
+        BerechneTage(0,4,StrToint(frm_PCM_Main.cmbbx_MonatJahr.Items[frm_PCM_Main.cmbbx_MonatJahr.ItemIndex]));
+        BerechneMonat(4,StrToint(frm_PCM_Main.cmbbx_MonatJahr.Items[frm_PCM_Main.cmbbx_MonatJahr.ItemIndex]));
+
+        BerechneTage(0,5,StrToint(frm_PCM_Main.cmbbx_MonatJahr.Items[frm_PCM_Main.cmbbx_MonatJahr.ItemIndex]));
+        BerechneMonat(5,StrToint(frm_PCM_Main.cmbbx_MonatJahr.Items[frm_PCM_Main.cmbbx_MonatJahr.ItemIndex]));
+
+        BerechneTage(0,6,StrToint(frm_PCM_Main.cmbbx_MonatJahr.Items[frm_PCM_Main.cmbbx_MonatJahr.ItemIndex]));
+        BerechneMonat(6,StrToint(frm_PCM_Main.cmbbx_MonatJahr.Items[frm_PCM_Main.cmbbx_MonatJahr.ItemIndex]));
+
+        BerechneTage(0,7,StrToint(frm_PCM_Main.cmbbx_MonatJahr.Items[frm_PCM_Main.cmbbx_MonatJahr.ItemIndex]));
+        BerechneMonat(7,StrToint(frm_PCM_Main.cmbbx_MonatJahr.Items[frm_PCM_Main.cmbbx_MonatJahr.ItemIndex]));
+
+        BerechneTage(0,8,StrToint(frm_PCM_Main.cmbbx_MonatJahr.Items[frm_PCM_Main.cmbbx_MonatJahr.ItemIndex]));
+        BerechneMonat(8,StrToint(frm_PCM_Main.cmbbx_MonatJahr.Items[frm_PCM_Main.cmbbx_MonatJahr.ItemIndex]));
+
+        BerechneTage(0,9,StrToint(frm_PCM_Main.cmbbx_MonatJahr.Items[frm_PCM_Main.cmbbx_MonatJahr.ItemIndex]));
+        BerechneMonat(9,StrToint(frm_PCM_Main.cmbbx_MonatJahr.Items[frm_PCM_Main.cmbbx_MonatJahr.ItemIndex]));
+
+        BerechneTage(0,10,StrToint(frm_PCM_Main.cmbbx_MonatJahr.Items[frm_PCM_Main.cmbbx_MonatJahr.ItemIndex]));
+        BerechneMonat(10,StrToint(frm_PCM_Main.cmbbx_MonatJahr.Items[frm_PCM_Main.cmbbx_MonatJahr.ItemIndex]));
+
+        BerechneTage(0,11,StrToint(frm_PCM_Main.cmbbx_MonatJahr.Items[frm_PCM_Main.cmbbx_MonatJahr.ItemIndex]));
+        BerechneMonat(11,StrToint(frm_PCM_Main.cmbbx_MonatJahr.Items[frm_PCM_Main.cmbbx_MonatJahr.ItemIndex]));
+
+        BerechneTage(0,12,StrToint(frm_PCM_Main.cmbbx_MonatJahr.Items[frm_PCM_Main.cmbbx_MonatJahr.ItemIndex]));
+        BerechneMonat(12,StrToint(frm_PCM_Main.cmbbx_MonatJahr.Items[frm_PCM_Main.cmbbx_MonatJahr.ItemIndex]));
+
+        BerechneMonatsUebersicht(frm_PCM_Main.cmbbx_MonatMonat.ItemIndex+1,StrToint(frm_PCM_Main.cmbbx_MonatJahr.Items[frm_PCM_Main.cmbbx_MonatJahr.ItemIndex]));
+      except
+        dmmain.wfWaitFrame.HideFW;
+      end;
+    end);
+    dmmain.wfWaitFrame.HideFW;
+  end);
+end;
+
 {$EndRegion Buchungsuebersicht}
 ////////////////////////////////////////////////////////////////////////////////
 // Fehltage                                                                   //
@@ -3241,6 +3299,13 @@ end;
 procedure Tfrm_PCM_Main.cmbbx_MonatMonatChange(Sender: TObject);
 begin
   BerechneMonatsUebersicht(cmbbx_MonatMonat.ItemIndex+1,StrToint(cmbbx_MonatJahr.Items[cmbbx_MonatJahr.ItemIndex]));
+  if (Sender is TComboBox) then
+  begin
+    if TComboBox(Sender).Name = 'cmbbx_MonatJahr' then
+    begin
+      cmbbx_MonatMonat.ItemIndex:= 0;;
+    end
+  end;
 
 end;
 {$EndRegion Monatswerte}

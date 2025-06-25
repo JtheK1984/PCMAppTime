@@ -4,7 +4,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
   BorderIcons = []
   BorderStyle = Single
   Caption = 'PCM'
-  ClientHeight = 949
+  ClientHeight = 950
   ClientWidth = 616
   Position = Default
   Quality = HighQuality
@@ -24,14 +24,14 @@ object frm_PCM_Main: Tfrm_PCM_Main
   object lo_MainPCM: TLayout
     Align = Client
     Size.Width = 616.000000000000000000
-    Size.Height = 861.000000000000000000
+    Size.Height = 862.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 39
     object tc_main: TTabControl
       Align = Client
       FullSize = True
       Size.Width = 616.000000000000000000
-      Size.Height = 861.000000000000000000
+      Size.Height = 862.000000000000000000
       Size.PlatformDefault = False
       StyleLookup = 'tcMainStyle1'
       TabHeight = 49.000000000000000000
@@ -41,15 +41,15 @@ object frm_PCM_Main: Tfrm_PCM_Main
       OnChange = tc_mainChange
       Sizes = (
         616s
-        861s
+        862s
         616s
-        861s
+        862s
         616s
-        861s
+        862s
         616s
-        861s
+        862s
         616s
-        861s)
+        862s)
       object ti_1Login: TTabItem
         CustomIcon = <
           item
@@ -67,11 +67,11 @@ object frm_PCM_Main: Tfrm_PCM_Main
         object vsbx_Login: TVertScrollBox
           Align = Client
           Size.Width = 616.000000000000000000
-          Size.Height = 861.000000000000000000
+          Size.Height = 862.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 0
           Viewport.Width = 616.000000000000000000
-          Viewport.Height = 861.000000000000000000
+          Viewport.Height = 862.000000000000000000
           object lo_LoginHeader: TLayout
             Align = Top
             Margins.Left = 20.000000000000000000
@@ -957,7 +957,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
         object lo_Frame: TLayout
           Align = Client
           Size.Width = 616.000000000000000000
-          Size.Height = 861.000000000000000000
+          Size.Height = 862.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 0
         end
@@ -979,7 +979,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
         object lo_DetailFrame: TLayout
           Align = Client
           Size.Width = 616.000000000000000000
-          Size.Height = 861.000000000000000000
+          Size.Height = 862.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 0
         end
@@ -1072,7 +1072,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
           Align = Client
           FullSize = True
           Size.Width = 616.000000000000000000
-          Size.Height = 861.000000000000000000
+          Size.Height = 862.000000000000000000
           Size.PlatformDefault = False
           TabHeight = 49.000000000000000000
           TabIndex = 0
@@ -1081,19 +1081,19 @@ object frm_PCM_Main: Tfrm_PCM_Main
           OnChange = tc_MainAppChange
           Sizes = (
             616s
-            861s
+            862s
             616s
-            861s
+            862s
             616s
-            861s
+            862s
             616s
-            861s
+            862s
             616s
-            861s
+            862s
             616s
-            861s
+            862s
             616s
-            861s)
+            862s)
           object ti_1MainHome: TTabItem
             Touch.InteractiveGestures = [LongTap]
             CustomIcon.Height = 48
@@ -1125,15 +1125,15 @@ object frm_PCM_Main: Tfrm_PCM_Main
             object vsbx_Home: TVertScrollBox
               Align = Client
               Size.Width = 616.000000000000000000
-              Size.Height = 861.000000000000000000
+              Size.Height = 862.000000000000000000
               Size.PlatformDefault = False
               TabOrder = 1
               Viewport.Width = 616.000000000000000000
-              Viewport.Height = 861.000000000000000000
+              Viewport.Height = 862.000000000000000000
               object lo_Home: TLayout
                 Align = Client
                 Size.Width = 616.000000000000000000
-                Size.Height = 861.000000000000000000
+                Size.Height = 862.000000000000000000
                 Size.PlatformDefault = False
                 TabOrder = 0
                 object rec_1Personal: TRectangle
@@ -1413,7 +1413,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
                               Margins.Right = 10.000000000000000000
                               Margins.Bottom = 5.000000000000000000
                               Size.Width = 52.000000000000000000
-                              Size.Height = 15.000000000000000000
+                              Size.Height = 14.666667938232420000
                               Size.PlatformDefault = False
                               TextSettings.Font.StyleExt = {00070000000000000004000000}
                               TextSettings.FontColor = claAliceblue
@@ -1811,7 +1811,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
                               Margins.Right = 10.000000000000000000
                               Margins.Bottom = 5.000000000000000000
                               Size.Width = 42.000000000000000000
-                              Size.Height = 15.000000000000000000
+                              Size.Height = 14.666667938232420000
                               Size.PlatformDefault = False
                               TextSettings.Font.StyleExt = {00070000000000000004000000}
                               TextSettings.FontColor = claAliceblue
@@ -2428,7 +2428,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
                                 Margins.Right = 10.000000000000000000
                                 Margins.Bottom = 2.000000000000000000
                                 Size.Width = 42.000000000000000000
-                                Size.Height = 15.000000000000000000
+                                Size.Height = 14.666667938232420000
                                 Size.PlatformDefault = False
                                 TextSettings.Font.StyleExt = {00070000000000000004000000}
                                 TextSettings.FontColor = claAliceblue
@@ -2578,7 +2578,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
                                 Margins.Right = 10.000000000000000000
                                 Margins.Bottom = 5.000000000000000000
                                 Size.Width = 42.000000000000000000
-                                Size.Height = 15.000000000000000000
+                                Size.Height = 14.666667938232420000
                                 Size.PlatformDefault = False
                                 TextSettings.Font.StyleExt = {00070000000000000004000000}
                                 TextSettings.FontColor = claAliceblue
@@ -2881,7 +2881,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
                               Margins.Right = 10.000000000000000000
                               Margins.Bottom = 5.000000000000000000
                               Size.Width = 52.000000000000000000
-                              Size.Height = 15.000000000000000000
+                              Size.Height = 14.666667938232420000
                               Size.PlatformDefault = False
                               TextSettings.Font.StyleExt = {00070000000000000004000000}
                               TextSettings.FontColor = claAliceblue
@@ -3123,34 +3123,34 @@ object frm_PCM_Main: Tfrm_PCM_Main
             object lo_PersonalDaten: TLayout
               Align = Client
               Size.Width = 616.000000000000000000
-              Size.Height = 861.000000000000000000
+              Size.Height = 862.000000000000000000
               Size.PlatformDefault = False
               TabOrder = 9
               object vsbx_PersonalDaten: TVertScrollBox
                 Align = Contents
                 Size.Width = 616.000000000000000000
-                Size.Height = 861.000000000000000000
+                Size.Height = 862.000000000000000000
                 Size.PlatformDefault = False
                 TabOrder = 7
                 TabStop = False
                 Viewport.Width = 616.000000000000000000
-                Viewport.Height = 861.000000000000000000
+                Viewport.Height = 862.000000000000000000
                 object lo_PersonalDatenMain: TLayout
                   Align = Client
                   Size.Width = 616.000000000000000000
-                  Size.Height = 861.000000000000000000
+                  Size.Height = 862.000000000000000000
                   Size.PlatformDefault = False
                   TabOrder = 0
                   TabStop = False
                   object vsbx_PersonalDatenView: TVertScrollBox
                     Align = Client
                     Size.Width = 616.000000000000000000
-                    Size.Height = 861.000000000000000000
+                    Size.Height = 862.000000000000000000
                     Size.PlatformDefault = False
                     TabOrder = 0
                     TabStop = False
                     Viewport.Width = 616.000000000000000000
-                    Viewport.Height = 861.000000000000000000
+                    Viewport.Height = 862.000000000000000000
                     object tc_personal: TTabControl
                       Align = Top
                       Size.Width = 616.000000000000000000
@@ -5798,7 +5798,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
               Margins.Right = 16.000000000000000000
               Margins.Bottom = 16.000000000000000000
               Position.X = 16.000000000000000000
-              Position.Y = 822.000000000000000000
+              Position.Y = 823.000000000000000000
               Size.Width = 584.000000000000000000
               Size.Height = 23.000000000000000000
               Size.PlatformDefault = False
@@ -5836,7 +5836,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
             ExplicitSize.cy = 49.000000000000000000
             object cal_Calendar: TCalendar
               Align = Top
-              Date = 45698.000000000000000000
+              Date = 45833.000000000000000000
               FirstDayOfWeek = dowMonday
               Size.Width = 616.000000000000000000
               Size.Height = 300.000000000000000000
@@ -6003,7 +6003,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
             object lo_BuchungungenLegende: TLayout
               Align = Bottom
               Margins.Bottom = 30.000000000000000000
-              Position.Y = 783.000000000000000000
+              Position.Y = 784.000000000000000000
               Size.Width = 616.000000000000000000
               Size.Height = 48.000000000000000000
               Size.PlatformDefault = False
@@ -6335,7 +6335,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
               Images = dmmain.imglst_Frame
               Align = Client
               Size.Width = 616.000000000000000000
-              Size.Height = 817.000000000000000000
+              Size.Height = 818.000000000000000000
               Size.PlatformDefault = False
               TabOrder = 0
               ItemAppearance.ItemHeight = 74
@@ -6392,7 +6392,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
             object tc_Auswertung: TTabControl
               Align = Client
               Size.Width = 616.000000000000000000
-              Size.Height = 861.000000000000000000
+              Size.Height = 862.000000000000000000
               Size.PlatformDefault = False
               TabHeight = 49.000000000000000000
               TabIndex = 0
@@ -6400,9 +6400,9 @@ object frm_PCM_Main: Tfrm_PCM_Main
               TabPosition = PlatformDefault
               Sizes = (
                 616s
-                812s
+                813s
                 616s
-                812s)
+                813s)
               object ti_1Monatswerte: TTabItem
                 CustomIcon = <
                   item
@@ -6421,12 +6421,12 @@ object frm_PCM_Main: Tfrm_PCM_Main
                 object vsbx_AuswertungMonat: TVertScrollBox
                   Align = Client
                   Size.Width = 616.000000000000000000
-                  Size.Height = 812.000000000000000000
+                  Size.Height = 813.000000000000000000
                   Size.PlatformDefault = False
                   StyleLookup = 'framedscrollboxstyle'
                   TabOrder = 1
                   Viewport.Width = 616.000000000000000000
-                  Viewport.Height = 812.000000000000000000
+                  Viewport.Height = 813.000000000000000000
                   object lo_AuswertungMonatDatum: TLayout
                     Align = Top
                     Margins.Left = 16.000000000000000000
@@ -6597,12 +6597,12 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     Position.X = 520.000000000000000000
                     Position.Y = 67.000000000000000000
                     Size.Width = 80.000000000000000000
-                    Size.Height = 669.000000000000000000
+                    Size.Height = 618.000000000000000000
                     Size.PlatformDefault = False
                     TabOrder = 0
                     CanFocus = False
                     Viewport.Width = 80.000000000000000000
-                    Viewport.Height = 669.000000000000000000
+                    Viewport.Height = 618.000000000000000000
                     object trvwitm_StundenMWDez: TTreeViewItem
                       StyledSettings = [Family, FontColor]
                       TextSettings.Font.StyleExt = {00070000000000000004000000}
@@ -6782,12 +6782,12 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     HitTest = False
                     Margins.Left = 16.000000000000000000
                     Size.Width = 424.000000000000000000
-                    Size.Height = 669.000000000000000000
+                    Size.Height = 618.000000000000000000
                     Size.PlatformDefault = False
                     TabOrder = 3
                     CanFocus = False
                     Viewport.Width = 424.000000000000000000
-                    Viewport.Height = 669.000000000000000000
+                    Viewport.Height = 618.000000000000000000
                     object trvwitm_MonatStunden: TTreeViewItem
                       StyledSettings = [Family, FontColor]
                       TextSettings.Font.StyleExt = {00070000000000000004000000}
@@ -6952,12 +6952,12 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     Position.X = 440.000000000000000000
                     Position.Y = 67.000000000000000000
                     Size.Width = 80.000000000000000000
-                    Size.Height = 669.000000000000000000
+                    Size.Height = 618.000000000000000000
                     Size.PlatformDefault = False
                     TabOrder = 2
                     CanFocus = False
                     Viewport.Width = 80.000000000000000000
-                    Viewport.Height = 669.000000000000000000
+                    Viewport.Height = 618.000000000000000000
                     object trvwitm_MonatStundenStd: TTreeViewItem
                       StyledSettings = [Family, FontColor]
                       TextSettings.Font.StyleExt = {00070000000000000004000000}
@@ -7140,16 +7140,32 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     Margins.Left = 16.000000000000000000
                     Margins.Top = 16.000000000000000000
                     Margins.Right = 16.000000000000000000
+                    Margins.Bottom = 4.000000000000000000
+                    Position.X = 16.000000000000000000
+                    Position.Y = 701.000000000000000000
+                    Size.Width = 584.000000000000000000
+                    Size.Height = 44.000000000000000000
+                    Size.PlatformDefault = False
+                    TabOrder = 12
+                    Text = 'Berechne Monat'
+                    TextSettings.Trimming = None
+                    OnClick = btn_AuswertungMonatCalcClick
+                  end
+                  object Button3: TButton
+                    Align = Bottom
+                    Margins.Left = 16.000000000000000000
+                    Margins.Top = 4.000000000000000000
+                    Margins.Right = 16.000000000000000000
                     Margins.Bottom = 16.000000000000000000
                     Position.X = 16.000000000000000000
-                    Position.Y = 752.000000000000000000
+                    Position.Y = 753.000000000000000000
                     Size.Width = 584.000000000000000000
                     Size.Height = 44.000000000000000000
                     Size.PlatformDefault = False
                     TabOrder = 11
-                    Text = 'Berechne Monat'
+                    Text = 'Berechne Jahr'
                     TextSettings.Trimming = None
-                    OnClick = btn_AuswertungMonatCalcClick
+                    OnClick = Button3Click
                   end
                 end
               end
@@ -7171,23 +7187,23 @@ object frm_PCM_Main: Tfrm_PCM_Main
                 object vsbx_AuswertungJahr: TVertScrollBox
                   Align = Client
                   Size.Width = 616.000000000000000000
-                  Size.Height = 812.000000000000000000
+                  Size.Height = 813.000000000000000000
                   Size.PlatformDefault = False
                   StyleLookup = 'framedscrollboxstyle'
                   TabOrder = 1
                   Viewport.Width = 616.000000000000000000
-                  Viewport.Height = 812.000000000000000000
+                  Viewport.Height = 813.000000000000000000
                   object trvw_AuswertungJahr: TTreeView
                     Align = Client
                     HitTest = False
                     Margins.Left = 16.000000000000000000
                     Size.Width = 424.000000000000000000
-                    Size.Height = 682.000000000000000000
+                    Size.Height = 683.000000000000000000
                     Size.PlatformDefault = False
                     TabOrder = 2
                     CanFocus = False
                     Viewport.Width = 424.000000000000000000
-                    Viewport.Height = 682.000000000000000000
+                    Viewport.Height = 683.000000000000000000
                     object TreeViewItem29: TTreeViewItem
                       StyledSettings = [Family, FontColor]
                       TextSettings.Font.StyleExt = {00070000000000000004000000}
@@ -7254,12 +7270,12 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     Position.X = 440.000000000000000000
                     Position.Y = 54.000000000000000000
                     Size.Width = 160.000000000000000000
-                    Size.Height = 682.000000000000000000
+                    Size.Height = 683.000000000000000000
                     Size.PlatformDefault = False
                     TabOrder = 1
                     CanFocus = False
                     Viewport.Width = 160.000000000000000000
-                    Viewport.Height = 682.000000000000000000
+                    Viewport.Height = 683.000000000000000000
                     object TreeViewItem48: TTreeViewItem
                       StyledSettings = [Family, FontColor]
                       TextSettings.Font.StyleExt = {00070000000000000004000000}
@@ -7445,7 +7461,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     Margins.Right = 16.000000000000000000
                     Margins.Bottom = 16.000000000000000000
                     Position.X = 16.000000000000000000
-                    Position.Y = 752.000000000000000000
+                    Position.Y = 753.000000000000000000
                     Size.Width = 584.000000000000000000
                     Size.Height = 44.000000000000000000
                     Size.PlatformDefault = False
@@ -7490,7 +7506,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
             object tc_More: TTabControl
               Align = Client
               Size.Width = 616.000000000000000000
-              Size.Height = 861.000000000000000000
+              Size.Height = 862.000000000000000000
               Size.PlatformDefault = False
               TabHeight = 49.000000000000000000
               TabIndex = 2
@@ -7498,9 +7514,9 @@ object frm_PCM_Main: Tfrm_PCM_Main
               TabPosition = None
               Sizes = (
                 616s
-                861s
+                862s
                 616s
-                861s)
+                862s)
               object ti_1ConfigMenu: TTabItem
                 CustomIcon = <
                   item
@@ -7520,7 +7536,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
                   EnableDragHighlight = False
                   Margins.Top = 5.000000000000000000
                   Size.Width = 616.000000000000000000
-                  Size.Height = 856.000000000000000000
+                  Size.Height = 857.000000000000000000
                   Size.PlatformDefault = False
                   StyleLookup = 'transparentlistboxstyle'
                   TabOrder = 0
@@ -7530,7 +7546,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
                   DefaultItemStyles.GroupHeaderStyle = ''
                   DefaultItemStyles.GroupFooterStyle = ''
                   Viewport.Width = 616.000000000000000000
-                  Viewport.Height = 856.000000000000000000
+                  Viewport.Height = 857.000000000000000000
                   object lstbxitm_101Optionen: TListBoxItem
                     Tag = 4
                     EnableDragHighlight = False
@@ -7865,15 +7881,15 @@ object frm_PCM_Main: Tfrm_PCM_Main
                   Touch.InteractiveGestures = []
                   Align = Client
                   Size.Width = 616.000000000000000000
-                  Size.Height = 861.000000000000000000
+                  Size.Height = 862.000000000000000000
                   Size.PlatformDefault = False
                   TabOrder = 0
                   Viewport.Width = 616.000000000000000000
-                  Viewport.Height = 861.000000000000000000
+                  Viewport.Height = 862.000000000000000000
                   object lo_ConfigConfig: TLayout
                     Align = Client
                     Size.Width = 616.000000000000000000
-                    Size.Height = 861.000000000000000000
+                    Size.Height = 862.000000000000000000
                     Size.PlatformDefault = False
                     TabOrder = 0
                   end
