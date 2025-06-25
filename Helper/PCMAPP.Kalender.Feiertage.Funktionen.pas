@@ -116,7 +116,7 @@ begin
   wMonthDaysCount := DaysInMonth(FirstDate);
   qry_Buchungen:= TFDQuery.Create(Self);
   qry_Buchungen.Connection:= dmmain.con_PCM;
-  qry_Buchungen.SQL.Text:= 'SELECT Datum,Fehltag,Feiertag,Kommen,Gehen From Buchungen Where Datum between :Von and :Bis';
+  qry_Buchungen.SQL.Text:= 'SELECT b.Datum,b.Fehltag,b.Feiertag,b.Kommen,b.Gehen, f.Typ, f.Bezahlt From buchungen b LEFT OUTER JOIN Fehltag F ON f.Kuerzel = b.Fehltag Where Datum between :Von and :Bis';
   qry_Buchungen.ParamByName('Von').AsDate:= StartOfTheMonth(Self.Date);
   qry_Buchungen.ParamByName('Bis').AsDate:= EndOfTheMonth(Self.Date);
   qry_Buchungen.open;
@@ -137,12 +137,14 @@ begin
           // Fehltage
           if (qry_Buchungen.FieldByName('Fehltag').AsString <> ' ') and (qry_Buchungen.FieldByName('Fehltag').AsString <> '') then
           begin
-            if (qry_Buchungen.FieldByName('Fehltag').AsString = 'UL') or (qry_Buchungen.FieldByName('Fehltag').AsString = 'ULH') then
+            if (qry_Buchungen.FieldByName('Typ').asInteger = 1) and (qry_Buchungen.FieldByName('Bezahlt').asInteger = 1) then
               CreateBackground(DayItem, TAlphaColors.Dodgerblue);
-            if (qry_Buchungen.FieldByName('Fehltag').AsString = 'K') or (qry_Buchungen.FieldByName('Fehltag').AsString = 'KHT') then
+            if (qry_Buchungen.FieldByName('Typ').asInteger = 2) and (qry_Buchungen.FieldByName('Bezahlt').asInteger = 1) then
               CreateBackground(DayItem, TAlphaColors.Indianred);
-            if (qry_Buchungen.FieldByName('Fehltag').AsString = 'KiK') or (qry_Buchungen.FieldByName('Fehltag').AsString = 'UUL') then
+            if ((qry_Buchungen.FieldByName('Typ').asInteger = 2) and (qry_Buchungen.FieldByName('Bezahlt').asInteger = 0) or (qry_Buchungen.FieldByName('Typ').asInteger = 1) and (qry_Buchungen.FieldByName('Bezahlt').asInteger = 0)) then
               CreateBackground(DayItem, TAlphaColors.Goldenrod);
+            if ((qry_Buchungen.FieldByName('Typ').asInteger = 3) and (qry_Buchungen.FieldByName('Bezahlt').asInteger = 1) or (qry_Buchungen.FieldByName('Typ').asInteger = 4) and (qry_Buchungen.FieldByName('Bezahlt').asInteger = 1)) then
+              CreateBackground(DayItem, TAlphaColors.Darkkhaki);
           end
           else begin
             if (qry_Buchungen.FieldByName('Kommen').AsDateTime <> StrToTime('00:00')) and (qry_Buchungen.FieldByName('Gehen').AsDateTime <> StrToTime('00:00')) then

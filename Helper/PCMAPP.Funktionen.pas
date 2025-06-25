@@ -137,11 +137,14 @@ end;
 function CheckServerConnection: Boolean;
 begin
   Result:= False;
-  JSONResult := dmmain.RestRequest(nil,'CheckServer',rmGET) as TJSONObject;
-  bHasError:= StrToBool(JSONResult.GetValue<TJSONBool>('HasError').ToString);
-  if not bHasError then
-  begin
-    Result:= True;
+  try
+    JSONResult := dmmain.RestRequest(nil,'CheckServer',rmGET) as TJSONObject;
+    bHasError:= StrToBool(JSONResult.GetValue<TJSONBool>('HasError').ToString);
+    if not bHasError then
+    begin
+      Result:= True;
+    end;
+  except
   end;
 end;
 function GetBuchungsart(ATyp: integer; AVon,ABis: TDate) : integer;
@@ -600,7 +603,13 @@ begin
     begin
       iSollstunden:= MinutesBetween(qry_Calc.FieldByName('Sollstunden').asDateTime,StrToTime('00:00'));
       if ((qry_Calc.FieldByName('Bezahlt').AsInteger = 1) and  (qry_Calc.FieldByName('Faktor').AsInteger = 1))  then
+      begin
         iFehltag:= MinutesBetween(qry_Calc.FieldByName('Sollstunden').asDateTime,StrToTime('00:00'));
+         if qry_Calc.FieldByName('SollAbziehen').AsInteger = 1 then
+          iFehltag:= 0;
+      end;
+       if ((qry_Calc.FieldByName('Bezahlt').AsInteger = 0) and  (qry_Calc.FieldByName('SollAbziehen').AsInteger = 1))  then
+        iSollstunden:= 0;
       if  ((qry_Calc.FieldByName('Bezahlt').AsInteger = 1) and  (qry_Calc.FieldByName('Faktor').AsInteger = 2)) then
         iFehltag:= Round(MinutesBetween(qry_Calc.FieldByName('Sollstunden').asDateTime,StrToTime('00:00')) / 2);
       if (qry_Calc.FieldByName('Feiertag').AsInteger = 2) then
@@ -620,9 +629,11 @@ begin
     else begin
       if qry_Calc.FieldByName('Datum').asDateTime = Date then
       begin
-        iSollstunden:= MinutesBetween(qry_Calc.FieldByName('Sollstunden').asDateTime,StrToTime('00:00'));
+        iSollstunden:= MinutesBetween(qry_Calc.FieldByName('Sollstunden').AsDateTime,StrToTime('00:00'));
+        // Bezahlte Abwesenheit ganzer Tag
         if ((qry_Calc.FieldByName('Bezahlt').AsInteger = 1) and  (qry_Calc.FieldByName('Faktor').AsInteger = 1))  then
           iFehltag:= MinutesBetween(qry_Calc.FieldByName('Sollstunden').asDateTime,StrToTime('00:00'));
+        // Bezahlte Abwesenheit halber Tag
         if  ((qry_Calc.FieldByName('Bezahlt').AsInteger = 1) and  (qry_Calc.FieldByName('Faktor').AsInteger = 2)) then
           iFehltag:= Round(MinutesBetween(qry_Calc.FieldByName('Sollstunden').asDateTime,StrToTime('00:00')) / 2);
         if (qry_Calc.FieldByName('Feiertag').AsInteger = 2) then
@@ -632,6 +643,41 @@ begin
         if (iFeiertag = iFehltag) and (iFeiertag = 480) then
           iFehltag := 0;
       end;
+      if (qry_Calc.FieldByName('Bezahlt').AsInteger > 0 ) or ((qry_Calc.FieldByName('Feiertag').AsInteger > 0 ) and (qry_Calc.FieldByName('Sollstunden').AsDateTime <> StrToTime('00:00:00'))) then
+      begin
+        iSollstunden:= MinutesBetween(qry_Calc.FieldByName('Sollstunden').asDateTime,StrToTime('00:00'));
+        // Bezahlte Abwesenheit ganzer Tag
+        if ((qry_Calc.FieldByName('Bezahlt').AsInteger = 1) and  (qry_Calc.FieldByName('Faktor').AsInteger = 1))  then
+          iFehltag:= MinutesBetween(qry_Calc.FieldByName('Sollstunden').asDateTime,StrToTime('00:00'));
+        // Bezahlte Abwesenheit halber Tag
+        if  ((qry_Calc.FieldByName('Bezahlt').AsInteger = 1) and  (qry_Calc.FieldByName('Faktor').AsInteger = 2)) then
+          iFehltag:= Round(MinutesBetween(qry_Calc.FieldByName('Sollstunden').asDateTime,StrToTime('00:00')) / 2);
+        if (qry_Calc.FieldByName('Feiertag').AsInteger = 2) then
+          iFeiertag:= Round(MinutesBetween(qry_Calc.FieldByName('Sollstunden').asDateTime,StrToTime('00:00')) / 2);
+        if (qry_Calc.FieldByName('Feiertag').AsInteger = 1) then
+          iFeiertag:= MinutesBetween(qry_Calc.FieldByName('Sollstunden').asDateTime,StrToTime('00:00'));
+        if (iFeiertag = iFehltag) and (iFeiertag = 480) then
+          iFehltag := 0;
+      end;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       // Arbeitszeit
       if (qry_Calc.FieldByName('Kommen').asDateTime <> StrToTime('00:00:00')) and (qry_Calc.FieldByName('Gehen').asDateTime = StrToTime('00:00:00')) then
       begin
@@ -1367,6 +1413,7 @@ var
   iType: integer;
   iFactor: integer;
   iPaid: integer;
+  iSubtract: integer;
 begin
   AWaitFrame.SetWaitMessage('Fehltagekonfiguration wird synchronisiert...', 'Synchronisierung');
   qry_SynchConfig:= TFDQuery.Create(nil);
@@ -1385,24 +1432,27 @@ begin
         JSonValue.TryGetValue<integer>('Type',iType);
         JSonValue.TryGetValue<integer>('Factor',iFactor);
         JSonValue.TryGetValue<integer>('Paid',iPaid);
-        qry_SynchConfig.SQL.Text:= 'Select Count(*) as Anzahl From Fehltag Where Kuerzel = :Kuerzel and Beschreibung = :Beschreibung and Typ = :Typ and Faktor = :Faktor and Bezahlt = :Bezahlt';
+        JSonValue.TryGetValue<integer>('Subtract',iSubtract);
+        qry_SynchConfig.SQL.Text:= 'Select Count(*) as Anzahl From Fehltag Where Kuerzel = :Kuerzel and Beschreibung = :Beschreibung and Typ = :Typ and Faktor = :Faktor and Bezahlt = :Bezahlt and SollAbziehen = :SollAbziehen';
         qry_SynchConfig.ParamByName('Kuerzel').asString:= sCode;
         qry_SynchConfig.ParamByName('Beschreibung').asString:= sDescription;
         qry_SynchConfig.ParamByName('Typ').AsInteger:= iType;
         qry_SynchConfig.ParamByName('Faktor').AsInteger:= iFactor;
         qry_SynchConfig.ParamByName('Bezahlt').AsInteger:= iPaid;
+        qry_SynchConfig.ParamByName('SollAbziehen').AsInteger:= iSubtract;
         qry_SynchConfig.open;
         iCount:= qry_SynchConfig.FieldByName('Anzahl').AsInteger;
         qry_SynchConfig.Close;
         if iCount = 0 then
         begin
-          qry_SynchConfig.SQL.Text:= 'Insert into Fehltag (ID,Kuerzel,Beschreibung,Typ,Faktor,Bezahlt)  Values (:ID,:Kuerzel,:Beschreibung,:Typ,:Faktor,:Bezahlt)';
+          qry_SynchConfig.SQL.Text:= 'Insert into Fehltag (ID,Kuerzel,Beschreibung,Typ,Faktor,Bezahlt,SollAbziehen)  Values (:ID,:Kuerzel,:Beschreibung,:Typ,:Faktor,:Bezahlt,:SollAbziehen)';
           qry_SynchConfig.ParamByName('ID').AsInteger:= iID;
           qry_SynchConfig.ParamByName('Kuerzel').asString:= sCode;
           qry_SynchConfig.ParamByName('Beschreibung').asString:= sDescription;
           qry_SynchConfig.ParamByName('Typ').AsInteger:= iType;
           qry_SynchConfig.ParamByName('Faktor').AsInteger:= iFactor;
           qry_SynchConfig.ParamByName('Bezahlt').AsInteger:= iPaid;
+          qry_SynchConfig.ParamByName('SollAbziehen').AsInteger:= iSubtract;
           qry_SynchConfig.ExecSQL;
         end;
       end;

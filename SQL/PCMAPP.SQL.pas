@@ -328,7 +328,8 @@ begin
 																			  						'Beschreibung  NVARCHAR(101),' +
 																		  							'Typ INTEGER,' +
 																	  								'Faktor INTEGER,' +
-																  									'Bezahlt Integer);';
+																  									'Bezahlt Integer,' +
+                                                    'SollAbziehen Integer);';
   sSQL_CREATE_TABLE_Fehltage:=   					    			'CREATE TABLE IF NOT EXISTS Fehltage ' +
 					  																				'(ID INTEGER,' +
 				  																					'Von Date,' +
