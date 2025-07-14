@@ -1,20 +1,37 @@
-# Einführung
-TODO: Bieten Sie eine kurze Einführung in Ihr Projekt. In diesem Abschnitt erläutern Sie die Ziele oder die Motivation für dieses Projekt. 
-
-# Erste Schritte
-TODO: Bieten Sie den Benutzern eine Anleitung, wie diese Ihren Code auf ihren eigenen Systemen einrichten und verwenden. In diesem Abschnitt können Sie folgende Themen behandeln:
-1.	Installationsvorgang
-2.	Softwareabhängigkeiten
-3.	Neueste Releases
-4.	API-Referenzen
-
-# Build und Test
-TODO: Beschreiben und zeigen Sie, wie Ihr Code kompiliert wird und wie die Tests ausgeführt werden. 
-
- #Beitragen
-TODO: Erläutern Sie, wie andere Benutzer und Entwickler zu einer Verbesserung Ihres Codes beitragen können. 
+# Projekt: 
+  PCMTime.exe
  
-Weitere Informationen zum Erstellen hilfreicher Infodateien finden Sie im folgenden [Leitfaden](https://docs.microsoft.com/de-de/azure/devops/repos/git/create-a-readme?view=azure-devops). Weitere Anregungen finden Sie zudem in den folgenden Infodateien:
-– [ASP.NET Core](https://github.com/aspnet/Home)
-– [Visual Studio Code](https://github.com/Microsoft/vscode)
-– [Chakra Core](https://github.com/Microsoft/ChakraCore)
+# Kurzbeschreibung
+  App PCM - Time
+
+# Entwicklungsumgebung:
+  DELPHI 12.3 Athens
+
+# Entwickler:
+  Jens Henske
+	
+# Abhängigkeiten zu folgenden Sub-Modulen:
+  - PCM-Functions
+  (Dokumentation:
+  [Azure DevOps](https://pcmapps.ddns.net:2443/PCM-DEV/PCM/PCMFunctions)
+  [GitHub](https://github.com/JtheK1984/PCMFunctions))
+
+# Abhängigkeiten zu folgenden DLL's:
+  - 32-Bit 
+    - libmysql.dll (DLL für Verbindung zur MySQL-Datenbank)
+    - libeay32.dll (DLL für SSL-Verbindungen)
+    - ssleay32.dll (DLL für SSL-Verbindungen)
+  - 64-Bit 
+    - libmysql.dll (DLL für Verbindung zur MySQL-Datenbank)
+    - libeay32.dll (DLL für SSL-Verbindungen)
+    - ssleay32.dll (DLL für SSL-Verbindungen)
+	
+# Erforderliche Komponenten (DELPHI-IDE):
+  - Devexpress
+	
+# Erforderliche Scripte (nur für die Buildpipelines in Azure DevOps): 
+  - PrepareBuild.cmd (Umgebungsvariablen für Delphi anpassen, wird für den Build benötigt)
+  - PrepareCopy.cmd (erzeugte Versionen werden in das Inno-Setupverzeichnis abgelgt)
+
+# Stand:
+  01.07.2025
