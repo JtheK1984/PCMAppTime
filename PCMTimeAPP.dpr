@@ -14,6 +14,9 @@ uses
   PCMAPP.WaitForm in 'Frame\PCMAPP.WaitForm.pas' {WaitForm: TFrame},
   PCMAPP.Buchungen.Detail in 'FrameDetail\PCMAPP.Buchungen.Detail.pas' {frm_PCMAPP_BuchungenDetail},
   PCMAPP.Fehltage.Detail in 'FrameDetail\PCMAPP.Fehltage.Detail.pas' {frm_PCMAPP_FehltageDetail};
+
+  {$R *.res}
+
 begin
 //  ReportMemoryLeaksOnShutdown := True;
   Application.Initialize;

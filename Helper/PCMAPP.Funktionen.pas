@@ -1227,7 +1227,6 @@ end;
 procedure SynchLastBooking_FromServer(const AUserID, AServerID: Integer; AWaitFrame: TWaitForm);
 var
   qry_SyncLastBooking: TFDQuery;
-  iAnzahl: Integer;
   sLastBooking: string;
   iSyncID: integer;
 begin
