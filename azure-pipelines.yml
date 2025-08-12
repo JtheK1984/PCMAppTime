@@ -65,15 +65,7 @@ steps:
       set JAVA_HOME=$(javaHome)
       echo "Dependencies set up successfully"
 
-- task: CmdLine@2
-  displayName: 'Build APK 32-Bit'
-  inputs:
-    script: |
-      set ANDROID_HOME=$(sdkPath)
-      set NDK_HOME=$(ndkPath)
-      set JAVA_HOME=$(javaHome)
-      cd $(Build.SourcesDirectory)
-      msbuild.exe PCMTimeAPP.dproj /p:config=Debug /p:Platform=Android /t:Clean;Make;Deploy /p:OutputPath=$(Build.ArtifactStagingDirectory)'
+
 - task: CmdLine@2
   displayName: 'Build APK 64-Bit'
   inputs:
