@@ -135,18 +135,34 @@ begin
   end;
 end;
 function CheckServerConnection: Boolean;
+var
+  Client: THTTPClient;
+  Response: IHTTPResponse;
 begin
-  Result:= False;
+  Client := THTTPClient.Create;
   try
-    JSONResult := dmmain.RestRequest(nil,'CheckServer',rmGET) as TJSONObject;
-    bHasError:= StrToBool(JSONResult.GetValue<TJSONBool>('HasError').ToString);
-    if not bHasError then
-    begin
-      Result:= True;
-    end;
+    Client.ConnectionTimeout := 5000;  // 10 Sekunden für Verbindung
+    Client.ResponseTimeout := 10000;    // 15 Sekunden auf Antwort warten
+    Response := Client.Head('https://' +  dmMain.sHostname +':' + dmmain.sPort + '/PCM/api/v1/');
+    Result := Response.StatusCode = 200;
   except
+    Result := False;
   end;
+  Client.Free;
 end;
+//function CheckServerConnection: Boolean;
+//begin
+//  Result:= False;
+//  try
+//    JSONResult := dmmain.RestRequest(nil,'CheckServer',rmGET) as TJSONObject;
+//    bHasError:= StrToBool(JSONResult.GetValue<TJSONBool>('HasError').ToString);
+//    if not bHasError then
+//    begin
+//      Result:= True;
+//    end;
+//  except
+//  end;
+//end;
 function GetBuchungsart(ATyp: integer; AVon,ABis: TDate) : integer;
 var
   qry_BA: TFDQuery;

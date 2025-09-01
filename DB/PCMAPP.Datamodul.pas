@@ -104,6 +104,7 @@ type
     { Private-Deklarationen }
   public
     { Public-Deklarationen }
+    bServerAvailable: boolean;
     fLat, fLon: Double;
     iUserID: Integer;
     sDeviceId: string;
