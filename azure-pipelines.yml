@@ -83,7 +83,7 @@ steps:
       set NDK_HOME=$(ndkPath)
       set JAVA_HOME=$(javaHome)
       cd $(Build.SourcesDirectory)
-      msbuild.exe PCMManagerAPP.dproj /p:config=Debug /p:Platform=Android /t:Clean;Make;Deploy /p:OutputPath=$(Build.ArtifactStagingDirectory)'            
+      msbuild.exe PCMTimeAPP.dproj /p:config=Debug /p:Platform=Android /t:Clean;Make;Deploy /p:OutputPath=$(Build.ArtifactStagingDirectory)'            
 - task: BatchScript@1
   displayName: erzeugte Versionen ins Setupverzeichnis kopieren 
   inputs:
