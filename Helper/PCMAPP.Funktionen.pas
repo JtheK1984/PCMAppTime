@@ -144,7 +144,7 @@ begin
     Client.ConnectionTimeout := 5000;  // 10 Sekunden für Verbindung
     Client.ResponseTimeout := 10000;    // 15 Sekunden auf Antwort warten
     Response := Client.Head('https://' +  dmMain.sHostname +':' + dmmain.sPort + '/PCM/api/v1/');
-    Result := Response.StatusCode = 200;
+    Result := (Response.StatusCode = 200) or (Response.StatusCode = 500);
   except
     Result := False;
   end;
