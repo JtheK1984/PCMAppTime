@@ -1459,7 +1459,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
                       IsExpanded = False
                       IsSelected = False
                       TabOrder = 3
-                      Text = 'Crailsheimstra'#223'e 5'
+                      Text = 'Am kleinen Steinbusch 1'
                     end
                     object trvwitm_PlaceVal: TTreeViewItem
                       StyledSettings = [Family, FontColor]

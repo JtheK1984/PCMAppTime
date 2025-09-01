@@ -1365,14 +1365,8 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="Alle Plattformen\Debug\PCMTimeAPP" Configuration="Debug" Class="ProjectOutput">
-                    <RemoteName>PCMTimeAPP</RemoteName>
-                    <Overwrite>true</Overwrite>
-                </DeployFile>
-                <DeployFile LocalName="Alle Plattformen\Release\PCMTimeAPP" Configuration="Release" Class="ProjectOutput">
-                    <RemoteName>PCMTimeAPP</RemoteName>
-                    <Overwrite>true</Overwrite>
-                </DeployFile>
+                <DeployFile LocalName="Alle Plattformen\Debug\PCMTimeAPP" Configuration="Debug" Class="ProjectOutput"/>
+                <DeployFile LocalName="Alle Plattformen\Release\PCMTimeAPP" Configuration="Release" Class="ProjectOutput"/>
                 <DeployFile LocalName="Android64\Debug\AndroidManifest.xml" Configuration="Debug" Class="ProjectAndroidManifest">
                     <Platform Name="Android64">
                         <Overwrite>true</Overwrite>
@@ -1593,10 +1587,6 @@
                 </DeployFile>
                 <DeployFile LocalName="DB\PCMTime.s3db" Configuration="Debug" Class="ProjectFile"/>
                 <DeployFile LocalName="DB\PCMTime.s3db" Configuration="Debug" Class="ProjectFile">
-                    <RemoteDir>.\</RemoteDir>
-                    <Overwrite>true</Overwrite>
-                </DeployFile>
-                <DeployFile LocalName="DB\PCMTime.s3db" Configuration="Debug" Class="ProjectFile">
                     <Platform Name="Android">
                         <RemoteDir>.\assets\internal\</RemoteDir>
                         <Overwrite>true</Overwrite>
@@ -1621,10 +1611,6 @@
                     </Platform>
                 </DeployFile>
                 <DeployFile LocalName="DB\PCMTime.s3db" Configuration="Release" Class="ProjectFile"/>
-                <DeployFile LocalName="DB\PCMTime.s3db" Configuration="Release" Class="ProjectFile">
-                    <RemoteDir>.\</RemoteDir>
-                    <Overwrite>true</Overwrite>
-                </DeployFile>
                 <DeployFile LocalName="DB\PCMTime.s3db" Configuration="Release" Class="ProjectFile">
                     <Platform Name="Android">
                         <RemoteDir>.\assets\internal\</RemoteDir>
