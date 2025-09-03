@@ -359,3 +359,5 @@ modules/
 /Grafiken/44x44.png
 /Android64/Debug/PCMTimeAPP/debug/app_process64
 /Android64/Debug/PCMTimeAPP/debug/linker64
+/Android/Debug/PCMTimeAPP/debug/app_process
+/Android/Debug/PCMTimeAPP/debug/linker
