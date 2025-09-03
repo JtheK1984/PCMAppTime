@@ -1075,7 +1075,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
           Size.Height = 862.000000000000000000
           Size.PlatformDefault = False
           TabHeight = 49.000000000000000000
-          TabIndex = 0
+          TabIndex = 2
           TabOrder = 0
           TabPosition = None
           OnChange = tc_MainAppChange
@@ -1113,7 +1113,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
             TextSettings.Font.Size = 10.000000000000000000
             TextSettings.Trimming = None
             StyledSettings = [Family, FontColor]
-            IsSelected = True
+            IsSelected = False
             Size.Width = 8.000000000000000000
             Size.Height = 8.000000000000000000
             Size.PlatformDefault = False
@@ -4782,7 +4782,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
             TextSettings.Font.Size = 10.000000000000000000
             TextSettings.Trimming = None
             StyledSettings = [Family, FontColor]
-            IsSelected = False
+            IsSelected = True
             Size.Width = 8.000000000000000000
             Size.Height = 8.000000000000000000
             Size.PlatformDefault = False
@@ -5836,7 +5836,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
             ExplicitSize.cy = 49.000000000000000000
             object cal_Calendar: TCalendar
               Align = Top
-              Date = 45901.000000000000000000
+              Date = 45903.000000000000000000
               FirstDayOfWeek = dowMonday
               Size.Width = 616.000000000000000000
               Size.Height = 300.000000000000000000

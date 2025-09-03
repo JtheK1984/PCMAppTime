@@ -682,6 +682,7 @@ begin
       TTask.Run(
         procedure
         begin
+          try
           sDestDB := FormatDateTime('yyyymmdd__hhmm', Now) + '_PCMTime.s3db';
           bckup_sqlBackup.Database := TPath.Combine(TPath.GetDocumentsPath, 'PCMTime.s3db');
           {$IFDEF ANDROID}
@@ -689,6 +690,10 @@ begin
           {$ENDIF ANDROID}
           Sleep(5000);
           bckup_sqlBackup.Backup;
+          except
+            on E:Exception do
+            WriteLog(e.Message,3,false);
+          end;
           dmmain.wfWaitFrame.HideFW;
         end);
     end;

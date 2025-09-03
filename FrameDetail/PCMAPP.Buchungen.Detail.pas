@@ -248,16 +248,29 @@ end;
 procedure Tfrm_PCMAPP_BuchungenDetail.btn_SaveClick(Sender: TObject);
 var
   iJahr,iMonat,iTag:word;
+  iStunde,iMinute,iSekunde,iMSek:word;
 begin
   if not frm_PCM_Main.bNeu then
   begin
     qry_Passwort.SQL.Text:= 'Update Buchungen Set Kommen =:Kommen, Gehen =:Gehen, Pause1Beginn =:Pause1Beginn, Pause1Ende =:Pause1Ende, Pause2Beginn =:Pause2Beginn, Pause2Ende =:Pause2Ende, Buchungsart =:Buchungsart Where ID = :ID';
-    qry_Passwort.ParamByName('Kommen').AsTime:= tedt_Kommen.Time;
-    qry_Passwort.ParamByName('Gehen').AsTime := tedt_Gehen.Time;
-    qry_Passwort.ParamByName('Pause1Beginn').AsTime:= tedt_Pause1Beginn.Time;
-    qry_Passwort.ParamByName('Pause1Ende').AsTime:= tedt_Pause1Ende.Time;
-    qry_Passwort.ParamByName('Pause2Beginn').AsTime:= tedt_Pause2Beginn.Time;
-    qry_Passwort.ParamByName('Pause2Ende').AsTime:= tedt_Pause2Ende.Time;
+    DecodeTime(tedt_kommen.Time,iStunde,iMinute,iSekunde,iMSek);
+    qry_Passwort.ParamByName('Kommen').AsTime:= EncodeTime(iStunde,iMinute,0,0);
+
+    DecodeTime(tedt_Gehen.Time,iStunde,iMinute,iSekunde,iMSek);
+    qry_Passwort.ParamByName('Gehen').AsTime := EncodeTime(iStunde,iMinute,0,0);
+
+    DecodeTime(tedt_Pause1Beginn.Time,iStunde,iMinute,iSekunde,iMSek);
+    qry_Passwort.ParamByName('Pause1Beginn').AsTime:= EncodeTime(iStunde,iMinute,0,0);
+
+    DecodeTime(tedt_Pause1Ende.Time,iStunde,iMinute,iSekunde,iMSek);
+    qry_Passwort.ParamByName('Pause1Ende').AsTime:= EncodeTime(iStunde,iMinute,0,0);
+
+    DecodeTime(tedt_Pause2Beginn.Time,iStunde,iMinute,iSekunde,iMSek);
+    qry_Passwort.ParamByName('Pause2Beginn').AsTime:= EncodeTime(iStunde,iMinute,0,0);
+
+    DecodeTime(tedt_Pause2Ende.Time,iStunde,iMinute,iSekunde,iMSek);
+    qry_Passwort.ParamByName('Pause2Ende').AsTime:= EncodeTime(iStunde,iMinute,0,0);
+
     if (cmbbx_Typ.ItemIndex = -1) or (cmbbx_Typ.ItemIndex > 1) then
       qry_Passwort.ParamByName('Buchungsart').AsInteger:= -1
     else
