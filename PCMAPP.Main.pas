@@ -1542,7 +1542,7 @@ begin
 
       fa_Personal.StopValue:= 8;
       fa_Booking.StopValue:= 16;
-      fa_Calendar.StopValue:= 0;
+      fa_Calendar.StopValue:= 16;
       fa_Auswertung.StopValue:= 16;
 
 

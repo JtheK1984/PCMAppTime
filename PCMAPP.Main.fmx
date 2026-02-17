@@ -5836,7 +5836,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
             ExplicitSize.cy = 49.000000000000000000
             object cal_Calendar: TCalendar
               Align = Top
-              Date = 45904.000000000000000000
+              Date = 46070.000000000000000000
               FirstDayOfWeek = dowMonday
               Size.Width = 616.000000000000000000
               Size.Height = 300.000000000000000000
@@ -5860,8 +5860,8 @@ object frm_PCM_Main: Tfrm_PCM_Main
               Options = [ColLines, RowLines, RowSelect, Tabs, Header, HeaderClick, AutoDisplacement]
               OnCellClick = strgrd_BuchungenCellClick
               OnCellDblClick = strgrd_BuchungenCellDblClick
-              Viewport.Width = 616.000000000000000000
-              Viewport.Height = 60.000000000000000000
+              Viewport.Width = 611.000000000000000000
+              Viewport.Height = 28.000000000000000000
               object strgrdcol_Kommen: TStringColumn
                 Header = 'Kommen'
                 HeaderSettings.StyledSettings = [Family, FontColor]
@@ -5941,7 +5941,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
               RowCount = 8
               Options = [Tabs, Header, AutoDisplacement]
               Viewport.Width = 616.000000000000000000
-              Viewport.Height = 217.000000000000000000
+              Viewport.Height = 185.000000000000000000
               object strgrdcol_Values: TStringColumn
                 Header = 'Wert'
                 HeaderSettings.StyledSettings = [Family, FontColor]
