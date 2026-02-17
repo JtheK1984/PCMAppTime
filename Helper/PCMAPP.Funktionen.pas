@@ -122,7 +122,7 @@ implementation
 function CheckLogin: Boolean;
 begin
   Result:= False;
-  JSONResult := dmmain.RestRequest(nil,'Checklogin',rmGET) as TJSONObject;
+  JSONResult := dmmain.RestRequest(nil,'CheckloginTime',rmGET) as TJSONObject;
   bHasError:= StrToBool(JSONResult.GetValue<TJSONBool>('HasError').ToString);
   if not bHasError then
   begin
