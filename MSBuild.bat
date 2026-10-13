@@ -1,4 +1,4 @@
-call "C:\Program Files (x86)\Embarcadero\Studio\23.0\bin\rsvars.bat"
+call "C:\Program Files (x86)\Embarcadero\Studio\37.0\bin\rsvars.bat"
 echo "Build erstellen"
 msbuild E:/Projekte/Mobile/PCMTimeApp/PCMTimeApp.dproj /t:Clean;Build /p:config=Release /p:platform=Win32
 msbuild E:/Projekte/Mobile/PCMTimeApp/PCMTimeApp.dproj /p:config=Debug /p:platform=Android /t:Clean;Make;Deploy
