@@ -16,6 +16,7 @@ uses
   Androidapi.JNIBridge,
   Androidapi.NativeActivity,
   FMX.BiometricAuth,
+  FMX.PushNotification.Android,
   FMX.VirtualKeyboard,
   {$ENDIF ANDROID}
   Data.Bind.Components,
@@ -678,6 +679,9 @@ type
     evsrvEventService: IFMXApplicationEventService;
     pdsrvPhoneDialerService: IFMXPhoneDialerService;
     {$ENDIF ANDROID}
+    {$IFDEF ANDROID}
+    FPushConnection: TPushServiceConnection;
+    {$ENDIF ANDROID}
     dBounds: TRectF;
     bNeedOffset: Boolean;
     bOpened: boolean;
@@ -1273,38 +1277,66 @@ end;
 procedure Tfrm_PCM_Main.OnServiceConnectionChange(Sender: TObject; PushChanges: TPushService.TChanges);
 var
   pshsrvPushService: TPushService;
+  TokenQuery: TFDQuery;
 begin
   pshsrvPushService := TPushServiceManager.Instance.GetServiceByName(TPushService.TServiceNames.FCM);
-  if TPushService.TChange.DeviceToken in PushChanges then
+  if (pshsrvPushService <> nil) and (TPushService.TChange.DeviceToken in PushChanges) then
   begin
     dmmain.sDeviceToken := pshsrvPushService.DeviceTokenValue[TPushService.TDeviceTokenNames.DeviceToken];
     dmmain.sDeviceID := pshsrvPushService.DeviceIDValue[TPushService.TDeviceIDNames.DeviceID];
+    if (dmmain.sDeviceToken <> '') and Assigned(dmmain) and dmmain.con_PCM.Connected then
+    begin
+      TokenQuery := TFDQuery.Create(nil);
+      try
+        TokenQuery.Connection := dmmain.con_PCM;
+        TokenQuery.SQL.Text := 'UPDATE Auto_login SET DeviceToken = :Token, DeviceID = :DeviceID';
+        TokenQuery.ParamByName('Token').AsString := dmmain.sDeviceToken;
+        TokenQuery.ParamByName('DeviceID').AsString := dmmain.sDeviceID;
+        TokenQuery.ExecSQL;
+      finally
+        TokenQuery.Free;
+      end;
+    end;
   end;
 end;
 procedure Tfrm_PCM_Main.OnReceiveNotificationEvent(Sender: TObject; const ServiceNotification: TPushServiceNotification);
 var
   notNotification: TNotification;
-  sBody: string;
-  sString: string;
-  sTitle: string;
-  joNotification: TJSONObject;
+  sBody, sTitle: string;
+  NotificationJSON: TJSONObject;
+  function ReadText(const Key: string): string;
+  var
+    Value: TJSONValue;
+  begin
+    Result := '';
+    Value := NotificationJSON.Values[Key];
+    if Value is TJSONString then
+      Result := TJSONString(Value).Value;
+  end;
 begin
-  sString:=ServiceNotification.Json.ToString;
-  sString:= StringReplace(sString,'gcm.notification.title','gcm_notification_title',[rfReplaceAll,rfIgnoreCase]);
-  sString:= StringReplace(sString,'gcm.notification.body','gcm_notification_body',[rfReplaceAll,rfIgnoreCase]);
-  joNotification:=TJSONObject.ParseJSONValue(sString) as TJSONObject;
-  if (joNotification.GetValue('gcm_notification_title').Null) OR (not joNotification.TryGetValue<String>('gcm_notification_title', sTitle)) then
-    sTitle:= '';
-  if (joNotification.GetValue('gcm_notification_body').Null) OR (not joNotification.TryGetValue<String>('gcm_notification_body', sBody)) then
-    sBody:= '';
-  notNotification:= nc_PushNotification.CreateNotification;
+  if (ServiceNotification = nil) or (ServiceNotification.Json = nil) then
+    Exit;
+  NotificationJSON := ServiceNotification.Json;
+  sTitle := ReadText('gcm.notification.title');
+  if sTitle = '' then
+    sTitle := ReadText('gcm.n.title');
+  if sTitle = '' then
+    NotificationJSON.TryGetValue<string>('notification.title', sTitle);
+  sBody := ReadText('gcm.notification.body');
+  if sBody = '' then
+    sBody := ReadText('gcm.n.body');
+  if sBody = '' then
+    NotificationJSON.TryGetValue<string>('notification.body', sBody);
+  if (sTitle = '') and (sBody = '') then
+    Exit;
+  notNotification := nc_PushNotification.CreateNotification;
   try
-    notNotification.Number:=18;
-    notNotification.Title:= stitle;
-    notNotification.AlertBody:= sBody;
+    notNotification.ChannelId := 'pcm_push';
+    notNotification.Title := sTitle;
+    notNotification.AlertBody := sBody;
     nc_PushNotification.PresentNotification(notNotification);
   finally
-    FreeandNil(notNotification);
+    notNotification.Free;
   end;
 end;
 procedure Tfrm_PCM_Main.ResizeLayout;
@@ -2068,6 +2100,7 @@ begin
 end;
 destructor Tfrm_PCM_Main.Destroy;
 begin
+  FreeAndNil(FPushConnection);
   TMessageManager.DefaultManager.Unsubscribe(TApplicationEventMessage, ApplicationEventMessageHandler);
   inherited;
 end;
@@ -2169,9 +2202,8 @@ procedure Tfrm_PCM_Main.FormShow(Sender: TObject);
   end;
 {$IFDEF ANDROID}
 var
-   consrvServiceConnection: TPushServiceConnection;
-   pshsrvNtnNotifications: TArray<TPushServiceNotification>;
    pshsrvPushService: TPushService;
+   PushChannel: TChannel;
 {$ENDIF ANDROID}
 begin
   WriteLog('PCM - APP FormShow',0,true);
@@ -2198,13 +2230,22 @@ begin
   else begin
     bHasBiometric:= false;
   end;
+  PushChannel := nc_PushNotification.CreateChannel('pcm_push', 'PCM-Time-Benachrichtigungen');
+  try
+    PushChannel.Importance := TImportance.High;
+    nc_PushNotification.CreateOrUpdateChannel(PushChannel);
+  finally
+    PushChannel.Free;
+  end;
   pshsrvPushService := TPushServiceManager.Instance.GetServiceByName(TPushService.TServiceNames.FCM);
-  consrvServiceConnection := TPushServiceConnection.Create(pshsrvPushService);
-  consrvServiceConnection.Active := True;
-  consrvServiceConnection.OnChange := OnServiceConnectionChange;
-  consrvServiceConnection.OnReceiveNotification := OnReceiveNotificationEvent;
-  dmmain.sDeviceId := pshsrvPushService.DeviceIDValue[TPushService.TDeviceIDNames.DeviceId];
-  pshsrvNtnNotifications := pshsrvPushService.StartupNotifications;
+  if (pshsrvPushService <> nil) and (FPushConnection = nil) then
+  begin
+    FPushConnection := TPushServiceConnection.Create(pshsrvPushService);
+    FPushConnection.OnChange := OnServiceConnectionChange;
+    FPushConnection.OnReceiveNotification := OnReceiveNotificationEvent;
+    FPushConnection.Active := True;
+    OnServiceConnectionChange(FPushConnection, [TPushService.TChange.DeviceToken]);
+  end;
   {$ENDIF ANDROID}
   tc_more.ActiveTab:= ti_1ConfigMenu;
   SetDisableToolButtons;

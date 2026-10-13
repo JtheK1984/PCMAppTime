@@ -167,6 +167,8 @@ begin
       RestRequest.Body.Add(ARequestBody);
     end;
     RestRequest.Execute;
+    if (RestRequest.Response.StatusCode < 200) or (RestRequest.Response.StatusCode >= 300) then
+      raise Exception.CreateFmt('REST %s: HTTP %d', [AResource, RestRequest.Response.StatusCode]);
     Result:= TJSonObject.ParseJSONValue(RestRequest.Response.JSONText) as TJSONObject;
   finally
     RestRequest.Free;

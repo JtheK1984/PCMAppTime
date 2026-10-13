@@ -4,11 +4,32 @@
         <ProjectFileVersion>12</ProjectFileVersion>
     </ProjectExtensions>
     <PropertyGroup>
-        <DeviceId Condition="'$(Platform)'=='Android'">520018e85bce1555</DeviceId>
-        <DeviceId Condition="'$(Platform)'=='Android64'"/>
+        <DeviceId Condition="'$(Platform)'=='Android'">39061FDJH00CKB</DeviceId>
+        <DeviceId Condition="'$(Platform)'=='Android64'">39061FDJH00CKB</DeviceId>
         <DeviceId Condition="'$(Platform)'=='iOSDevice64'"/>
         <DeviceId Condition="'$(Platform)'=='iOSSimARM64'"/>
     </PropertyGroup>
+    <ItemGroup Condition="'$(Platform)'=='WinARM64EC'"/>
+    <ItemGroup Condition="'$(Platform)'=='OSX64'">
+        <DeployFile Include="$(BDS)\Redist\osx64\libcgsqlite3.dylib" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP.app\Contents\MacOS\</RemoteDir>
+            <RemoteName>libcgsqlite3.dylib</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\Redist\osx64\libcgsqlite3.dylib" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>PCMTimeAPP.app\Contents\MacOS\</RemoteDir>
+            <RemoteName>libcgsqlite3.dylib</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+    </ItemGroup>
     <ItemGroup Condition="'$(Platform)'=='Win32'">
         <DeployFile Include="DB\PCMTime.s3db" Condition="'$(Config)'=='Release'">
             <RemoteDir>PCMTimeAPP\</RemoteDir>
@@ -1848,6 +1869,26 @@
             <Overwrite>True</Overwrite>
         </DeployFile>
     </ItemGroup>
+    <ItemGroup Condition="'$(Platform)'=='OSXARM64'">
+        <DeployFile Include="$(BDS)\Redist\osx64\libcgsqlite3.dylib" Condition="'$(Config)'=='Release'">
+            <RemoteDir>PCMTimeAPP.app\Contents\MacOS\</RemoteDir>
+            <RemoteName>libcgsqlite3.dylib</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\Redist\osx64\libcgsqlite3.dylib" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>PCMTimeAPP.app\Contents\MacOS\</RemoteDir>
+            <RemoteName>libcgsqlite3.dylib</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+    </ItemGroup>
     <ItemGroup Condition="'$(Platform)'=='Win64'">
         <DeployFile Include="DB\PCMTime.s3db" Condition="'$(Config)'=='Release'">
             <RemoteDir>PCMTimeAPP\</RemoteDir>
@@ -1888,7 +1929,8 @@
             <Required>True</Required>
         </DeployFile>
     </ItemGroup>
-    <ItemGroup Condition="'$(Platform)'=='Win64x'"/>
     <ItemGroup Condition="'$(Platform)'=='iOSDevice64'"/>
     <ItemGroup Condition="'$(Platform)'=='iOSSimARM64'"/>
+    <ItemGroup Condition="'$(Platform)'=='Win64x'"/>
+    <ItemGroup Condition="'$(Platform)'=='Linux64'"/>
 </Project>

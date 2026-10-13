@@ -290,6 +290,7 @@ procedure Tfrm_PCMAPP_System.Execute;
     qry_Work.open;
     Llbl_DeviceIDDetail.Text:= 'Geräte-ID: '+ qry_Work.FieldByName('DeviceID').asString;
     mem_FMCInfosDetailToken.Text:= qry_Work.FieldByName('DeviceToken').asString;
+    if dmmain.sDeviceToken <> '' then mem_FMCInfosDetailToken.Text := dmmain.sDeviceToken;
     qry_Work.Close;
     {$ENDIF ANDROID}
     {$IFDEF MSWINDOWS}
@@ -749,22 +750,42 @@ begin
 end;
 procedure Tfrm_PCMAPP_System.lstbxitm_110FCMInfosClick(Sender: TObject);
 var
-  joBodyMain,joBodySub: TJSONObject;
-  sUploadstate: String;
+  Request, Response: TJSONObject;
+  Token, ErrorMessage: string;
+  Success: Boolean;
 begin
-  joBodyMain:= TJSONObject.Create;
-  joBodyMain.AddPair(TJSONPair.Create('to',mem_FMCInfosDetailToken.text));
-  joBodyMain.AddPair(TJSONPair.Create('priority','high'));
-  joBodySub:= TJSONObject.Create;
-  joBodySub.AddPair(TJSONPair.Create('body','App-Benachrichtigung Test erfolgreich'));
-  joBodySub.AddPair(TJSONPair.Create('title','App-Benachrichtigung Test'));
-  joBodyMain.AddPair(TJSONPair.Create('notification',joBodySub));
-  sUploadstate:= joBodyMain.ToString;
-  dmmain.RESTRequest2.Params.AddItem('Authorization', 'Bearer AAAAKei3FDU:APA91bHidAp5KysKnJeC0zMHHs242AW-DN9GHepIEOQgqJeCni82g9l6m324q71H5Rn3yThrjLW-rH5W1P7KV4TC32eDeUUB4zeHmTv4AhTjTGVYc384BzUMUaDSY6x8KtqqkydOoq5a', pkHTTPHEADER, [poDoNotEncode]);
-  dmmain.RESTRequest2.Body.Add(joBodyMain);
-  dmmain.RESTRequest2.Execute;
-  dmmain.RESTRequest2.ClearBody;
-  dmmain.RESTRequest2.Body.ClearBody;
+  Token := Trim(dmmain.sDeviceToken);
+  if Token = '' then
+    Token := Trim(mem_FMCInfosDetailToken.Text);
+  if Token = '' then
+  begin
+    TDialogServiceAsync.ShowMessage('Kein Firebase-Geraetetoken vorhanden. Bitte Internetverbindung und Google Play-Dienste pruefen.');
+    Exit;
+  end;
+  Request := TJSONObject.Create;
+  Response := nil;
+  try
+    Request.AddPair('DeviceToken', Token);
+    try
+      Response := dmmain.RestRequest(Request, 'SendTimePushTest', rmPOST);
+      Success := False;
+      if (Response <> nil) and Response.TryGetValue<Boolean>('success', Success) and Success then
+        TDialogServiceAsync.ShowMessage('Firebase hat die Testnachricht angenommen. Bitte die Benachrichtigungsberechtigung pruefen, falls sie nicht angezeigt wird.')
+      else
+      begin
+        ErrorMessage := 'Unbekannte Serverantwort';
+        if Response <> nil then
+          Response.TryGetValue<string>('Errormessage', ErrorMessage);
+        TDialogServiceAsync.ShowMessage('Push-Test fehlgeschlagen: ' + ErrorMessage);
+      end;
+    except
+      on E: Exception do
+        TDialogServiceAsync.ShowMessage('Push-Test fehlgeschlagen: ' + E.Message);
+    end;
+  finally
+    Response.Free;
+    Request.Free;
+  end;
 end;
 procedure Tfrm_PCMAPP_System.sw_AllClick(Sender: TObject);
 begin

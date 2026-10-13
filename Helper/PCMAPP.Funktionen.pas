@@ -903,7 +903,7 @@ begin
       qry_SyncConfig_ToServer.Next;
     end;
     joResponseJSON.AddPair(TJSONPair.Create('Device', jaDetails));
-    JSONResult := dmmain.RestRequest(joResponseJSON,'SetDeviceID', rmPUT) as TJSONObject;
+    JSONResult := dmmain.RestRequest(joResponseJSON,'SetTimeDeviceID', rmPUT) as TJSONObject;
     bHasError:= StrToBool(JSONResult.GetValue<TJSONBool>('HasError').ToString);
     if bHasError then
       WriteLog('nicht Erfolgreich synchronisiert. ErroCode:' + JSONResult.GetValue<TJSONBool>('ErrorCode').ToString,1,false);
