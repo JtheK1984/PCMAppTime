@@ -1000,6 +1000,141 @@ begin
   qry_Work_sub.Close;
 end;
 procedure Tfrm_PCM_Main.CreateDashboard;
+  function GetLastBooking : String;
+  var
+    dDateBookingLast: TDate;
+    tTimeBookingLast: TTime;
+    dDatum: TDate;
+    tKommen,
+    tPause1S,
+    tPause1E,
+    tPause2S,
+    tPause2E,
+    tGehen: TTime;
+    sTemp: String;
+  begin
+    qry_Work_sub.SQL.Text := sSQL_SELECT_TEXT_LASTBOOKING;
+    qry_Work_sub.Open;
+    sTemp:=  StringReplace(qry_Work_sub.FieldByName('Text').AsString,'Letzte Buchung: ','',[rfReplaceAll,rfIgnoreCase]);
+    qry_Work_sub.Close;
+    qry_Work_sub.SQL.Text := sSQL_SELECT_K_P1S_P1E_P2S_P2E_G;
+    qry_Work_sub.Open;
+    tKommen:= qry_Work_sub.FieldByName('Kommen').AsDateTime;
+    tPause1S:= qry_Work_sub.FieldByName('Pause1Beginn').AsDateTime;
+    tPause1E:= qry_Work_sub.FieldByName('Pause1Ende').AsDateTime;
+    tPause2S:= qry_Work_sub.FieldByName('Pause2Beginn').AsDateTime;
+    tPause2E:= qry_Work_sub.FieldByName('Pause2Ende').AsDateTime;
+    tGehen:= qry_Work_sub.FieldByName('Gehen').AsDateTime;
+    dDatum:= qry_Work_sub.FieldByName('Datum').AsDateTime;
+    qry_Work_sub.Close;
+    sTemp:= StringReplace(sTemp,'Kommen am ','',[rfReplaceAll,rfIgnoreCase]);
+    sTemp:= StringReplace(sTemp,'1. Pause Beginn am ','',[rfReplaceAll,rfIgnoreCase]);
+    sTemp:= StringReplace(sTemp,'1. Pause Ende am ','',[rfReplaceAll,rfIgnoreCase]);
+    sTemp:= StringReplace(sTemp,'2. Pause Beginn am ','',[rfReplaceAll,rfIgnoreCase]);
+    sTemp:= StringReplace(sTemp,'2. Pause Ende am ','',[rfReplaceAll,rfIgnoreCase]);
+    sTemp:= StringReplace(sTemp,'Gehen am ','',[rfReplaceAll,rfIgnoreCase]);
+    dDateBookingLast:= StrToDateDef(Copy(stemp,1,10),StrToDate('30.12.1899'));
+    tTimeBookingLast:= StrToTimeDef(Copy(stemp,12,5),STrToTime('00:00:00'));
+    if (dDatum > dDateBookingLast) or (dDateBookingLast = StrToDate('30.12.1899'))then
+    begin
+        if tKommen > StrToTime('00:00:00') then
+        begin
+          trvwitm_LastBooking.text:= 'Kommen am ' + DateToStr(dDatum) + ' ' + TimeToStr(tKommen);
+          qry_Work_sub.SQL.Text:= sSQL_UPDATE_TEXT_LASTBOOKING;
+          qry_Work_sub.ParamByName('Text').AsString := 'Letzte Buchung: ' + trvwitm_LastBooking.text;
+          qry_Work_sub.ExecSQL;
+          SynchLastBooking_toServer(dmmain.iUserID,dmmain.wfWaitFrame,True);
+        end;
+        if tPause1S > StrToTime('00:00:00') then
+        begin
+          trvwitm_LastBooking.text:= '1. Pause Beginn am ' + DateToStr(dDatum) + ' ' + TimeToStr(tPause1S);
+          qry_Work_sub.SQL.Text:= sSQL_UPDATE_TEXT_LASTBOOKING;
+          qry_Work_sub.ParamByName('Text').AsString := 'Letzte Buchung: ' + trvwitm_LastBooking.text;
+          qry_Work_sub.ExecSQL;
+          SynchLastBooking_toServer(dmmain.iUserID,dmmain.wfWaitFrame,True);
+        end;
+        if tPause1E > StrToTime('00:00:00') then
+        begin
+          trvwitm_LastBooking.text:= '1. Pause Ende am ' + DateToStr(dDatum) + ' ' + TimeToStr(tPause1E);
+          qry_Work_sub.SQL.Text:= sSQL_UPDATE_TEXT_LASTBOOKING;
+          qry_Work_sub.ParamByName('Text').AsString := 'Letzte Buchung: ' + trvwitm_LastBooking.text;
+          qry_Work_sub.ExecSQL;
+          SynchLastBooking_toServer(dmmain.iUserID,dmmain.wfWaitFrame,True);
+        end;
+        if tPause2S > StrToTime('00:00:00') then
+        begin
+          trvwitm_LastBooking.text:= '2. Pause Beginn am ' + DateToStr(dDatum) + ' ' + TimeToStr(tPause2S);
+          qry_Work_sub.SQL.Text:= sSQL_UPDATE_TEXT_LASTBOOKING;
+          qry_Work_sub.ParamByName('Text').AsString := 'Letzte Buchung: ' + trvwitm_LastBooking.text;
+          qry_Work_sub.ExecSQL;
+          SynchLastBooking_toServer(dmmain.iUserID,dmmain.wfWaitFrame,True);
+        end;
+        if tPause2E > StrToTime('00:00:00') then
+        begin
+          trvwitm_LastBooking.text:= '2. Pause Ende am ' + DateToStr(dDatum) + ' ' + TimeToStr(tPause2E);
+          qry_Work_sub.SQL.Text:= sSQL_UPDATE_TEXT_LASTBOOKING;
+          qry_Work_sub.ParamByName('Text').AsString := 'Letzte Buchung: ' + trvwitm_LastBooking.text;
+          qry_Work_sub.ExecSQL;
+          SynchLastBooking_toServer(dmmain.iUserID,dmmain.wfWaitFrame,True);
+        end;
+        if tGehen > StrToTime('00:00:00') then
+        begin
+          trvwitm_LastBooking.text:= 'Gehen am ' + DateToStr(dDatum) + ' ' + TimeToStr(tGehen);
+          qry_Work_sub.SQL.Text:= sSQL_UPDATE_TEXT_LASTBOOKING;
+          qry_Work_sub.ParamByName('Text').AsString := 'Letzte Buchung: ' + trvwitm_LastBooking.text;
+          qry_Work_sub.ExecSQL;
+        end;
+        SynchLastBooking_toServer(dmmain.iUserID,dmmain.wfWaitFrame,True);
+    end
+    else begin
+      if dDatum = dDateBookingLast then
+      begin
+        if tKommen >= tTimeBookingLast then
+        begin
+          trvwitm_LastBooking.text:= 'Kommen am ' + DateToStr(dDatum) + ' ' + TimeToStr(tKommen);
+          qry_Work_sub.SQL.Text:= sSQL_UPDATE_TEXT_LASTBOOKING;
+          qry_Work_sub.ParamByName('Text').AsString := 'Letzte Buchung: ' + trvwitm_LastBooking.text;
+          qry_Work_sub.ExecSQL;
+        end;
+        if tPause1S >= tTimeBookingLast then
+        begin
+          trvwitm_LastBooking.text:= '1. Pause Beginn am ' + DateToStr(dDatum) + ' ' + TimeToStr(tPause1S);
+          qry_Work_sub.SQL.Text:= sSQL_UPDATE_TEXT_LASTBOOKING;
+          qry_Work_sub.ParamByName('Text').AsString := 'Letzte Buchung: ' + trvwitm_LastBooking.text;
+          qry_Work_sub.ExecSQL;
+        end;
+        if tPause1E >= tTimeBookingLast then
+        begin
+          trvwitm_LastBooking.text:= '1. Pause Beginn am ' + DateToStr(dDatum) + ' ' + TimeToStr(tPause1E);
+          qry_Work_sub.SQL.Text:= sSQL_UPDATE_TEXT_LASTBOOKING;
+          qry_Work_sub.ParamByName('Text').AsString := 'Letzte Buchung: ' + trvwitm_LastBooking.text;
+          qry_Work_sub.ExecSQL;
+        end;
+        if tPause2S >= tTimeBookingLast then
+        begin
+          trvwitm_LastBooking.text:= '2. Pause Beginn am ' + DateToStr(dDatum) + ' ' + TimeToStr(tPause2S);
+          qry_Work_sub.SQL.Text:= sSQL_UPDATE_TEXT_LASTBOOKING;
+          qry_Work_sub.ParamByName('Text').AsString := 'Letzte Buchung: ' + trvwitm_LastBooking.text;
+          qry_Work_sub.ExecSQL;
+        end;
+        if tPause2E >= tTimeBookingLast then
+        begin
+          trvwitm_LastBooking.text:= '2. Pause Ende am ' + DateToStr(dDatum) + ' ' + TimeToStr(tPause2E);
+          qry_Work_sub.SQL.Text:= sSQL_UPDATE_TEXT_LASTBOOKING;
+          qry_Work_sub.ParamByName('Text').AsString := 'Letzte Buchung: ' + trvwitm_LastBooking.text;
+          qry_Work_sub.ExecSQL;
+        end;
+        if tGehen >= tTimeBookingLast then
+        begin
+          trvwitm_LastBooking.text:= 'Gehen am ' + DateToStr(dDatum) + ' ' + TimeToStr(tGehen);
+          qry_Work_sub.SQL.Text:= sSQL_UPDATE_TEXT_LASTBOOKING;
+          qry_Work_sub.ParamByName('Text').AsString := 'Letzte Buchung: ' + trvwitm_LastBooking.text;
+          qry_Work_sub.ExecSQL;
+        end;
+        SynchLastBooking_toServer(dmmain.iUserID,dmmain.wfWaitFrame,True);
+      end;
+    end;
+  end;
 var
   iVJahr: integer;
   iVMonat: integer;
@@ -1010,6 +1145,9 @@ var
 begin
   try
     DecodeDate(Now,wJahr,wMonat,wTag);
+    BerechneTage(0,wMonat,wJahr);
+    BerechneMonat(wMonat,wJahr);
+    BerechneMonatsUebersicht(wMonat,wJahr);
     // Kontakte
     qry_Work_sub.SQL.Text := 'Select * From Kontakte';
     qry_Work_sub.Open;
@@ -1099,11 +1237,7 @@ begin
       lbl_AuswertungaktGLZDetail.text:= GetTimeValue(qry_Work_sub.FieldByName('Mehrarbeit').AsInteger + iGlz);
     end;
     qry_Work_sub.Close;
-    qry_Work_sub.SQL.Text := sSQL_SELECT_TEXT_LASTBOOKING;
-    qry_Work_sub.Open;
-    trvwitm_LastBooking.text:=STringReplace(qry_Work_sub.FieldByName('Text').AsString,'Letzte Buchung: ','',[rfReplaceAll,rfIgnoreCase]);
-    qry_Work_sub.Close;
-
+    GetLastBooking;
     qry_Work_sub.SQL.Text := 'Select * From Buchungen Where Datum = :Datum';
     qry_Work_sub.ParamByName('Datum').AsDate:= Date;
     qry_Work_sub.Open;
@@ -1440,7 +1574,7 @@ begin
 
       fa_Personal.StopValue:= 8;
       fa_Booking.StopValue:= 16;
-      fa_Calendar.StopValue:= 0;
+      fa_Calendar.StopValue:= 16;
       fa_Auswertung.StopValue:= 16;
 
 
@@ -2050,6 +2184,9 @@ procedure Tfrm_PCM_Main.btn_LoginClick(Sender: TObject);
     end);
   end;
 begin
+  SetServerList;
+  if iServerID <> -1 then
+    dmmain.bServerAvailable:= CheckServerConnection;
   qry_Work.Close;
   qry_Work.SQL.Text := sSQL_SELECT_ALL_Login_Where_Benutzer;
   qry_Work.ParamByName('User').AsString := edt_Benutzername.Text;

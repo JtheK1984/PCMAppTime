@@ -198,8 +198,7 @@ object frm_PCMAPP_BuchungenDetail: Tfrm_PCMAPP_BuchungenDetail
             TextSettings.Font.Size = 14.000000000000000000
           end
           object tedt_Kommen: TTimeEdit
-            Format = 'hh:mm'
-            Time = 0.430633912037037000
+            Time = 0.577488518518518600
             Align = Top
             Enabled = False
             Margins.Left = 16.000000000000000000
@@ -232,7 +231,6 @@ object frm_PCMAPP_BuchungenDetail: Tfrm_PCMAPP_BuchungenDetail
             TabOrder = 95
           end
           object tedt_Gehen: TTimeEdit
-            Format = 'hh:mm'
             Time = 0.430633912037037000
             Align = Top
             Enabled = False
@@ -248,7 +246,6 @@ object frm_PCMAPP_BuchungenDetail: Tfrm_PCMAPP_BuchungenDetail
             TabOrder = 1
           end
           object tedt_Pause1Beginn: TTimeEdit
-            Format = 'hh:mm'
             Time = 0.430633912037037000
             Align = Top
             Enabled = False
@@ -282,7 +279,6 @@ object frm_PCMAPP_BuchungenDetail: Tfrm_PCMAPP_BuchungenDetail
             TabOrder = 94
           end
           object tedt_Pause1Ende: TTimeEdit
-            Format = 'hh:mm'
             Time = 0.430633912037037000
             Align = Top
             Enabled = False
@@ -334,7 +330,6 @@ object frm_PCMAPP_BuchungenDetail: Tfrm_PCMAPP_BuchungenDetail
             TabOrder = 93
           end
           object tedt_Pause2Beginn: TTimeEdit
-            Format = 'hh:mm'
             Time = 0.430633912037037000
             Align = Top
             Enabled = False
@@ -368,7 +363,6 @@ object frm_PCMAPP_BuchungenDetail: Tfrm_PCMAPP_BuchungenDetail
             TabOrder = 91
           end
           object tedt_Pause2Ende: TTimeEdit
-            Format = 'hh:mm'
             Time = 0.430633912037037000
             Align = Top
             Enabled = False

@@ -73,6 +73,7 @@ var
   {$Region Online}
   sSQL_SELECT_TEXT_LASTBOOKING: String;
   sSQL_UPDATE_TEXT_LASTBOOKING: String;
+  sSQL_SELECT_K_P1S_P1E_P2S_P2E_G: String;
   {$EndRegion Online}
   // Buchungen
   {$Region Buchungen}
@@ -439,6 +440,14 @@ begin
   {$Region Online}
   sSQL_SELECT_TEXT_LASTBOOKING:=                    'Select Text From LastBooking';
   sSQL_UPDATE_TEXT_LASTBOOKING:=                    'Update LastBooking Set Text = :Text';
+  sSQL_SELECT_K_P1S_P1E_P2S_P2E_G:=                 'SELECT *  FROM buchungen WHERE ' +
+                                                    'Kommen > ''00:00:00.000'' OR ' +
+                                                    'Pause1Beginn > ''00:00:00.000'' OR ' +
+                                                    'Pause1Ende  > ''00:00:00.000'' OR ' +
+                                                    'Pause2Beginn > ''00:00:00.000'' OR ' +
+                                                    'Pause2Ende > ''00:00:00.000'' ' +
+                                                    'ORDER BY Datum DESC ' +
+                                                    'LIMIT 1';
   {$EndRegion Online}
   // Buchungen
   {$Region Buchungen}
