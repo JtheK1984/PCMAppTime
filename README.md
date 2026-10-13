@@ -4,6 +4,9 @@
 # Kurzbeschreibung:
   PCM - Time App
 
+# Beschreibung
+  reine Zeiterfassung mit Abwesenheitsverwaltung für Android, Synchronisierung über PCM-Restserver
+
 # Entwicklungsumgebung:
   DELPHI 12.3 Athens
 
@@ -32,4 +35,4 @@
   - PrepareCopy.cmd (erzeugte Versionen werden in das Inno-Setupverzeichnis abgelgt)
 
 # Stand:
-  12.08.2025
+  12.07.2026
