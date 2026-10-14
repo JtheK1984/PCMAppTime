@@ -73,7 +73,7 @@ uses
   System.Sensors,
   System.Sensors.Components,
   System.SysUtils,
-  PCMAPP.WaitForm;
+  PCMAPP.WaitForm, System.Net.URLClient, System.Net.HttpClient;
   {$EndRegion Uses}
 type
   {$Region Types}
@@ -129,49 +129,84 @@ uses
 {$R *.dfm}
 function Tdmmain.RestRequest(ARequestBody: TJSONObject; AResource: String; AGETPOST: TRESTRequestMethod = rmPOST): TJSONObject;
 var
-  RestRequest: TRESTRequest;
-  qry_Work: TFDQuery;
+  Client: TRESTClient;
+  Auth: THTTPBasicAuthenticator;
+  Request: TRESTRequest;
+  Query: TFDQuery;
+  Connection: TFDConnection;
+  UserName, Password, Host, Port: string;
+  JSON: TJSONValue;
 begin
-  qry_Work:= TFDQuery.Create(nil);
-  qry_Work.Connection:= con_PCM;
-  qry_Work.SQL.Text := sSQL_SEL_All_AUtologin;
-  qry_Work.Open;
-  HTTPBasicAuthenticatorPCM.Username:= qry_Work.FieldByName('Benutzername').AsString;
-  HTTPBasicAuthenticatorPCM.Password:= qry_Work.FieldByName('Passwort').AsString;
-  if HTTPBasicAuthenticatorPCM.Username = '' then
-  begin
-    HTTPBasicAuthenticatorPCM.Username:= frm_PCM_main.edt_Benutzername.Text;
-    HTTPBasicAuthenticatorPCM.Password:= frm_PCM_main.edt_Passwort.Text;
-  end;
-  qry_Work.Close;
-  FreeAndNil(qry_Work);
-  if dmMain.sHostname <> '' then
-  begin
-    RestClientPCM.BaseURL:= 'https://' +  dmMain.sHostname +':' + dmmain.sPort + '/PCM/api/v1/';
-  end
-  else begin
-    RestClientPCM.BaseURL:= 'https://' +  GStack.ResolveHost(dmMain.sHostname, Id_IPv4) +':' + dmmain.sPort + '/PCM/api/v1/';
-//    RestClient1.BaseURL:= 'https://pcmapps.ddns.net:5443/PCM/api/v1/';
-  end;
-  RESTClientPCM.ContentType.Empty;
-
-  RestRequest := TRESTRequest.Create(nil);
+  Result := nil;
+  Host := sHostname;
+  Port := sPort;
+  if Host = '' then raise Exception.Create('REST: kein Server konfiguriert');
+  UserName := '';
+  Password := '';
+  Connection := TFDConnection.Create(nil);
+  Query := TFDQuery.Create(nil);
   try
-    RestRequest.Timeout:= 30000;
-    RESTRequest.AcceptEncoding := 'gzip, deflate, br';
-    RestRequest.Client := RestClientPCM;
-    RestRequest.Method := AGETPOST;
-    RestRequest.Resource := AResource;
-    if ARequestBody <> nil then
+    Connection.Params.Assign(con_PCM.Params);
+    Connection.LoginPrompt := False;
+    Connection.Connected := True;
+    Query.Connection := Connection;
+    Query.SQL.Text := sSQL_SEL_All_AUtologin;
+    Query.Open;
+    if not Query.IsEmpty then
     begin
-      RestRequest.Body.Add(ARequestBody);
+      UserName := Query.FieldByName('Benutzername').AsString;
+      Password := Query.FieldByName('Passwort').AsString;
+    end
+    else begin
+      UserName := frm_PCM_Main.edt_Benutzername.Text;
+      Password := frm_PCM_Main.edt_Passwort.Text;
     end;
-    RestRequest.Execute;
-    if (RestRequest.Response.StatusCode < 200) or (RestRequest.Response.StatusCode >= 300) then
-      raise Exception.CreateFmt('REST %s: HTTP %d', [AResource, RestRequest.Response.StatusCode]);
-    Result:= TJSonObject.ParseJSONValue(RestRequest.Response.JSONText) as TJSONObject;
   finally
-    RestRequest.Free;
+    Query.Free;
+    Connection.Free;
+  end;
+  // A fresh login must use the entered credentials, not an older auto-login.
+  if SameText(AResource, 'CheckLoginTime') and
+    (Trim(frm_PCM_Main.edt_Benutzername.Text) <> '') then
+  begin
+    UserName := frm_PCM_Main.edt_Benutzername.Text;
+    Password := frm_PCM_Main.edt_Passwort.Text;
+  end
+  else if UserName = '' then
+  begin
+    UserName := frm_PCM_Main.edt_Benutzername.Text;
+    Password := frm_PCM_Main.edt_Passwort.Text;
+  end;
+  if UserName = '' then raise Exception.Create('REST: kein Benutzername vorhanden');
+  Client := TRESTClient.Create(nil);
+  Auth := THTTPBasicAuthenticator.Create(nil);
+  Request := TRESTRequest.Create(nil);
+  try
+    Auth.Username := UserName;
+    Auth.Password := Password;
+    Client.Authenticator := Auth;
+    Client.BaseURL := 'https://' + Host + ':' + Port + '/PCM/api/v1/';
+    Request.Client := Client;
+    Request.Timeout := 30000;
+    Request.AcceptEncoding := 'gzip, deflate';
+    Request.Method := AGETPOST;
+    Request.Resource := AResource;
+    if ARequestBody <> nil then
+      Request.Body.Add(ARequestBody.ToJSON, ctAPPLICATION_JSON);
+    Request.Execute;
+    if (Request.Response.StatusCode < 200) or (Request.Response.StatusCode >= 300) then
+      raise Exception.CreateFmt('REST %s: HTTP %d', [AResource, Request.Response.StatusCode]);
+    JSON := TJSONObject.ParseJSONValue(Request.Response.JSONText);
+    if not (JSON is TJSONObject) then
+    begin
+      JSON.Free;
+      raise Exception.Create('REST ' + AResource + ': ungueltige JSON-Antwort');
+    end;
+    Result := TJSONObject(JSON);
+  finally
+    Request.Free;
+    Client.Free;
+    Auth.Free;
   end;
 end;
 ////////////////////////////////////////////////////////////////////////////////

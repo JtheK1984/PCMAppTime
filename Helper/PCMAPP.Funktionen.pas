@@ -141,10 +141,11 @@ var
 begin
   Client := THTTPClient.Create;
   try
-    Client.ConnectionTimeout := 5000;  // 10 Sekunden für Verbindung
-    Client.ResponseTimeout := 10000;    // 15 Sekunden auf Antwort warten
-    Response := Client.Head('https://' +  dmMain.sHostname +':' + dmmain.sPort + '/PCM/api/v1/');
-    Result := (Response.StatusCode = 200) or (Response.StatusCode = 500);
+    Client.ConnectionTimeout := 10000;
+    Client.ResponseTimeout := 15000;
+    Response := Client.Get('https://' +  dmMain.sHostname +':' + dmmain.sPort + '/PCM/api/v1/CheckServer');
+    Result := (Response.StatusCode = 200) or (Response.StatusCode = 401) or
+      (Response.StatusCode = 403) or (Response.StatusCode = 500);
   except
     Result := False;
   end;

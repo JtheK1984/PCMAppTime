@@ -4,7 +4,7 @@
         <ProjectFileVersion>12</ProjectFileVersion>
     </ProjectExtensions>
     <PropertyGroup>
-        <DeviceId Condition="'$(Platform)'=='Android'">39061FDJH00CKB</DeviceId>
+        <DeviceId Condition="'$(Platform)'=='Android'"/>
         <DeviceId Condition="'$(Platform)'=='Android64'">39061FDJH00CKB</DeviceId>
         <DeviceId Condition="'$(Platform)'=='iOSDevice64'"/>
         <DeviceId Condition="'$(Platform)'=='iOSSimARM64'"/>
@@ -264,9 +264,9 @@
         </DeployFile>
         <DeployFile Include="Res\Theme\styles.xml" Condition="'$(Config)'=='Debug'">
             <RemoteDir>PCMTimeAPP\res\values\</RemoteDir>
-            <RemoteName>styles.xml</RemoteName>
+            <RemoteName>pcm_theme.xml</RemoteName>
             <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
+            <Operation>1</Operation>
             <LocalCommand/>
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
@@ -489,9 +489,9 @@
         </DeployFile>
         <DeployFile Include="Res\Theme\styles.xml" Condition="'$(Config)'=='Release'">
             <RemoteDir>PCMTimeAPP\res\values\</RemoteDir>
-            <RemoteName>styles.xml</RemoteName>
+            <RemoteName>pcm_theme.xml</RemoteName>
             <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
+            <Operation>1</Operation>
             <LocalCommand/>
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
@@ -1266,9 +1266,9 @@
         </DeployFile>
         <DeployFile Include="Res\Theme\styles.xml" Condition="'$(Config)'=='Debug'">
             <RemoteDir>PCMTimeAPP\res\values\</RemoteDir>
-            <RemoteName>styles.xml</RemoteName>
+            <RemoteName>pcm_theme.xml</RemoteName>
             <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
+            <Operation>1</Operation>
             <LocalCommand/>
             <RemoteCommand/>
             <Overwrite>True</Overwrite>

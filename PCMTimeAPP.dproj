@@ -1943,21 +1943,24 @@
                 <DeployFile LocalName="Res\Theme\styles.xml" Configuration="Debug" Class="File">
                     <Platform Name="Android">
                         <RemoteDir>res\values\</RemoteDir>
-                        <RemoteName>styles.xml</RemoteName>
+                        <Operation>1</Operation>
+                        <RemoteName>pcm_theme.xml</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
                 <DeployFile LocalName="Res\Theme\styles.xml" Configuration="Debug" Class="File">
                     <Platform Name="Android64">
                         <RemoteDir>res\values\</RemoteDir>
-                        <RemoteName>styles.xml</RemoteName>
+                        <Operation>1</Operation>
+                        <RemoteName>pcm_theme.xml</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
                 <DeployFile LocalName="Res\Theme\styles.xml" Configuration="Release" Class="File">
                     <Platform Name="Android64">
                         <RemoteDir>res\values\</RemoteDir>
-                        <RemoteName>styles.xml</RemoteName>
+                        <Operation>1</Operation>
+                        <RemoteName>pcm_theme.xml</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
